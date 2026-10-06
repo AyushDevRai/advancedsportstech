@@ -49,6 +49,10 @@ export default async function SportDetailPage({
   const { locale, sportName } = await params;
   setRequestLocale(locale);
 
+  if (sportName === "athletic-tracks") {
+    redirect("/athletic-tracks");
+  }
+
   if (sportName === "hockey-tracks") {
     redirect("/sport/hockey-track");
   }

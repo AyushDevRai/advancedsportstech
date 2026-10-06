@@ -310,7 +310,7 @@ export function GlassHeader() {
                     <ul className="space-y-1.5 text-sm">
                       <li>
                         <Link
-                          href="/sport/athletic-tracks"
+                          href="/athletic-tracks"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-red-400">
@@ -697,7 +697,7 @@ export function GlassHeader() {
               </div>
               <div className="grid grid-cols-2 gap-2 mt-2">
                 <Link
-                  href="/sport/athletic-tracks"
+                  href="/athletic-tracks"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm text-slate-300 hover:text-white py-1.5 px-2 rounded hover:bg-white/5"
                 >

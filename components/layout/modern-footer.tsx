@@ -57,7 +57,7 @@ export function ModernFooter() {
             </h3>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <Link href="/sport/athletic-tracks" className="hover:text-red-400 transition-colors">
+                <Link href="/athletic-tracks" className="hover:text-red-400 transition-colors">
                   Athletic Tracks
                 </Link>
               </li>

@@ -15,12 +15,12 @@ const exploreLinks = [
   { name: "Contact Us", href: "#contact" },
 ];
 
-export function HomepageFooter() {
+export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
   const groups = [
     { title: "Products", links: productCategories[0].cards },
     { title: "Sports", links: sports.map(sport => ({ name: sport.name, href: sport.source })) },
-    { title: "Services", links: homepageServices.map(service => ({ name: service.name, href: `#service-${service.slug}` })) },
-    { title: "Company", links: exploreLinks },
+    { title: "Services", links: homepageServices.map(service => ({ name: service.name, href: `${homeHref}#service-${service.slug}` })) },
+    { title: "Company", links: exploreLinks.map(link => ({ ...link, href: `${homeHref}${link.href}` })) },
   ];
 
   return (
@@ -29,7 +29,7 @@ export function HomepageFooter() {
       <div className="page-container">
         <div className="footer-main">
           <div className="footer-profile">
-            <a href="#home" className="footer-logo">
+            <a href={`${homeHref}#home`} className="footer-logo">
               <Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="Advanced Sports Technologies" width={190} height={54} />
             </a>
             <p className="footer-introduction">Synthetic sports surfaces, built across India. Exclusive partner of Polytan/SportGroup Germany.</p>

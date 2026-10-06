@@ -5,7 +5,7 @@ export type NavigationCard = { name: string; href: string; image: string; eyebro
 export type ProductCategory = { id: string; name: string; cards: NavigationCard[]; description?: string; links?: { name: string; href: string }[] };
 export type NavigationGroup = { id: string; name: string; title: string; href: string; cards: NavigationCard[] };
 
-const track: NavigationCard = { name: "Athletic Track", href: "https://ast-sports.com/athletic-track-products/", image: "/placeholders/jrd-tata.jpg", eyebrow: "REKORTAN" };
+const track: NavigationCard = { name: "Athletic Track", href: "/athletic-tracks#track-products", image: "/image/header-1.jpg", eyebrow: "REKORTAN" };
 const hockey: NavigationCard = { name: "Hockey Turf", href: "https://ast-sports.com/poligras/", image: "/projects/kalinga.jpg", eyebrow: "POLIGRAS" };
 const football: NavigationCard = { name: "Football Turf", href: "https://ast-sports.com/ligaturf/", image: "/navigation/football.webp", eyebrow: "LIGATURF" };
 const inbuilt: NavigationCard = { name: "Inbuilt", href: "https://ast-sports.com/smartracks/", image: "/navigation/smartracks.webp", eyebrow: "SMARTRACKS" };
@@ -31,7 +31,7 @@ export const downloadGroups = [
 export const navigationGroups: NavigationGroup[] = [
   { id: "products", name: "Products", title: "Products", href: "#products", cards: productCategories[0].cards },
   { id: "sports", name: "Sports", title: "Sports", href: "#sports", cards: [
-    { name: "Athletic Tracks", href: "https://ast-sports.com/athletic-tracks/", image: "/placeholders/jrd-tata.jpg" },
+    { name: "Athletic Tracks", href: "/athletic-tracks", image: "/image/header-1.jpg" },
     { name: "Hockey", href: "https://ast-sports.com/hockey/", image: "/projects/kalinga.jpg" },
     { name: "Football", href: "https://ast-sports.com/football/", image: "/navigation/football.webp" },
     { name: "Wooden Flooring", href: "https://ast-sports.com/wooden-flooring/", image: "/navigation/wooden-flooring.webp" },

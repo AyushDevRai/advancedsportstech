@@ -46,6 +46,11 @@ const partnerLogos = [
   { src: "/brand/poligras.png", alt: "Poligras" },
 ];
 
+const clientLogoRows = [
+  clientNames.slice(0, 15).map((name, index) => ({ name, src: `/clients/client-${index + 1}.png` })),
+  clientNames.slice(15).map((name, index) => ({ name, src: `/clients/client-${index + 16}.png` })),
+];
+
 export function Homepage() {
   return (
     <div className="ast-homepage">
@@ -344,39 +349,27 @@ export function Homepage() {
           aria-labelledby="clients-title"
         >
           <div className="page-container clients-heading">
-            <p className="eyebrow">
-              <span className="red-rule" />
-              OUR CLIENTS
-            </p>
-            <h2 id="clients-title">OUR CLIENTS.</h2>
+            <h2 id="clients-title"><span className="red-rule" aria-hidden="true" />OUR CLIENTS.</h2>
+            <a href="#projects" className="ast-button ast-button-red clients-project-link">Our projects <ArrowUpRight size={18} /></a>
           </div>
-          <div className="client-marquee" aria-label="AST client logos">
-            <div className="client-track">
-              {clientNames.map((name, index) => (
-                <div className="client-logo" key={name}>
-                  <Image
-                    src={`/clients/client-${index + 1}.png`}
-                    alt={name}
-                    width={140}
-                    height={90}
-                    sizes="140px"
-                  />
-                </div>
-              ))}
-              <div className="client-duplicates" aria-hidden="true">
-                {clientNames.map((name, index) => (
-                  <div className="client-logo" key={name}>
-                    <Image
-                      src={`/clients/client-${index + 1}.png`}
-                      alt=""
-                      width={140}
-                      height={90}
-                      sizes="140px"
-                    />
+          <div className="client-carousel" aria-label="AST client logos">
+            {clientLogoRows.map((logos, row) => (
+              <Marquee
+                key={row}
+                reverse={row === 1}
+                pauseOnHover
+                repeat={2}
+                className={`client-marquee client-marquee-row-${row + 1}`}
+                tabIndex={0}
+                aria-label={`Client logos, row ${row + 1}. Hover or focus to pause.`}
+              >
+                {logos.map(logo => (
+                  <div className="client-logo" key={logo.src}>
+                    <Image src={logo.src} alt={logo.name} width={170} height={120} sizes="(max-width: 640px) 120px, 170px" />
                   </div>
                 ))}
-              </div>
-            </div>
+              </Marquee>
+            ))}
           </div>
           <div className="page-container">
             <details className="all-clients">

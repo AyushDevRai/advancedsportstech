@@ -11,7 +11,12 @@ import { company } from "@/content/ast";
 import { navigationGroups } from "@/content/navigation";
 import { NavigationPanel } from "@/components/layout/navigation-panel";
 
-export function SiteHeader() {
+export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
+  const groups = navigationGroups.map(group => ({
+    ...group,
+    href: group.href.startsWith("#") ? `${homeHref}${group.href}` : group.href,
+    cards: group.cards.map(card => ({ ...card, href: card.href.startsWith("#") ? `${homeHref}${card.href}` : card.href })),
+  }));
   const [hidden, setHidden] = useState(false);
   const [compact, setCompact] = useState(false);
   const [surface, setSurface] = useState("dark");
@@ -39,12 +44,12 @@ export function SiteHeader() {
     {activeMenu && <div className="nav-hover-backdrop" aria-hidden="true" onPointerDown={() => setActiveMenu("")} />}
     <header className={`site-header ${compact ? "is-compact" : ""} ${hidden && !mobileOpen && !activeMenu ? "is-hidden" : ""}`} data-surface={surface}>
       <div className="nav-glass">
-        <a href="#home" aria-label="AST — homepage" className="nav-logo"><Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="Advanced Sports Technologies" width={160} height={40} sizes="(max-width: 640px) 120px, 160px" /></a>
+        <a href={`${homeHref}#home`} aria-label="AST — homepage" className="nav-logo"><Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="Advanced Sports Technologies" width={160} height={40} sizes="(max-width: 640px) 120px, 160px" /></a>
         <NavigationMenu className="desktop-navigation mega-navigation" viewport={false} value={activeMenu} onValueChange={setActiveMenu} delayDuration={120} skipDelayDuration={250}>
-          <NavigationMenuList>{navigationGroups.map((group) => <NavigationMenuItem key={group.id} value={group.id} className="mega-nav-item"><NavigationMenuTrigger className="nav-trigger">{group.name}</NavigationMenuTrigger><NavigationMenuContent className="mega-panel"><NavigationPanel group={group} onClose={() => setActiveMenu("")} /></NavigationMenuContent></NavigationMenuItem>)}</NavigationMenuList>
+          <NavigationMenuList>{groups.map((group) => <NavigationMenuItem key={group.id} value={group.id} className="mega-nav-item"><NavigationMenuTrigger className="nav-trigger">{group.name}</NavigationMenuTrigger><NavigationMenuContent className="mega-panel"><NavigationPanel group={group} homeHref={homeHref} onClose={() => setActiveMenu("")} /></NavigationMenuContent></NavigationMenuItem>)}</NavigationMenuList>
         </NavigationMenu>
         <div className="nav-controls"><span className="language-label" aria-label="Language: English">EN</span><button className="theme-switch" type="button" onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")} aria-label="Toggle colour theme"><Sun size={17} className="theme-sun" /><Moon size={17} className="theme-moon" /></button><a href="#contact" className="ast-button ast-button-red nav-quote">Get a quote <ArrowUpRight size={16} /></a>
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}><SheetTrigger asChild><button className="mobile-menu-toggle" type="button" aria-label="Open navigation menu"><Menu size={24} /></button></SheetTrigger><SheetContent className="mobile-nav"><SheetHeader><SheetTitle><Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="AST" width={160} height={40} /></SheetTitle><SheetDescription>Advanced Sports Technologies</SheetDescription></SheetHeader><Accordion type="single" collapsible>{navigationGroups.map((group) => <AccordionItem key={group.id} value={group.id}><AccordionTrigger>{group.name}</AccordionTrigger><AccordionContent><div className="mobile-nav-links">{group.cards.map((card) => <a key={card.name} href={card.href} onClick={() => setMobileOpen(false)}>{card.name}<ArrowUpRight size={16} /></a>)}</div></AccordionContent></AccordionItem>)}</Accordion><a href="#contact" onClick={() => setMobileOpen(false)} className="ast-button ast-button-red">Get a quote <ArrowUpRight size={18} /></a><a href={company.contact.phoneHref} className="mobile-nav-phone"><Phone size={16} />{company.contact.phone}</a></SheetContent></Sheet>
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}><SheetTrigger asChild><button className="mobile-menu-toggle" type="button" aria-label="Open navigation menu"><Menu size={24} /></button></SheetTrigger><SheetContent className="mobile-nav"><SheetHeader><SheetTitle><Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="AST" width={160} height={40} /></SheetTitle><SheetDescription>Advanced Sports Technologies</SheetDescription></SheetHeader><Accordion type="single" collapsible>{groups.map((group) => <AccordionItem key={group.id} value={group.id}><AccordionTrigger>{group.name}</AccordionTrigger><AccordionContent><div className="mobile-nav-links">{group.cards.map((card) => <a key={card.name} href={card.href} onClick={() => setMobileOpen(false)}>{card.name}<ArrowUpRight size={16} /></a>)}</div></AccordionContent></AccordionItem>)}</Accordion><a href="#contact" onClick={() => setMobileOpen(false)} className="ast-button ast-button-red">Get a quote <ArrowUpRight size={18} /></a><a href={company.contact.phoneHref} className="mobile-nav-phone"><Phone size={16} />{company.contact.phone}</a></SheetContent></Sheet>
         </div>
       </div>
     </header>

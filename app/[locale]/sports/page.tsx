@@ -97,7 +97,7 @@ export default async function SportsPage({
                     {sport.products.length} Certified Systems
                   </span>
                   <Link
-                    href={`/sport/${sport.slug}`}
+                    href={sport.slug === "athletic-tracks" ? "/athletic-tracks" : `/sport/${sport.slug}`}
                     className="ast-btn-glow px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5"
                   >
                     <span>View Specifications</span>
