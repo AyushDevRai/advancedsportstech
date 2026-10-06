@@ -27,8 +27,8 @@ export const company = {
 
 export const sports: Sport[] = [
   { slug: "athletics", name: "Athletics", source: "/athletic-tracks" },
-  { slug: "hockey", name: "Hockey", source: "https://ast-sports.com/hockey/" },
-  { slug: "football", name: "Football", source: "https://ast-sports.com/football/" },
+  { slug: "hockey", name: "Hockey", source: "/hockey" },
+  { slug: "football", name: "Football", source: "/football" },
   { slug: "tennis", name: "Tennis", source: "https://ast-sports.com/tennis/" },
   { slug: "badminton", name: "Badminton", source: "https://ast-sports.com/badminton/" },
   { slug: "basketball", name: "Basketball", source: "https://ast-sports.com/basketball/" },

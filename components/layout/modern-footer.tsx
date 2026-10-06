@@ -62,12 +62,12 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/sport/hockey-track" className="hover:text-red-400 transition-colors">
+                <Link href="/hockey" className="hover:text-red-400 transition-colors">
                   Hockey Turf
                 </Link>
               </li>
               <li>
-                <Link href="/sport/football" className="hover:text-red-400 transition-colors">
+                <Link href="/football" className="hover:text-red-400 transition-colors">
                   Football Turfs
                 </Link>
               </li>
@@ -131,12 +131,12 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/products/smartracks" className="hover:text-red-400 transition-colors">
+                <Link href="/smartracks" className="hover:text-red-400 transition-colors">
                   SmarTracks Timing
                 </Link>
               </li>
               <li>
-                <Link href="/products/smartracks/inbuilt" className="hover:text-red-400 transition-colors">
+                <Link href="/smartracks" className="hover:text-red-400 transition-colors">
                   Inbuilt Magnetic Gates
                 </Link>
               </li>

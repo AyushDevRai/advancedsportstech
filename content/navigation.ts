@@ -5,10 +5,10 @@ export type NavigationCard = { name: string; href: string; image: string; eyebro
 export type ProductCategory = { id: string; name: string; cards: NavigationCard[]; description?: string; links?: { name: string; href: string }[] };
 export type NavigationGroup = { id: string; name: string; title: string; href: string; cards: NavigationCard[] };
 
-const track: NavigationCard = { name: "Athletic Track", href: "/athletic-tracks#track-products", image: "/image/header-1.jpg", eyebrow: "REKORTAN" };
-const hockey: NavigationCard = { name: "Hockey Turf", href: "https://ast-sports.com/poligras/", image: "/projects/kalinga.jpg", eyebrow: "POLIGRAS" };
-const football: NavigationCard = { name: "Football Turf", href: "https://ast-sports.com/ligaturf/", image: "/navigation/football.webp", eyebrow: "LIGATURF" };
-const inbuilt: NavigationCard = { name: "Inbuilt", href: "https://ast-sports.com/smartracks/", image: "/navigation/smartracks.webp", eyebrow: "SMARTRACKS" };
+const track: NavigationCard = { name: "Athletic Track", href: "/athletic-tracks", image: "/image/header-1.jpg", eyebrow: "REKORTAN" };
+const hockey: NavigationCard = { name: "Hockey Turf", href: "/hockey", image: "/projects/kalinga.jpg", eyebrow: "POLIGRAS" };
+const football: NavigationCard = { name: "Football Turf", href: "/football", image: "/imageFootball/football.jpg", eyebrow: "LIGATURF" };
+const inbuilt: NavigationCard = { name: "Inbuilt", href: "/smartracks", image: "/imageSmartTrack/smartakcs.jpg", eyebrow: "SMARTRACKS" };
 const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "https://ast-sports.com/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
 const lighting: NavigationCard = { name: "Sports Lighting", href: "https://ast-sports.com/gigatera/", image: "/services/lighting.jpg" };
 const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "https://ast-sports.com/maintainence/", image: "/services/maintenance.jpg" };
@@ -16,7 +16,7 @@ const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "htt
 export const productCategories: ProductCategory[] = [
   { id: "all", name: "All Products", cards: [track, hockey, football, inbuilt, timing, lighting, maintenance] },
   { id: "tracks", name: "Athletic Track", cards: [track], description: "REKORTAN, THE ORIGINAL SYNTHETIC TRACK", links: [{ name: "Rekortan M99", href: brochureUrl("REKORTAN-M99.pdf") }, { name: "Rekortan M", href: brochureUrl("REKORTAN-M.pdf") }, { name: "Rekortan PUR E", href: brochureUrl("Rekortan-PUR-E-.pdf") }] },
-  { id: "turf", name: "Synthetic Turf", cards: [hockey, football] },
+  { id: "turf", name: "Synthetic Turf", cards: [hockey, football], description: "POLIGRAS & LIGATURF SYNTHETIC SPORTS TURF", links: [{ name: "Poligras Platinum GT", href: brochureUrl("BROCHURE-POLIGRAS-PLATINUM-GT.pdf") }, { name: "Poligras SuperPlay", href: brochureUrl("Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf") }, { name: "Poligras GT", href: brochureUrl("POLIGRAS-GT-CATALOGUE-two-page.pdf") }] },
   { id: "smart", name: "SmarTracks", cards: [inbuilt, timing] },
   { id: "lighting", name: "Sports Lighting", cards: [lighting], description: homepageServices[6].description },
   { id: "maintenance", name: "Cleaning & Maintenance", cards: [maintenance], description: homepageServices[7].description },
@@ -30,16 +30,16 @@ export const downloadGroups = [
 
 export const navigationGroups: NavigationGroup[] = [
   { id: "products", name: "Products", title: "Products", href: "#products", cards: productCategories[0].cards },
-  { id: "sports", name: "Sports", title: "Sports", href: "#sports", cards: [
-    { name: "Athletic Tracks", href: "/athletic-tracks", image: "/image/header-1.jpg" },
-    { name: "Hockey", href: "https://ast-sports.com/hockey/", image: "/projects/kalinga.jpg" },
-    { name: "Football", href: "https://ast-sports.com/football/", image: "/navigation/football.webp" },
-    { name: "Wooden Flooring", href: "https://ast-sports.com/wooden-flooring/", image: "/navigation/wooden-flooring.webp" },
-    { name: "Indoor Flooring", href: "https://ast-sports.com/indoor-flooring/", image: "/navigation/indoor-flooring.webp" },
-    { name: "Tennis", href: "https://ast-sports.com/tennis/", image: "/navigation/tennis.webp" },
-    { name: "Badminton", href: "https://ast-sports.com/badminton/", image: "/navigation/badminton.webp" },
-    { name: "Basketball", href: "https://ast-sports.com/basketball/", image: "/navigation/basketball.webp" },
-  ] },
+  // { id: "sports", name: "Sports", title: "Sports", href: "#sports", cards: [
+  //   { name: "Athletic Tracks", href: "/athletic-tracks", image: "/image/header-1.jpg" },
+  //   { name: "Hockey", href: "/hockey", image: "/projects/kalinga.jpg" },
+  //   { name: "Football", href: "https://ast-sports.com/football/", image: "/navigation/football.webp" },
+  //   { name: "Wooden Flooring", href: "https://ast-sports.com/wooden-flooring/", image: "/navigation/wooden-flooring.webp" },
+  //   { name: "Indoor Flooring", href: "https://ast-sports.com/indoor-flooring/", image: "/navigation/indoor-flooring.webp" },
+  //   { name: "Tennis", href: "https://ast-sports.com/tennis/", image: "/navigation/tennis.webp" },
+  //   { name: "Badminton", href: "https://ast-sports.com/badminton/", image: "/navigation/badminton.webp" },
+  //   { name: "Basketball", href: "https://ast-sports.com/basketball/", image: "/navigation/basketball.webp" },
+  // ] },
   { id: "services", name: "Services", title: "What We Do", href: "#services", cards: homepageServices.map(service => ({ name: service.name, image: service.image, href: `#service-${service.slug}` })) },
   { id: "projects", name: "Projects", title: "Our Projects", href: "#projects", cards: gallery.map(project => ({ name: project.name, href: "#projects", image: project.image, eyebrow: project.category })) },
   { id: "downloads", name: "Downloads", title: "Brochure", href: "#brochures", cards: downloadGroups.flatMap(group => group.items.map(item => ({ name: item.name, href: brochureUrl(item.file), image: group.image }))) },

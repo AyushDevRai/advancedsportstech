@@ -8,6 +8,9 @@
 @import "../styles/tokens.css";
 @import "../styles/homepage.css";
 @import "../styles/athletic-tracks.css";
+@import "../styles/hockey.css";
+@import "../styles/football.css";
+@import "../styles/smartracks.css";
 
 @theme inline {
   --animate-aurora: aurora 8s ease-in-out infinite alternate;

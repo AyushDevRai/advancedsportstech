@@ -53,8 +53,12 @@ export default async function SportDetailPage({
     redirect("/athletic-tracks");
   }
 
-  if (sportName === "hockey-tracks") {
-    redirect("/sport/hockey-track");
+  if (sportName === "hockey" || sportName === "hockey-track" || sportName === "hockey-tracks") {
+    redirect("/hockey");
+  }
+
+  if (sportName === "football" || sportName === "football-turf" || sportName === "football-pitch") {
+    redirect("/football");
   }
 
   const sport = sportsData[sportName];

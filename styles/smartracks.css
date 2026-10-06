@@ -1,0 +1,226 @@
+.smartracks-page { --smart-line: #e48a1226; --smart-muted: #6e6b66; --smart-panel: #f5f4ef; --smart-amber: #e48a12; }
+.dark .smartracks-page { --smart-line: #e48a1233; --smart-muted: #b0aca5; --smart-panel: #201f1c; --smart-amber: #f39c12; }
+
+.smartracks-page .smartracks-hero { position: relative; display: flex; align-items: center; min-height: min(820px, 100svh); padding-block: 180px 140px; overflow: hidden; background: #151614; color: #fff; }
+.smartracks-hero-image { object-fit: cover; object-position: 50% center; }
+.smartracks-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #090a0ce8 0%, #090a0c88 56%, #090a0c30), linear-gradient(0deg, #090a0cf0, transparent 46%, #090a0c38); }
+.smartracks-hero-content { position: relative; z-index: 1; }
+.smartracks-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; color: #e7ede0b8; font-size: 12px; margin-bottom: 38px; }
+.smartracks-breadcrumb a:hover { color: #fff; }
+.smartracks-breadcrumb [aria-current] { color: #fff; }
+.smartracks-hero .eyebrow { color: #fff; }
+.smartracks-page .smartracks-hero h1 { font-size: clamp(4.2rem, 8.2vw, 8.2rem); line-height: .96; margin: 0; max-width: 1080px; }
+.smartracks-hero h1 > span { color: #ff5657; }
+.smartracks-hero-subtitle { font-size: clamp(17px, 1.8vw, 23px); max-width: 580px; margin: 28px 0 32px; color: #f1f4efeb; }
+.smartracks-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.smartracks-hero-foot { position: absolute; bottom: 28px; inset-inline: 0; z-index: 1; }
+.smartracks-hero-foot > div { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid #ffffff38; padding-top: 22px; font-size: 10px; font-weight: 600; letter-spacing: .14em; color: #ffffffb3; }
+
+.smartracks-section-nav { border-bottom: 1px solid var(--smart-line); }
+.smartracks-section-nav > div { display: flex; }
+.smartracks-section-nav a { display: flex; align-items: center; justify-content: space-between; flex: 1; gap: 16px; padding: 24px 28px; font-size: 14px; font-weight: 650; border-right: 1px solid var(--smart-line); transition: color .2s, background .2s; }
+.smartracks-section-nav a:first-child { padding-left: 0; }
+.smartracks-section-nav a:last-child { border: 0; }
+.smartracks-section-nav a:hover { color: var(--home-red); }
+.smartracks-section-nav svg { color: var(--home-red); }
+
+.smartracks-overview-layout { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 6vw, 90px); align-items: start; }
+.smartracks-overview-visual { position: relative; margin-top: 6px; }
+.smartracks-player-image { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
+.smartracks-player-image img { object-fit: cover; object-position: center; }
+.smartracks-overview-visual > p { position: relative; margin: -76px 22px 0; padding: 24px 28px; background: var(--home-red); color: white; font-size: 18px; font-weight: 600; line-height: 1.6; border-radius: 5px; max-width: 360px; }
+.smartracks-visual-line { display: block; width: 60px; height: 2px; background: var(--home-red); margin: 36px 0 0; }
+.smartracks-page .smartracks-overview-copy h2 { font-size: clamp(3rem, 4.4vw, 4.4rem); margin-bottom: 32px; }
+.smartracks-overview-copy > p:not(.eyebrow) { font-size: 16px; color: var(--smart-muted); margin-top: 20px; }
+
+/* 4-Step Process Section */
+.smartracks-workflow { background: var(--smart-panel); padding-block: 80px; }
+.smartracks-steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+.smartracks-step-card { background: var(--home-paper); border: 1px solid var(--smart-line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+.dark .smartracks-step-card { background: #191816; }
+.smartracks-step-card:hover { transform: translateY(-3px); }
+.smartracks-step-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+.smartracks-step-number { font-family: var(--font-display), sans-serif; font-size: 32px; font-weight: 700; color: var(--smart-amber); }
+.smartracks-step-tag { font-size: 11px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--smart-muted); }
+.smartracks-step-image { position: relative; aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; margin-bottom: 20px; background: #0000000a; }
+.smartracks-step-image img { object-fit: cover; }
+.smartracks-step-card h3 { font-family: var(--font-display), sans-serif; font-size: 22px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; }
+.smartracks-step-card p { font-size: 13.5px; color: var(--smart-muted); line-height: 1.6; margin: 0; }
+
+/* Heritage / Millisecond Section (Dark) */
+.smartracks-heritage { position: relative; background: var(--home-dark); color: #f2f5ee; overflow: hidden; }
+.smartracks-heritage::before { position: absolute; content: ""; width: 650px; height: 650px; right: -200px; bottom: -430px; border: 1px solid #ffffff12; box-shadow: 0 0 0 50px #ffffff04, 0 0 0 100px #ffffff03, 0 0 0 150px #ffffff02; border-radius: 50%; pointer-events: none; }
+.smartracks-heritage-layout { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 64px; }
+.smartracks-page .smartracks-heritage h2 { font-size: clamp(3rem, 4.6vw, 4.8rem); }
+.smartracks-heritage h2 span { color: #919f94; }
+.smartracks-heritage-copy { font-size: 17px; color: #c4cec6; margin-bottom: 5px; }
+.smartracks-timeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 68px; border-top: 1px solid #ffffff24; padding-top: 36px; }
+.smartracks-timeline > div { border-right: 1px solid #ffffff24; padding-inline: 36px; }
+.smartracks-timeline > div:first-child { padding-left: 0; }
+.smartracks-timeline > div:last-child { border: 0; }
+.smartracks-timeline strong { font-family: var(--font-display), sans-serif; font-size: clamp(3.2rem, 4.8vw, 4.8rem); font-weight: 600; line-height: 1; }
+.smartracks-timeline strong span { color: #ff5657; }
+.smartracks-timeline p { font-size: 15px; color: #bcc9c0; margin-top: 12px; }
+
+/* Track Timing Diagram */
+.smartracks-diagram-figure { margin-top: 60px; border: 1px solid #ffffff24; border-radius: 8px; overflow: hidden; background: #00000040; }
+.smartracks-diagram-figure img { width: 100%; height: auto; display: block; object-fit: cover; }
+.smartracks-diagram-figure figcaption { padding: 16px 24px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #bcc9c0; border-top: 1px solid #ffffff15; }
+
+/* Why Choose SmarTracks */
+.smartracks-proof-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24px; margin-bottom: 24px; }
+.smartracks-proof-card { padding: 32px; border: 1px solid var(--smart-line); border-radius: 8px; }
+.smartracks-card-number { display: block; font-size: 12px; font-weight: 650; letter-spacing: .08em; color: var(--home-red); margin-bottom: 24px; }
+.smartracks-page .smartracks-proof-card h3, .smartracks-page .smartracks-reason-card h3 { font-family: var(--font-display), sans-serif; font-weight: 600; text-transform: uppercase; font-size: 34px; line-height: 1.1; letter-spacing: -.015em; margin-bottom: 24px; }
+.smartracks-certifications { background: var(--smart-panel); }
+.smartracks-global-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+.smartracks-global-stats > div + div { border-left: 1px solid var(--smart-line); padding-left: 20px; }
+.smartracks-global-stats strong { font-family: var(--font-display), sans-serif; font-size: clamp(3rem, 4.4vw, 4.5rem); line-height: 1; color: var(--home-red); font-weight: 600; }
+.smartracks-global-stats p { font-size: 13px; margin-top: 14px; color: var(--smart-muted); }
+.smartracks-diamond ul { display: grid; gap: 16px; }
+.smartracks-diamond li { display: flex; align-items: baseline; gap: 12px; font-size: 14px; line-height: 1.65; }
+.smartracks-venue-marker { flex-shrink: 0; width: 6px; height: 6px; transform: rotate(45deg); background: var(--home-red); }
+
+.smartracks-reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.smartracks-reason-card { border: 1px solid var(--smart-line); border-radius: 8px; padding: 32px; }
+.smartracks-reason-card p, .smartracks-reason-card li { font-size: 15px; color: var(--smart-muted); line-height: 1.8; }
+.smartracks-reason-card ul { margin-top: 18px; padding-left: 20px; list-style: disc; }
+.smartracks-reason-card li + li { margin-top: 8px; }
+.smartracks-reason-card li::marker { color: var(--home-red); }
+.smartracks-reason-amber { background: #2c2519; color: #fbf7ee; border-color: #2c2519; }
+.smartracks-reason-amber .smartracks-card-number { color: #f0c978; margin-bottom: 8px; }
+.smartracks-amber-stat { font-family: var(--font-display), sans-serif; font-size: 96px; font-weight: 600; line-height: 1.1; display: block; color: #f4d388; margin-bottom: 22px; }
+.smartracks-amber-stat > span { font-size: 55px; }
+.smartracks-reason-amber p { color: #eeddc2; }
+
+/* Benefits */
+.smartracks-benefits { background: var(--smart-panel); }
+.smartracks-benefits-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; }
+.smartracks-benefits-layout ol { counter-reset: none; }
+.smartracks-benefits-layout li { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--smart-line); }
+.smartracks-benefits-layout li:first-child { padding-top: 0; }
+.smartracks-benefits-layout li:last-child { border: 0; }
+.smartracks-benefits-layout li > span { padding-top: 4px; font-size: 12px; font-weight: 650; color: var(--home-red); }
+.smartracks-benefits-layout li p { font-size: 17px; line-height: 1.65; }
+
+/* Products / Systems */
+.smartracks-product-jump { display: flex; flex-wrap: wrap; gap: 8px; max-width: 520px; justify-content: flex-end; }
+.smartracks-product-jump a { font-size: 12px; font-weight: 650; padding: 10px 12px; border: 1px solid var(--smart-line); border-radius: 5px; display: flex; align-items: center; gap: 12px; transition: color .2s, border-color .2s; }
+.smartracks-product-jump a:hover { color: var(--home-red); border-color: var(--home-red); }
+.smartracks-product-jump svg { color: var(--home-red); }
+
+.smartracks-product { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(36px, 5vw, 76px); padding-block: 60px; border-top: 1px solid var(--smart-line); align-items: center; }
+.smartracks-product:last-child { padding-bottom: 0; }
+.smartracks-product:nth-child(even) .smartracks-product-visual { order: 2; }
+.smartracks-product-visual { background: var(--smart-panel); border-radius: 8px; padding: 24px; }
+.smartracks-product-visual-top { display: flex; justify-content: space-between; gap: 12px; font-size: 10px; font-weight: 650; letter-spacing: .08em; color: var(--smart-muted); }
+.smartracks-product-image { position: relative; aspect-ratio: 1.45; margin: 28px 0 20px; isolation: isolate; background: var(--smart-panel); border-radius: 6px; overflow: hidden; }
+.smartracks-product-image img { object-fit: contain; }
+.smartracks-product-visual > p { border-top: 1px solid var(--smart-line); padding-top: 18px; font-size: 12px; color: var(--smart-muted); }
+.smartracks-product-copy .eyebrow { margin-bottom: 14px; color: var(--home-red); letter-spacing: .1em; }
+.smartracks-page .smartracks-product-copy h3 { font-family: var(--font-display), sans-serif; font-size: clamp(38px, 4vw, 56px); line-height: 1; font-weight: 600; text-transform: uppercase; margin-bottom: 24px; }
+.smartracks-product-copy > p:not(.eyebrow) { color: var(--smart-muted); font-size: 15px; margin-top: 16px; }
+.smartracks-product-specs { margin-top: 20px; display: grid; gap: 8px; }
+.smartracks-product-specs li { display: flex; align-items: baseline; gap: 10px; font-size: 13px; color: var(--smart-muted); line-height: 1.55; }
+.smartracks-spec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--home-red); flex-shrink: 0; }
+.smartracks-product-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 30px; }
+
+/* Embedded Video Player Styles */
+.smartracks-video-box { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; border: 1px solid var(--smart-line); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15); }
+.dark .smartracks-video-box { border-color: #ffffff20; box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45); }
+.smartracks-video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.smartracks-product-visual .smartracks-video-box { margin: 28px 0 20px; }
+
+/* Heritage Video Spotlight */
+.smartracks-heritage-video-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; margin-top: 56px; padding-top: 48px; border-top: 1px solid #ffffff24; }
+.smartracks-heritage-video-copy h3 { font-family: var(--font-display), sans-serif; font-size: clamp(28px, 3.2vw, 38px); text-transform: uppercase; font-weight: 600; line-height: 1.1; margin-bottom: 18px; color: #fff; }
+.smartracks-heritage-video-copy p { font-size: 15px; color: #bcc9c0; line-height: 1.75; }
+
+/* App store badges */
+.smartracks-app-badges { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.smartracks-app-badge-link { display: inline-flex; transition: opacity .2s; }
+.smartracks-app-badge-link:hover { opacity: .85; }
+
+.smartracks-contact-intro { font-size: 17px; color: var(--smart-muted); max-width: 410px; margin-top: 28px; }
+.smartracks-page .contact-form-panel h3 { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 32px; text-transform: uppercase; margin-bottom: 26px; }
+
+/* Responsive Media Queries */
+@media (min-width: 1600px) { .smartracks-page .smartracks-hero { min-height: 850px; } }
+@media (max-width: 1100px) {
+  .smartracks-proof-grid { grid-template-columns: 1fr 1fr; }
+  .smartracks-global-stats { gap: 12px; }
+  .smartracks-global-stats > div + div { padding-left: 12px; }
+  .smartracks-proof-card, .smartracks-reason-card { padding: 26px; }
+  .smartracks-global-stats p { font-size: 12px; }
+  .smartracks-steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .smartracks-page .smartracks-hero { min-height: 760px; padding-block: 160px 130px; }
+  .smartracks-overview-layout { grid-template-columns: .85fr 1.15fr; gap: 30px; }
+  .smartracks-overview-visual > p { padding: 20px; margin-inline: 15px; font-size: 15px; }
+  .smartracks-page .smartracks-overview-copy h2 { font-size: 42px; }
+  .smartracks-overview-copy > p:not(.eyebrow) { font-size: 15px; }
+  .smartracks-heritage-layout, .smartracks-benefits-layout, .smartracks-heritage-video-layout { grid-template-columns: 1fr; gap: 36px; }
+  .smartracks-heritage-copy { max-width: 680px; }
+  .smartracks-proof-grid { grid-template-columns: 1fr; }
+  .smartracks-global-stats strong { font-size: 60px; }
+  .smartracks-global-stats p { font-size: 14px; max-width: 180px; }
+  .smartracks-product { grid-template-columns: 1fr; gap: 32px; padding-block: 44px; }
+  .smartracks-product:nth-child(even) .smartracks-product-visual { order: 0; }
+  .smartracks-product-visual { max-width: 620px; width: 100%; }
+  .smartracks-product-image { aspect-ratio: 1.8; }
+  .smartracks-hero-foot > div { font-size: 9px; letter-spacing: .09em; }
+}
+@media (max-width: 640px) {
+  .smartracks-page .smartracks-hero { min-height: 710px; padding-block: 142px 116px; }
+  .smartracks-hero-shade { background: linear-gradient(90deg, #090a0ce0, #090a0c70), linear-gradient(0deg, #090a0cf0, transparent 50%); }
+  .smartracks-breadcrumb { font-size: 11px; margin-bottom: 30px; gap: 9px; }
+  .smartracks-page .smartracks-hero h1 { font-size: clamp(3.4rem, 11vw, 4.8rem); }
+  .smartracks-hero .eyebrow { font-size: 11px; }
+  .smartracks-hero-subtitle { font-size: 18px; max-width: 290px; margin-block: 24px; }
+  .smartracks-hero-actions { gap: 10px; }
+  .smartracks-hero-actions .ast-button { gap: 12px; padding: 14px 16px; font-size: 12px; }
+  .smartracks-hero-foot > div { flex-direction: column; gap: 8px; padding-top: 18px; }
+  .smartracks-section-nav a { font-size: 11px; padding: 20px 12px; gap: 8px; }
+  .smartracks-section-nav a:last-child { padding-right: 0; }
+  .smartracks-steps-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 360px) {
+  .smartracks-section-nav a { padding: 16px 6px; font-size: 10px; gap: 4px; }
+}
+@media (max-width: 640px) {
+  .smartracks-overview-layout { grid-template-columns: 1fr; gap: 36px; }
+  .smartracks-overview-visual { max-width: 450px; width: 100%; }
+  .smartracks-player-image { aspect-ratio: 1.1; }
+  .smartracks-overview-visual > p { font-size: 16px; max-width: 290px; }
+  .smartracks-visual-line { display: none; }
+  .smartracks-page .smartracks-overview-copy h2 { font-size: clamp(39px, 10vw, 52px); }
+  .smartracks-page .smartracks-heritage h2 { font-size: 44px; }
+  .smartracks-heritage .eyebrow { font-size: 10px; letter-spacing: .1em; }
+  .smartracks-heritage-copy { font-size: 15px; }
+  .smartracks-timeline { margin-top: 36px; padding-top: 28px; }
+  .smartracks-timeline > div { padding-inline: 14px; }
+  .smartracks-timeline strong { font-size: 42px; }
+  .smartracks-timeline p { font-size: 11px; }
+  .smartracks-proof-card, .smartracks-reason-card { padding: 24px; }
+  .smartracks-global-stats { grid-template-columns: 1fr; margin-top: 24px; gap: 18px; }
+  .smartracks-global-stats > div { display: grid; grid-template-columns: 95px 1fr; gap: 20px; align-items: center; }
+  .smartracks-global-stats > div + div { border-left: 0; border-top: 1px solid var(--smart-line); padding: 18px 0 0; }
+  .smartracks-global-stats strong { font-size: 46px; }
+  .smartracks-global-stats p { margin: 0; max-width: none; font-size: 13px; }
+  .smartracks-reason-grid { grid-template-columns: 1fr; }
+  .smartracks-card-number { margin-bottom: 18px; }
+  .smartracks-page .smartracks-proof-card h3, .smartracks-page .smartracks-reason-card h3 { font-size: 30px; }
+  .smartracks-benefits-layout { gap: 32px; }
+  .smartracks-benefits-layout li p { font-size: 15px; }
+  .smartracks-products .section-heading { align-items: flex-start; flex-direction: column; }
+  .smartracks-product-jump { justify-content: flex-start; max-width: none; }
+  .smartracks-product-visual { padding: 18px; }
+  .smartracks-product-visual-top { font-size: 9px; letter-spacing: .025em; }
+  .smartracks-product-image { aspect-ratio: 1.45; }
+  .smartracks-product-actions { gap: 20px; }
+  .smartracks-contact-intro { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .smartracks-section-nav a, .smartracks-product-jump a, .smartracks-step-card { transition: none; }
+}

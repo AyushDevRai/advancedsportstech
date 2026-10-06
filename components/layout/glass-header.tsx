@@ -99,7 +99,7 @@ export function GlassHeader() {
                     <ul className="space-y-2 text-sm">
                       <li>
                         <Link
-                          href="/products/athletics-track"
+                          href="/athletic-tracks"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-red-400 flex items-center justify-between">
@@ -111,7 +111,7 @@ export function GlassHeader() {
                       </li>
                       <li>
                         <Link
-                          href="/products/athletics-track"
+                          href="/athletic-tracks"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-red-400 flex items-center justify-between">
@@ -123,7 +123,7 @@ export function GlassHeader() {
                       </li>
                       <li>
                         <Link
-                          href="/products/athletics-track"
+                          href="/athletic-tracks"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-red-400 flex items-center justify-between">
@@ -158,7 +158,7 @@ export function GlassHeader() {
                     <ul className="space-y-2 text-sm">
                       <li>
                         <Link
-                          href="/products/synthetic-turf/hockey"
+                          href="/hockey"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-blue-400 flex items-center justify-between">
@@ -170,7 +170,7 @@ export function GlassHeader() {
                       </li>
                       <li>
                         <Link
-                          href="/products/synthetic-turf/hockey"
+                          href="/hockey"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-blue-400 flex items-center justify-between">
@@ -182,7 +182,7 @@ export function GlassHeader() {
                       </li>
                       <li>
                         <Link
-                          href="/products/synthetic-turf/hockey"
+                          href="/hockey"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-blue-400 flex items-center justify-between">
@@ -217,7 +217,7 @@ export function GlassHeader() {
                     <ul className="space-y-2 text-sm">
                       <li>
                         <Link
-                          href="/products/smartracks"
+                          href="/smartracks"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
                         >
                           <div className="font-semibold text-white group-hover:text-emerald-400 flex items-center justify-between">
@@ -279,8 +279,8 @@ export function GlassHeader() {
               </div>
             </div>
 
-            {/* 3. Sports Surfaces (Mega Menu) */}
-            <div
+            {/* 3. Sports Surfaces (Mega Menu) - commented out per user request */}
+            {/* <div
               className="ast-nav-group relative"
               onMouseEnter={() => setActiveDropdown("sports")}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -299,7 +299,6 @@ export function GlassHeader() {
 
               <div className="ast-dropdown-menu w-[780px] left-1/2 -translate-x-1/2">
                 <div className="grid grid-cols-3 gap-6">
-                  {/* Track & Field */}
                   <div>
                     <div className="flex items-center gap-2 pb-2 mb-3 border-b border-white/10">
                       <Trophy className="w-4 h-4 text-red-400" />
@@ -336,7 +335,6 @@ export function GlassHeader() {
                     </div>
                   </div>
 
-                  {/* Team Sports */}
                   <div>
                     <div className="flex items-center gap-2 pb-2 mb-3 border-b border-white/10">
                       <Activity className="w-4 h-4 text-blue-400" />
@@ -381,7 +379,6 @@ export function GlassHeader() {
                     </ul>
                   </div>
 
-                  {/* Court & Flooring */}
                   <div>
                     <div className="flex items-center gap-2 pb-2 mb-3 border-b border-white/10">
                       <Layers className="w-4 h-4 text-amber-400" />
@@ -438,7 +435,6 @@ export function GlassHeader() {
                   </div>
                 </div>
 
-                {/* Bottom link to all sports */}
                 <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 bg-white/[0.02] -mx-6 -mb-6 px-6 py-3 rounded-b-2xl">
                   <span>Custom sub-base engineering and line marking for every sport</span>
                   <Link
@@ -449,7 +445,7 @@ export function GlassHeader() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* 4. Solutions Dropdown */}
             <div
@@ -690,8 +686,8 @@ export function GlassHeader() {
               Home
             </Link>
 
-            {/* Sports Accordion */}
-            <div>
+            {/* Sports Accordion - commented out per user request */}
+            {/* <div>
               <div className="text-xs font-bold uppercase tracking-wider text-red-400 py-1">
                 Sports Surfaces
               </div>
@@ -760,7 +756,7 @@ export function GlassHeader() {
               >
                 View all sports surfaces →
               </Link>
-            </div>
+            </div> */}
 
             {/* Products & Tech */}
             <div className="pt-2 border-t border-white/5">
@@ -783,14 +779,14 @@ export function GlassHeader() {
                   Poligras Olympic Hockey Turfs
                 </Link>
                 <Link
-                  href="/products/synthetic-turf/football"
+                  href="/football"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm text-slate-300 hover:text-white py-1 px-2 rounded hover:bg-white/5"
                 >
                   LigaTurf FIFA Football Systems
                 </Link>
                 <Link
-                  href="/products/smartracks"
+                  href="/smartracks"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm text-slate-300 hover:text-white py-1 px-2 rounded hover:bg-white/5"
                 >
