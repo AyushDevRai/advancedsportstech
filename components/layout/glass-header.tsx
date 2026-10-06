@@ -48,11 +48,11 @@ export function GlassHeader() {
           <Link href="/" className="flex items-center gap-3 group focus:outline-none">
             <div className="relative h-10 w-28 sm:h-12 sm:w-36 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/Logo/AST---LOGO-white.png"
+                src="/brand/ast-logo1.png"
                 alt="AST Sports — Advanced Sports Technologies"
                 fill
                 priority
-                className="object-contain"
+                className="ast-brand-logo ast-brand-logo-on-dark object-contain"
                 sizes="(max-width: 640px) 112px, 144px"
               />
             </div>

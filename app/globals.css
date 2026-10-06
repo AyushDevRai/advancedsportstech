@@ -2,7 +2,16 @@
 @import "@heroui/styles";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 @import "../styles/magic.css";
 @import "../styles/glass.css";
 @import "../styles/tokens.css";
 @import "../styles/homepage.css";
+
+@theme inline {
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+  }
+}

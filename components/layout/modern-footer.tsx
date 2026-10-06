@@ -20,10 +20,10 @@ export function ModernFooter() {
             <Link href="/" className="inline-block">
               <div className="relative h-12 w-40">
                 <Image
-                  src="/Logo/AST---LOGO-white.png"
+                  src="/brand/ast-logo1.png"
                   alt="AST Sports"
                   fill
-                  className="object-contain"
+                  className="ast-brand-logo ast-brand-logo-on-dark object-contain"
                   sizes="160px"
                 />
               </div>
@@ -36,13 +36,13 @@ export function ModernFooter() {
             </p>
 
             <div className="pt-2 flex items-center gap-3">
-              <div className="flex items-center gap-1.5 text-xs text-amber-400 font-semibold bg-amber-950/40 border border-amber-800/40 px-3 py-1.5 rounded-full">
+              <div className="flex items-center gap-1.5 text-[13px] text-amber-400 font-semibold bg-amber-950/40 border border-amber-800/40 px-3 py-1.5 rounded-full">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Polytan Germany Exclusive Partner</span>
               </div>
             </div>
 
-            <div className="pt-2 text-xs text-slate-400">
+            <div className="pt-2 text-[13px] text-slate-400">
               <p>Certified Partner Brands:</p>
               <p className="text-white font-medium mt-1">
                 POLIGRAS · REKORTAN · LIGATURF · SMARTRACKS · SPURTAN · PANASONIC
@@ -97,7 +97,7 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li className="pt-1">
-                <Link href="/sports" className="text-xs text-red-400 font-semibold hover:underline">
+                <Link href="/sports" className="text-[13px] text-red-400 font-semibold hover:underline">
                   View All Surfaces →
                 </Link>
               </li>
@@ -182,7 +182,7 @@ export function ModernFooter() {
                   href="https://wa.me/917290036622"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs bg-emerald-950/60 border border-emerald-800/40 text-emerald-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
+                  className="inline-flex items-center gap-2 text-[13px] bg-emerald-950/60 border border-emerald-800/40 text-emerald-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
                 >
                   <span>Chat on WhatsApp</span>
                   <ExternalLink className="w-3 h-3" />
@@ -193,7 +193,7 @@ export function ModernFooter() {
             <div className="mt-5 pt-3 border-t border-white/5">
               <Link
                 href="/projects-map"
-                className="inline-flex items-center gap-1.5 text-xs text-amber-400 font-semibold hover:text-amber-300"
+                className="inline-flex items-center gap-1.5 text-[13px] text-amber-400 font-semibold hover:text-amber-300"
               >
                 <span>Browse Nationwide Projects Map (160+)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -203,9 +203,9 @@ export function ModernFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[13px] text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} Advanced Sports Technologies LLP. All Rights Reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </Link>

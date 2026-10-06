@@ -25,9 +25,9 @@ export const gallery = [
   { slug: "sai", name: "SAI Centre, Aurangabad", location: "Aurangabad", image: "/projects/sai-aurangabad.jpg", category: "Our Creations" },
 ] as const;
 export const testimonials = [
-  { name: "Yash", role: "Client", quote: "The Work is Done with patience and perfection" },
-  { name: "Rajpal", role: "Client", quote: "The Team is very polite and helpful" },
-  { name: "Shivam", role: "Client", quote: "Always got the work done on time" },
+  { name: "Yash", role: "Client", image: "/testimonials/yash-portrait-placeholder.jpg", quote: "The Work is Done with patience and perfection" },
+  { name: "Rajpal", role: "Client", image: "/testimonials/rajpal-placeholder.jpg", quote: "The Team is very polite and helpful" },
+  { name: "Shivam", role: "Client", image: "/testimonials/shivam-placeholder.jpg", quote: "Always got the work done on time" },
 ] as const;
 export const clientNames = ["New Delhi Municipal Council", "Himachal Pradesh Public Works Department", "Tata", "National Projects Construction Corporation", "Indian Railways", "Bihar State Educational Infrastructure Development Corporation", "Public Works Department Mizoram", "Delhi Development Authority", "Himachal Pradesh Housing and Urban Development Authority", "Public Works Department Odisha", "Central Public Works Department", "Indian Air Force", "Lucknow Development Authority", "Rajasthan State Road Development and Construction Corporation", "Sports Authority of India", "Steel Authority of India", "Public Works Department Madhya Pradesh", "Manipur Industrial Development Corporation", "KITCO", "Shirke Group", "Haryana Shahri Vikas Pradhikaran", "AST client logo 22", "Jharkhand State Building Construction Corporation", "Kolhapur Municipal Corporation", "Sports Development Authority of Tamil Nadu", "Haryana Urban Development Authority", "Sports Authority of Goa", "Infosys", "WAPCOS", "IDCO"] as const;
 export const brochures = [

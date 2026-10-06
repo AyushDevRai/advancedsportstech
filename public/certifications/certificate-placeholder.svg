@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="840" viewBox="0 0 640 840" fill="none">
+  <title>Certificate image placeholder</title>
+  <rect width="640" height="840" rx="12" fill="#F3F5F0"/>
+  <rect x="52" y="38" width="536" height="764" rx="4" fill="white" stroke="#D8DED5" stroke-width="2"/>
+  <path d="M98 112H542" stroke="#D32628" stroke-width="5"/>
+  <rect x="238" y="165" width="164" height="120" rx="12" fill="#F3F5F0"/>
+  <path d="M279 242V205H361V242M279 242L303 219L322 237L339 223L361 242" stroke="#89968D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="340" cy="212" r="5" fill="#89968D"/>
+  <text x="320" y="344" fill="#25392D" font-family="Arial,sans-serif" font-size="27" font-weight="700" text-anchor="middle" letter-spacing="2">CERTIFICATE</text>
+  <text x="320" y="386" fill="#D32628" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" letter-spacing="3">IMAGE PLACEHOLDER</text>
+  <path d="M129 463H511M129 497H511M129 531H467M129 591H511M129 625H430" stroke="#E0E5DC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M129 718H270M384 718H511" stroke="#A7B2A7" stroke-width="2"/>
+  <text x="320" y="763" fill="#7B887F" font-family="Arial,sans-serif" font-size="13" text-anchor="middle">Preview only</text>
+</svg>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/content/ast";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 type Connection = { saveData?: boolean; effectiveType?: string; addEventListener?: (name: string, listener: () => void) => void; removeEventListener?: (name: string, listener: () => void) => void };
 
@@ -84,7 +85,8 @@ export function VideoHero() {
       <div className="hero-lines" aria-hidden="true"><span /><span /><span /></div>
       <div className="page-container hero-content">
         <p className="eyebrow hero-eyebrow"><span className="status-dot" />{company.eyebrow}</p>
-        <h1 id="hero-title">FACILITATING<br /><span>EXCELLENCE.</span></h1>
+        <h1 id="hero-title"><AuroraText className="hero-aurora" colors={["#FFFFFF", "#E8EEE9", "#FFFFFF", "#FFF4F0"]} speed={1.25}>FACILITATING</AuroraText><br /><AuroraText className="hero-aurora hero-aurora-excellence" colors={["#FF6B68", "#D32628", "#FFB5A2", "#FF3B49"]} speed={1.25}>EXCELLENCE.</AuroraText></h1>
+        <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br /><span>Exclusive partner of Polytan/SportGroup Germany.</span></p>
         <div className="hero-bottom-content">
           <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>
