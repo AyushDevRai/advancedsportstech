@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/navigation/badminton.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/04/Badminton-court.jpg",
+    "page": "https://ast-sports.com/badminton/"
+  },
+  {
+    "path": "/navigation/basketball.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/04/BASKETBALL-COURT-JNS-DELHI-1-2.jpg",
+    "page": "https://ast-sports.com/basketball/"
+  },
+  {
+    "path": "/navigation/football.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/04/challengefb.jpg",
+    "page": "https://ast-sports.com/football/"
+  },
+  {
+    "path": "/navigation/indoor-flooring.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/06/IMG_20161121_195225455_HDR-1024x768.jpg",
+    "page": "https://ast-sports.com/indoor-flooring/"
+  },
+  {
+    "path": "/navigation/smartracks.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/04/sm4.jpg",
+    "page": "https://ast-sports.com/smartracks/"
+  },
+  {
+    "path": "/navigation/tennis.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/04/challengetennis.jpg",
+    "page": "https://ast-sports.com/tennis/"
+  },
+  {
+    "path": "/navigation/wireless-timing-gate-system.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/05/Picture2-768x576.png",
+    "page": "https://ast-sports.com/wireless-timing-gate-system/"
+  },
+  {
+    "path": "/navigation/wooden-flooring.webp",
+    "source": "https://ast-sports.com/wp-content/uploads/2022/06/5cd08eed-7213-4b1f-bae1-3df065eba06b-1024x682.jpg",
+    "page": "https://ast-sports.com/wooden-flooring/"
+  }
+]

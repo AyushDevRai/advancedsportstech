@@ -28,7 +28,7 @@ try {
         await trigger.focus();
         await trigger.press("Space");
         await expect(trigger).toHaveAttribute("data-state", "open");
-        await expect(page.locator(".nav-dropdown:visible").getByRole("link").first()).toBeVisible();
+        await expect(page.locator(".mega-panel[data-state=open]").getByRole("link").first()).toBeVisible();
         await page.keyboard.press("Escape");
       }
     } else {

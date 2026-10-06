@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/content/ast";
 
@@ -86,11 +86,10 @@ export function VideoHero() {
         <p className="eyebrow hero-eyebrow"><span className="status-dot" />{company.eyebrow}</p>
         <h1 id="hero-title">FACILITATING<br /><span>EXCELLENCE.</span></h1>
         <div className="hero-bottom-content">
-          <p>Raise your game with our<br /><strong>world-renowned sports surfaces.</strong></p>
           <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>
       </div>
-      <div className="page-container hero-foot"><a href="#about" className="scroll-cue"><ArrowDown size={17} /> SCROLL TO EXPLORE</a><span className="hero-foot-label">SPORTS SURFACES · INDIA</span>
+      <div className="page-container hero-foot">
         {source && <button type="button" onClick={toggleVideo} className="video-control" aria-label={playing ? "Pause background video" : "Play background video"}>{playing ? <Pause size={16} /> : <Play size={16} />}<span>{playing ? "Pause film" : "Play film"}</span></button>}
       </div>
     </section>
