@@ -250,7 +250,7 @@ export function Smartracks() {
                 alt="SmarTracks running track diagram showing magnetic gate positions along sprint straights and 400m circuits"
                 width={2470}
                 height={666}
-                sizes="(max-width: 900px) 100vw, 1320px"
+                sizes="(max-width: 900px) 100vw, 1800px"
               />
               <figcaption>
                 SmarTracks — sub-surface magnetic timing gates integrated into the running track

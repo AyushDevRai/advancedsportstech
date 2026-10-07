@@ -169,8 +169,11 @@ Use deliberate heading line breaks as the current sections do. Use muted second 
 
 ```css
 .page-container {
-  width: min(1320px, calc(100% - 112px));
+  width: min(1800px, calc(100% - 112px));
   margin-inline: auto;
+}
+.site-header {
+  width: min(1860px, calc(100% - 64px));
 }
 .section-pad { padding-block: 112px; }
 .section-heading {
@@ -184,14 +187,16 @@ Use deliberate heading line breaks as the current sections do. Use muted second 
 
 | Viewport breakpoint | Container / behavior |
 | --- | --- |
-| Above 1200px | Shared container max 1320px, 56px minimum side gutters |
+| Above 2000px | Shared container max 2000px, 80px minimum side gutters |
+| 1440px to 2000px (large monitors/screens) | Shared container max 1800px, 56px minimum side gutters (expands gracefully so sections do not have excessive side gaps) |
+| 1200px to 1440px (14-inch laptops) | Container `calc(100% - 112px)`, 56px side gutters |
 | At or below 1200px | Container `calc(100% - 80px)` |
 | At or below 1000px | Desktop navigation becomes the mobile drawer |
 | At or below 900px | Container `calc(100% - 56px)`; section padding 80px; many layouts stack |
 | At or below 640px | Container `calc(100% - 40px)`; section padding 66px; shared H2 51px, with component overrides |
 | At or below 360px | Container `calc(100% - 32px)`; additional narrow-screen adjustments |
 
-The full-width outline ribbon intentionally uses wider gutters than the shared container. It is not meant to be forced into the normal 1320px maximum.
+The full-width outline ribbon intentionally uses wider gutters than the shared container. It is not meant to be forced into the normal container maximum.
 
 ### Shape and depth
 

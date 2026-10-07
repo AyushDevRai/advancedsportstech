@@ -139,7 +139,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 button, [role="button"] { cursor: pointer; }
 :focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
 ::selection { background: var(--brand-200); color: #201111; }
-.container-ast { width: min(100% - 3rem, 1440px); margin-inline: auto; }
+.container-ast { width: min(100% - 3rem, 1800px); margin-inline: auto; }
 .display { font-family: var(--font-barlow), sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: -0.025em; line-height: .94; }
 .eyebrow { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 .section-label { display: flex; align-items: center; gap: .75rem; }

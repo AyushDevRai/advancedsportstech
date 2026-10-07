@@ -98,6 +98,13 @@
 .track-contact-intro { font-size: 17px; color: var(--track-muted); max-width: 410px; margin-top: 28px; }
 .athletic-page .contact-form-panel h3 { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 32px; text-transform: uppercase; margin-bottom: 26px; }
 
+@media (min-width: 1440px) {
+  .athletic-page .track-hero h1 { max-width: 1200px; }
+  .track-overview-layout { gap: clamp(60px, 5.5vw, 110px); }
+  .track-benefits-layout { gap: clamp(64px, 5vw, 100px); }
+  .track-heritage-layout { gap: clamp(64px, 5vw, 100px); }
+  .track-product { gap: clamp(50px, 4.5vw, 90px); }
+}
 @media (min-width: 1600px) { .athletic-page .track-hero { min-height: 850px; } }
 @media (max-width: 1100px) {
   .track-proof-grid { grid-template-columns: 1fr 1fr; }

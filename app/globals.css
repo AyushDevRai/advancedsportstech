@@ -23,3 +23,16 @@
     to { background-position: 100% 50%; }
   }
 }
+
+/* Responsive container expansion for large monitors & screens (> 14-inch laptop) */
+@media (min-width: 1440px) {
+  .max-w-7xl {
+    max-width: min(1800px, calc(100% - 112px)) !important;
+  }
+}
+@media (min-width: 2000px) {
+  .max-w-7xl {
+    max-width: min(2000px, calc(100% - 160px)) !important;
+  }
+}
+

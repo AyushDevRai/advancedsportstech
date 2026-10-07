@@ -145,6 +145,12 @@
 .smartracks-page .contact-form-panel h3 { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 32px; text-transform: uppercase; margin-bottom: 26px; }
 
 /* Responsive Media Queries */
+@media (min-width: 1440px) {
+  .smartracks-page .smartracks-hero h1 { max-width: 1200px; }
+  .smartracks-overview-layout { gap: clamp(60px, 5.5vw, 110px); }
+  .smartracks-heritage-layout { gap: clamp(64px, 5vw, 100px); }
+  .smartracks-steps-grid { gap: 28px; }
+}
 @media (min-width: 1600px) { .smartracks-page .smartracks-hero { min-height: 850px; } }
 @media (max-width: 1100px) {
   .smartracks-proof-grid { grid-template-columns: 1fr 1fr; }

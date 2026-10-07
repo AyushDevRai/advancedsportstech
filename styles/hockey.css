@@ -104,6 +104,13 @@
 .hockey-contact-intro { font-size: 17px; color: var(--hockey-muted); max-width: 410px; margin-top: 28px; }
 .hockey-page .contact-form-panel h3 { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 32px; text-transform: uppercase; margin-bottom: 26px; }
 
+@media (min-width: 1440px) {
+  .hockey-page .hockey-hero h1 { max-width: 1200px; }
+  .hockey-overview-layout { gap: clamp(60px, 5.5vw, 110px); }
+  .hockey-benefits-layout { gap: clamp(64px, 5vw, 100px); }
+  .hockey-heritage-layout { gap: clamp(64px, 5vw, 100px); }
+  .hockey-product { gap: clamp(50px, 4.5vw, 90px); }
+}
 @media (min-width: 1600px) { .hockey-page .hockey-hero { min-height: 850px; } }
 @media (max-width: 1100px) {
   .hockey-proof-grid { grid-template-columns: 1fr 1fr; }
