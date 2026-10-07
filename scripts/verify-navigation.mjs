@@ -12,7 +12,7 @@ try {
     page.on("pageerror", error => errors.push(error.message));
     await page.goto(origin, { waitUntil: "networkidle" });
     const triggers = page.locator(".desktop-navigation");
-    for (const [name, count] of [["Products", 7], ["Sports", 8], ["Services", 8], ["Projects", 6], ["Downloads", 3], ["Company", 3]]) {
+    for (const [name, count] of [["Products", 7], ["Services", 8], ["Projects", 6], ["Downloads", 3], ["Company", 2]]) {
       const trigger = triggers.getByRole("button", { name, exact: true });
       await trigger.hover();
       await expect(trigger).toHaveAttribute("aria-expanded", "true");
@@ -63,10 +63,11 @@ try {
   await mobile.locator(".mobile-nav").getByRole("button", { name: "Downloads", exact: true }).click();
   await expect(mobile.locator(".mobile-nav .mobile-nav-links a:visible")).toHaveCount(9);
   await mobile.locator(".mobile-nav").getByRole("button", { name: "Company", exact: true }).click();
-  await expect(mobile.locator(".mobile-nav").getByRole("link", { name: "Career", exact: true })).toBeVisible();
+  await expect(mobile.locator(".mobile-nav").getByRole("link", { name: "About Us", exact: true })).toBeVisible();
+  await expect(mobile.locator(".mobile-nav").getByRole("link", { name: "Career", exact: true })).toHaveCount(0);
   assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth), 390);
   await mobile.screenshot({ path: ".cache/navigation-qa/mobile.png" });
-  results.push({ viewport: 390, checks: "mobile accordion, all nine downloads, Career, no overflow" });
+  results.push({ viewport: 390, checks: "mobile accordion, all nine downloads, no Career, no overflow" });
   await writeFile(".cache/navigation-qa/results.json", JSON.stringify(results, null, 2));
   console.log("Mobile: passed");
 } finally { await browser.close(); }

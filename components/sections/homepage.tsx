@@ -18,25 +18,15 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { HomepageEffects } from "@/components/sections/homepage-effects";
 import { LogoCloud } from "@/components/ui/logo-cloud-4";
 import { Marquee } from "@/components/ui/marquee";
-import { company, sports } from "@/content/ast";
+import { company } from "@/content/ast";
 import {
   aboutParagraphs,
   brochureUrl,
   brochures,
   clientNames,
+  homeProducts,
   testimonials,
 } from "@/content/homepage";
-
-const sportImages = [
-  "/placeholders/jrd-tata.jpg",
-  "/projects/kalinga.jpg",
-  "/placeholders/sports-facility.jpg",
-  "/video/hero-poster.webp",
-  null,
-  null,
-  null,
-  null,
-];
 const partnerLogos = [
   { src: "/brand/ligature.png", alt: "LigaTurf" },
   { src: "/brand/spurtan.png", alt: "Spurtan" },
@@ -83,12 +73,8 @@ export function Homepage() {
           <div className="page-container">
             <div className="about-layout">
               <div className="about-title">
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  ABOUT US
-                </p>
                 <h2 id="about-title">
-                  ABOUT
+                  ABOUT{" "}
                   <br />
                   <span className="quiet-text">US.</span>
                 </h2>
@@ -130,7 +116,7 @@ export function Homepage() {
                 100<small>+</small>
               </span>
               <p>
-                Installation of Hockey,
+                Installation of Hockey,{" "}
                 <br />
                 Tracks & Football Projects
               </p>
@@ -140,7 +126,7 @@ export function Homepage() {
                 1,000<small>K+</small>
               </span>
               <p>
-                Square Meters
+                Square Meters{" "}
                 <br />
                 Sports Surfaces
               </p>
@@ -154,53 +140,39 @@ export function Homepage() {
           </div>
         </section>
         <section
-          id="sports"
-          className="section-pad sports-section"
+          id="products"
+          className="section-pad sports-section products-showcase-section"
           data-nav-theme="light"
-          aria-labelledby="sports-title"
+          aria-labelledby="products-title"
         >
+          <div id="sports" />
           <div className="page-container">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  SPORTS SURFACES
-                </p>
-                <h2 id="sports-title">
-                  SPORTS
+                <h2 id="products-title">
+                  OUR{" "}
                   <br />
-                  <span className="quiet-text">SURFACES.</span>
+                  <span className="quiet-text">PRODUCTS.</span>
                 </h2>
               </div>
               <p>
-                Raise your game with our
+                Raise your game with our{" "}
                 <br />
-                world-renowned sports surfaces.
+                world-renowned sports systems.
               </p>
             </div>
             <div className="sport-grid">
-              {sports.map((sport, index) => (
-                <a className="sport-card" href={sport.source} key={sport.slug}>
-                  {sportImages[index] ? (
-                    <Image
-                      src={sportImages[index]}
-                      alt=""
-                      fill
-                      sizes="(max-width: 640px) 50vw, 25vw"
-                    />
-                  ) : (
-                    <span
-                      className={`sport-court sport-court-${sport.slug}`}
-                      aria-hidden="true"
-                    >
-                      <span />
-                      <span />
-                      <span />
-                    </span>
-                  )}
+              {homeProducts.map((product, index) => (
+                <a className="sport-card" href={product.href} key={product.slug}>
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, 25vw"
+                  />
                   <span className="sport-number">0{index + 1}</span>
                   <span className="sport-card-label">
-                    {sport.name}
+                    <span>{product.name}</span>
                     <ArrowUpRight size={21} />
                   </span>
                 </a>
@@ -224,12 +196,8 @@ export function Homepage() {
             />
           </div>
           <div className="lighting-copy">
-            <p className="eyebrow">
-              <span className="red-rule" />
-              SPORTS LIGHTING
-            </p>
             <h2 id="lighting-title">
-              SPORTS
+              SPORTS{" "}
               <br />
               LIGHTING.
             </h2>
@@ -239,7 +207,7 @@ export function Homepage() {
               efficient, and economic.
             </p>
             <a
-              href="#service-sports-lighting"
+              href="/products/sports-lighting"
               className="ast-button ast-button-glass"
             >
               Explore sports lighting <ArrowUpRight size={18} />
@@ -259,10 +227,6 @@ export function Homepage() {
           <div className="page-container">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  TESTIMONIALS
-                </p>
                 <h2 id="testimonials-title">TESTIMONIALS.</h2>
               </div>
               <p>
@@ -309,12 +273,8 @@ export function Homepage() {
           <div className="page-container">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  PRODUCT BROCHURES
-                </p>
                 <h2 id="brochures-title">
-                  PRODUCT
+                  PRODUCT{" "}
                   <br />
                   <span className="quiet-text">BROCHURES.</span>
                 </h2>
@@ -396,11 +356,11 @@ export function Homepage() {
           aria-labelledby="build-title"
         >
           <div className="page-container">
-            <p className="eyebrow">FACILITATING EXCELLENCE</p>
             <div>
               <h2 id="build-title">
-                WANT TO BUILD
-                <br />A SPORTS FACILITY?
+                WANT TO BUILD{" "}
+                <br />
+                A SPORTS FACILITY?
               </h2>
               <a href="#contact" className="ast-button ast-button-white">
                 Let’s talk <ArrowUpRight size={20} />
@@ -416,12 +376,8 @@ export function Homepage() {
         >
           <div className="page-container contact-layout">
             <div className="contact-details">
-              <p className="eyebrow">
-                <span className="red-rule" />
-                GET IN TOUCH
-              </p>
               <h2 id="contact-title">
-                GET
+                GET{" "}
                 <br />
                 <span className="quiet-text">IN TOUCH.</span>
               </h2>

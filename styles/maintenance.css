@@ -1,0 +1,1022 @@
+/* AST Design Language Stylesheet for Cleaning & Maintenance */
+/* Source copy: https://ast-sports.com/maintainence/ */
+
+.maintenance-page {
+  --maint-line: #b4101426;
+  --maint-muted: #666e6b;
+  --maint-panel: #f7f6f2;
+  --maint-red: var(--home-red, #b41014);
+  --maint-red-hover: var(--home-red-hover, #920b0f);
+  --maint-amber: #e5a93c;
+  --maint-green: #2e7d32;
+}
+
+.dark .maintenance-page {
+  --maint-line: #b410143a;
+  --maint-muted: #abb3ae;
+  --maint-panel: #1b1e1d;
+  --maint-red: #d32025;
+  --maint-red-hover: #b41014;
+  --maint-amber: #f59e0b;
+  --maint-green: #4caf50;
+}
+
+/* ==========================================================================
+   1. HERO SECTION
+   ========================================================================== */
+.maintenance-page .maintenance-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(740px, 92svh);
+  padding-block: 150px 110px;
+  overflow: hidden;
+  background: #0f1311;
+  color: #fff;
+}
+
+.maintenance-hero-image {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.maintenance-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #0a0e0de8 0%, #0a0e0db0 55%, #0a0e0d50),
+    linear-gradient(0deg, #0a0e0df5, transparent 48%, #0a0e0d40);
+}
+
+.maintenance-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+}
+
+.maintenance-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: #e4ebe6b3;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+
+.maintenance-breadcrumb a {
+  transition: color 0.2s ease;
+}
+
+.maintenance-breadcrumb a:hover {
+  color: #fff;
+}
+
+.maintenance-breadcrumb span[aria-current] {
+  color: #fff;
+  font-weight: 600;
+}
+
+.maintenance-hero .eyebrow {
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.maintenance-page .maintenance-hero h1 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.8rem, 5.4vw, 5.4rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 860px;
+}
+
+.maintenance-hero h1 > span {
+  color: #ff5053;
+}
+
+.maintenance-hero-subtitle {
+  font-size: clamp(15px, 1.3vw, 17.5px);
+  line-height: 1.55;
+  max-width: 580px;
+  margin: 20px 0 28px;
+  color: #f0f5f2e8;
+}
+
+.maintenance-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.maintenance-hero-foot {
+  position: absolute;
+  bottom: 24px;
+  inset-inline: 0;
+  z-index: 1;
+}
+
+.maintenance-hero-foot > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid #ffffff30;
+  padding-top: 20px;
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffffb5;
+}
+
+/* ==========================================================================
+   2. SECTION JUMP BAR
+   ========================================================================== */
+.maintenance-section-nav {
+  position: relative;
+  background: var(--home-paper);
+  border-bottom: 1px solid var(--maint-line);
+  transition: background 0.3s ease;
+}
+
+.dark .maintenance-section-nav {
+  background: #141715f0;
+}
+
+.maintenance-section-nav > div {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.maintenance-section-nav > div::-webkit-scrollbar {
+  display: none;
+}
+
+.maintenance-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 22px;
+  font-size: 13px;
+  font-weight: 650;
+  color: inherit;
+  white-space: nowrap;
+  border-right: 1px solid var(--maint-line);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.maintenance-section-nav a:first-child {
+  padding-left: 0;
+}
+
+.maintenance-section-nav a:last-child {
+  border-right: none;
+}
+
+.maintenance-section-nav a:hover {
+  color: var(--maint-red);
+}
+
+.maintenance-section-nav svg {
+  color: var(--maint-red);
+}
+
+/* ==========================================================================
+   3. OVERVIEW SECTION
+   ========================================================================== */
+.maintenance-overview {
+  padding-block: 84px;
+}
+
+.maintenance-overview-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+.maintenance-overview-copy h2 {
+  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+  line-height: 1;
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.maintenance-overview-copy p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--maint-muted);
+  margin-bottom: 16px;
+}
+
+.maintenance-overview-visual {
+  position: relative;
+}
+
+.maintenance-visual-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.14);
+}
+
+.maintenance-visual-frame img {
+  object-fit: cover;
+}
+
+.maintenance-overview-callout {
+  position: relative;
+  margin: -48px 24px 0;
+  padding: 22px 26px;
+  background: var(--maint-red);
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 16px 36px rgba(180, 16, 20, 0.35);
+}
+
+.maintenance-overview-callout strong {
+  display: block;
+  font-size: 14.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.maintenance-overview-callout p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #ffffffed;
+}
+
+/* Stats Ribbon */
+.maintenance-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--maint-line);
+}
+
+.maintenance-stat-block {
+  padding-inline: 12px;
+}
+
+.maintenance-stat-block:first-child {
+  padding-left: 0;
+}
+
+.maintenance-stat-block + .maintenance-stat-block {
+  border-left: 1px solid var(--maint-line);
+}
+
+.maintenance-stat-value {
+  display: block;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--maint-red);
+  margin-bottom: 8px;
+}
+
+.maintenance-stat-label {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--maint-muted);
+}
+
+/* ==========================================================================
+   4. SERVICES SECTION (3 CORE PILLARS)
+   ========================================================================== */
+.maintenance-services {
+  padding-block: 84px;
+  background: var(--maint-panel);
+}
+
+.maintenance-services-grid {
+  display: grid;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.maintenance-service-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--home-paper);
+  border: 1px solid var(--maint-line);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dark .maintenance-service-card {
+  background: #191c1b;
+}
+
+.maintenance-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.maintenance-service-card:nth-child(even) .maintenance-service-visual {
+  order: 2;
+}
+
+.maintenance-service-card:nth-child(even) .maintenance-service-body {
+  order: 1;
+}
+
+.maintenance-service-visual {
+  position: relative;
+  min-height: 380px;
+}
+
+.maintenance-service-visual img {
+  object-fit: cover;
+}
+
+.maintenance-service-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.maintenance-service-body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.maintenance-service-number {
+  font-family: var(--font-display), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--maint-red);
+  margin-bottom: 8px;
+}
+
+.maintenance-service-body h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.maintenance-service-tagline {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--maint-amber);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.maintenance-service-summary {
+  font-size: 15px;
+  line-height: 1.65;
+  color: inherit;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.maintenance-service-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--maint-muted);
+  margin-bottom: 22px;
+}
+
+.maintenance-service-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.maintenance-service-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.maintenance-service-checklist svg {
+  flex-shrink: 0;
+  color: var(--maint-red);
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   5. VIDEO DEMONSTRATIONS (LOCAL MP4 & YOUTUBE)
+   ========================================================================== */
+.maintenance-videos {
+  padding-block: 84px;
+}
+
+.maintenance-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.maintenance-video-card {
+  background: var(--home-paper);
+  border: 1px solid var(--maint-line);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .maintenance-video-card {
+  background: #191c1b;
+}
+
+.maintenance-video-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.maintenance-video-player video,
+.maintenance-video-player iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.maintenance-video-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.maintenance-video-category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--maint-red);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.maintenance-video-body h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.maintenance-video-body p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--maint-muted);
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.maintenance-video-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--maint-line);
+  padding-top: 14px;
+}
+
+.maintenance-video-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--maint-muted);
+}
+
+.maintenance-video-bullets span.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--maint-red);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. MACHINERY & EQUIPMENT SHOWCASE
+   ========================================================================== */
+.maintenance-machinery {
+  padding-block: 84px;
+  background: var(--maint-panel);
+}
+
+.maintenance-machinery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.maintenance-machine-card {
+  background: var(--home-paper);
+  border: 1px solid var(--maint-line);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .maintenance-machine-card {
+  background: #191c1b;
+}
+
+.maintenance-machine-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.maintenance-machine-top h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.maintenance-machine-model {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--maint-amber);
+  text-transform: uppercase;
+}
+
+.maintenance-machine-category {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--maint-red);
+  margin-bottom: 14px;
+}
+
+.maintenance-machine-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--maint-muted);
+  margin: 0 0 20px;
+}
+
+.maintenance-machine-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.dark .maintenance-machine-specs {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.maintenance-machine-spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.maintenance-machine-spec-item span:first-child {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--maint-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.maintenance-machine-spec-item span:last-child {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+.maintenance-machine-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.maintenance-machine-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--maint-muted);
+}
+
+.maintenance-machine-features svg {
+  color: var(--maint-red);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   7. STEP-BY-STEP WORKFLOW
+   ========================================================================== */
+.maintenance-workflow {
+  padding-block: 84px;
+}
+
+.maintenance-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.maintenance-step-card {
+  background: var(--home-paper);
+  border: 1px solid var(--maint-line);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dark .maintenance-step-card {
+  background: #191c1b;
+}
+
+.maintenance-step-number {
+  font-family: var(--font-display), sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--maint-red);
+  margin-bottom: 12px;
+}
+
+.maintenance-step-card h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.maintenance-step-subtitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--maint-amber);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.maintenance-step-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--maint-muted);
+  margin: 0 0 16px;
+}
+
+.maintenance-step-actions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--maint-line);
+  padding-top: 12px;
+}
+
+.maintenance-step-actions li {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--maint-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.maintenance-step-actions li::before {
+  content: "›";
+  color: var(--maint-red);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   8. GALLERY & HARDWARE SHOWCASE
+   ========================================================================== */
+.maintenance-gallery {
+  padding-block: 84px;
+  background: var(--maint-panel);
+}
+
+.maintenance-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.maintenance-gallery-card {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--maint-line);
+}
+
+.maintenance-gallery-card:nth-child(1),
+.maintenance-gallery-card:nth-child(2) {
+  grid-column: span 6;
+}
+
+.maintenance-gallery-card:nth-child(3),
+.maintenance-gallery-card:nth-child(4),
+.maintenance-gallery-card:nth-child(5),
+.maintenance-gallery-card:nth-child(6) {
+  grid-column: span 3;
+}
+
+.maintenance-gallery-card img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.maintenance-gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.maintenance-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #000000dd 0%, #00000060 45%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: #fff;
+}
+
+.maintenance-gallery-cat {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--maint-amber);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.maintenance-gallery-overlay h4 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.maintenance-gallery-overlay p {
+  font-size: 12px;
+  color: #ffffffcf;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   9. FAQS & RE-TOPPING CALLOUT
+   ========================================================================== */
+.maintenance-faqs {
+  padding-block: 84px;
+}
+
+.maintenance-faqs-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+}
+
+.maintenance-faq-card {
+  padding: 24px;
+  border: 1px solid var(--maint-line);
+  border-radius: 8px;
+  background: var(--home-paper);
+  margin-bottom: 16px;
+}
+
+.dark .maintenance-faq-card {
+  background: #191c1b;
+}
+
+.maintenance-faq-card h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.maintenance-faq-card p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--maint-muted);
+  margin: 0;
+}
+
+.maintenance-retopping-banner {
+  background: #121514;
+  color: #fff;
+  border-radius: 8px;
+  padding: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: sticky;
+  top: 140px;
+}
+
+.maintenance-retopping-banner h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 12px 0 16px;
+}
+
+.maintenance-retopping-banner p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #ffffffcc;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .maintenance-videos-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .maintenance-machinery-grid {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .maintenance-gallery-card:nth-child(3),
+  .maintenance-gallery-card:nth-child(4),
+  .maintenance-gallery-card:nth-child(5),
+  .maintenance-gallery-card:nth-child(6) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 900px) {
+  .maintenance-page .maintenance-hero {
+    min-height: 640px;
+    padding-block: 130px 90px;
+  }
+  .maintenance-overview-layout,
+  .maintenance-faqs-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .maintenance-service-card {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-service-card:nth-child(even) .maintenance-service-visual {
+    order: 0;
+  }
+  .maintenance-service-card:nth-child(even) .maintenance-service-body {
+    order: 0;
+  }
+  .maintenance-steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .maintenance-retopping-banner {
+    position: static;
+  }
+  .maintenance-section-nav > div {
+    flex-wrap: wrap;
+  }
+  .maintenance-section-nav a {
+    flex: 1 1 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .maintenance-page .maintenance-hero {
+    min-height: auto;
+    padding-block: 130px 36px;
+    display: block;
+  }
+  .maintenance-page .maintenance-hero h1 {
+    font-size: clamp(2.3rem, 8.4vw, 3.2rem);
+  }
+  .maintenance-hero-subtitle {
+    margin: 16px 0 24px;
+    font-size: 14.5px;
+  }
+  .maintenance-hero-actions .ast-button {
+    font-size: 13px;
+    padding: 12px 18px;
+  }
+  .maintenance-hero-foot {
+    position: relative;
+    bottom: auto;
+    margin-top: 36px;
+  }
+  .maintenance-hero-foot > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    font-size: 9.5px;
+    padding-top: 16px;
+  }
+  .maintenance-stats-bar {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-stat-block + .maintenance-stat-block {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--maint-line);
+    padding-top: 16px;
+  }
+  .maintenance-service-body {
+    padding: 24px;
+  }
+  .maintenance-machine-card {
+    padding: 22px;
+  }
+  .maintenance-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-gallery-card:nth-child(1),
+  .maintenance-gallery-card:nth-child(2),
+  .maintenance-gallery-card:nth-child(3),
+  .maintenance-gallery-card:nth-child(4),
+  .maintenance-gallery-card:nth-child(5),
+  .maintenance-gallery-card:nth-child(6) {
+    grid-column: span 12;
+  }
+  .maintenance-section-nav > div {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .maintenance-section-nav a {
+    flex: 0 0 auto;
+    border-right: 1px solid var(--maint-line);
+    border-bottom: none;
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+  .maintenance-overview-callout {
+    margin: -20px 12px 0;
+    padding: 18px 20px;
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .maintenance-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

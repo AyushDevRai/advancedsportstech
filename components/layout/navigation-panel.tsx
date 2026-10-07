@@ -56,14 +56,28 @@ function ServicesPanel({ cards }: { cards: NavigationCard[] }) {
 }
 
 function ProjectsPanel({ cards }: { cards: NavigationCard[] }) {
-  return <div className="mega-project-layout"><FeatureCard card={cards[0]} /><div className="mega-project-directory">{cards.slice(1).map(card => <MenuEntry card={card} thumbnail key={card.name} />)}</div></div>;
+  return (
+    <div className="mega-project-layout">
+      <FeatureCard card={cards[0]} />
+      <div className="mega-project-directory">
+        {cards.slice(1).map(card => <MenuEntry card={card} thumbnail key={card.name} />)}
+        <div className="mega-project-cta-row">
+          <NavigationMenuLink href="/our-projects" className="ast-button ast-button-red mega-show-all-btn !flex-row">
+            Show All Projects <ArrowUpRight size={15} />
+          </NavigationMenuLink>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function CompanyPanel({ cards }: { cards: NavigationCard[] }) {
+  const aboutCard = cards.find(c => c.name === "About Us") || cards[0];
+  const contactCard = cards.find(c => c.name === "Contact Us") || cards[1];
   return <div className="mega-company-layout">
-    <div className="mega-company-about"><span className="mega-kicker">Advanced Sports Technologies</span><p>{aboutParagraphs[0]}</p><MenuEntry card={cards[0]} /></div>
-    <FeatureCard card={cards[1]} />
-    <NavigationMenuLink href={cards[2].href} className="mega-contact-card" aria-label={cards[2].name} data-menu-entry><span className="mega-kicker">{cards[2].name}</span><strong>AST</strong><span className="mega-contact-details">{company.contact.phone}<br />{company.contact.email}</span><ArrowUpRight size={25} /></NavigationMenuLink>
+    <div className="mega-company-about"><span className="mega-kicker">Advanced Sports Technologies</span><p>{aboutParagraphs[0]}</p></div>
+    {aboutCard && <FeatureCard card={aboutCard} />}
+    {contactCard && <NavigationMenuLink href={contactCard.href} className="mega-contact-card" aria-label={contactCard.name} data-menu-entry><span className="mega-kicker">{contactCard.name}</span><strong>AST</strong><span className="mega-contact-details">{company.contact.phone}<br />{company.contact.email}</span><ArrowUpRight size={25} /></NavigationMenuLink>}
   </div>;
 }
 
@@ -74,6 +88,6 @@ function DownloadsPanel() {
 export function NavigationPanel({ group, onClose, homeHref = "" }: { group: NavigationGroup; onClose: () => void; homeHref?: string }) {
   return <div className="mega-panel-scroll"><div className="mega-panel-heading"><NavigationMenuLink href={group.href} className="mega-section-link"><span>{group.title}</span><ArrowUpRight size={22} /></NavigationMenuLink><button className="mega-close" type="button" onClick={onClose} aria-label={`Close ${group.name} menu`}><X size={19} /></button></div>
     {group.id === "products" ? <ProductsPanel /> : group.id === "downloads" ? <DownloadsPanel /> : group.id === "sports" ? <SportsPanel cards={group.cards} /> : group.id === "services" ? <ServicesPanel cards={group.cards} /> : group.id === "projects" ? <ProjectsPanel cards={group.cards} /> : <CompanyPanel cards={group.cards} />}
-    <div className="mega-panel-footer"><span>ADVANCED SPORTS TECHNOLOGIES</span><div>{group.id === "company" && <><NavigationMenuLink href={`${homeHref}#clients`}>Our Clients</NavigationMenuLink><NavigationMenuLink href={`${homeHref}#testimonials`}>Testimonials</NavigationMenuLink></>}<NavigationMenuLink href={group.href}>{group.id === "downloads" ? "All brochures" : group.id === "company" ? "About Us" : `Explore ${group.name.toLowerCase()}`}<ArrowUpRight size={15} /></NavigationMenuLink></div></div>
+    <div className="mega-panel-footer"><span>ADVANCED SPORTS TECHNOLOGIES</span><div>{group.id === "company" && <><NavigationMenuLink href={`${homeHref}#clients`}>Our Clients</NavigationMenuLink><NavigationMenuLink href={`${homeHref}#testimonials`}>Testimonials</NavigationMenuLink></>}<NavigationMenuLink href={group.id === "projects" ? "/our-projects" : group.href}>{group.id === "downloads" ? "All brochures" : group.id === "company" ? "About Us" : group.id === "projects" ? "Show All Projects" : `Explore ${group.name.toLowerCase()}`}<ArrowUpRight size={15} /></NavigationMenuLink></div></div>
   </div>;
 }

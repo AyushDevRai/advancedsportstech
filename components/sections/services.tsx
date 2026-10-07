@@ -23,6 +23,8 @@ export function Services() {
     let direction = 0;
     let wasInView = false;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const smallQuery = window.matchMedia("(max-width: 900px)");
+    const isSmallScreen = () => smallQuery.matches;
     let thresholds: number[] = [];
     const select = (index: number) => {
       if (index === selectedRef.current) return;
@@ -38,6 +40,7 @@ export function Services() {
     };
     const update = () => {
       frame = 0;
+      if (isSmallScreen()) return;
       if (hovered.current !== null) return;
       const manual = manualSelection.current;
       if (manual.until && (performance.now() < manual.until || Math.abs(window.scrollY - manual.y) < 80)) return;
@@ -76,6 +79,7 @@ export function Services() {
       }
     };
     const onScrollInput = (event: Event) => {
+      if (isSmallScreen()) return;
       if (event instanceof KeyboardEvent && !["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) return;
       scrollInput.current = event.timeStamp;
       hovered.current = null;
@@ -83,12 +87,17 @@ export function Services() {
       manualSelection.current.until = 0;
     };
     const onScroll = () => {
+      if (isSmallScreen()) return;
       const delta = window.scrollY - previousScrollY;
       if (Math.abs(delta) > 0.5) direction = Math.sign(delta);
       previousScrollY = window.scrollY;
       if (!frame) frame = requestAnimationFrame(update);
     };
     const measure = () => {
+      if (isSmallScreen()) {
+        list.style.minHeight = "";
+        return;
+      }
       const headings = Array.from(list.querySelectorAll<HTMLElement>(".service-row h3"));
       const descriptions = Array.from(list.querySelectorAll<HTMLElement>(".service-description"));
       const panelHeight = Math.max(...descriptions.map(panel => panel.getBoundingClientRect().height));
@@ -103,6 +112,13 @@ export function Services() {
       list.style.minHeight = `${Math.ceil(headingOffset + panelHeight + 1)}px`;
       onScroll();
     };
+    const handleScreenChange = () => {
+      if (isSmallScreen()) {
+        list.style.minHeight = "";
+      } else {
+        measure();
+      }
+    };
     fromHash();
     measure();
     const observer = new ResizeObserver(measure);
@@ -111,7 +127,8 @@ export function Services() {
     window.addEventListener("wheel", onScrollInput, { passive: true });
     window.addEventListener("touchstart", onScrollInput, { passive: true });
     window.addEventListener("keydown", onScrollInput);
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", handleScreenChange);
+    smallQuery.addEventListener("change", handleScreenChange);
     window.addEventListener("hashchange", fromHash);
     window.addEventListener("ast:anchor-settled", fromHash);
     return () => {
@@ -122,7 +139,8 @@ export function Services() {
       window.removeEventListener("wheel", onScrollInput);
       window.removeEventListener("touchstart", onScrollInput);
       window.removeEventListener("keydown", onScrollInput);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", handleScreenChange);
+      smallQuery.removeEventListener("change", handleScreenChange);
       window.removeEventListener("hashchange", fromHash);
       window.removeEventListener("ast:anchor-settled", fromHash);
     };
@@ -139,8 +157,7 @@ export function Services() {
       <div className="page-container">
         <div className="section-heading">
           <div>
-            <p className="eyebrow"><span className="red-rule" />WHAT WE DO</p>
-            <h2 id="services-title">WHAT<br /><span className="quiet-text">WE DO.</span></h2>
+            <h2 id="services-title">WHAT{" "}<br /><span className="quiet-text">WE DO.</span></h2>
           </div>
           <p>We have the capabilities to support<br className="desktop-break" /> a project end-to-end.</p>
         </div>

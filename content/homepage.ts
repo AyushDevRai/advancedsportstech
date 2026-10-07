@@ -42,3 +42,48 @@ export const brochures = [
   { name: "Wireless Timing Gate", file: "WIRELESS-TIMING-GATE-CATALOGUE.pdf" },
 ] as const;
 export const brochureUrl = (file: string) => `https://ast-sports.com/wp-content/uploads/2022/05/${file}`;
+
+export const homeProducts = [
+  {
+    slug: "athletic-track",
+    name: "Athletic Track",
+    href: "/athletic-tracks",
+    image: "/image/header-1.jpg",
+  },
+  {
+    slug: "hockey-turf",
+    name: "Hockey Turf",
+    href: "/hockey",
+    image: "/background/hockey.jpg",
+  },
+  {
+    slug: "football-turf",
+    name: "Football Turf",
+    href: "/football",
+    image: "/imageFootball/football.jpg",
+  },
+  {
+    slug: "inbuilt",
+    name: "Inbuilt",
+    href: "/smartracks",
+    image: "/imageSmartTrack/smartakcs.jpg",
+  },
+  {
+    slug: "wireless-timing-gate",
+    name: "Wireless/Mobile Timing Gate",
+    href: "/wireless-timing-gate-system",
+    image: "/navigation/wireless-timing-gate-system.webp",
+  },
+  {
+    slug: "sports-lighting",
+    name: "Sports Lighting",
+    href: "/products/sports-lighting",
+    image: "/services/lighting.jpg",
+  },
+  {
+    slug: "cleaning-maintenance",
+    name: "Cleaning & Maintenance",
+    href: "/maintenance",
+    image: "/services/maintenance.jpg",
+  },
+] as const;

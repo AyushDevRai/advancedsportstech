@@ -9,9 +9,9 @@ const track: NavigationCard = { name: "Athletic Track", href: "/athletic-tracks"
 const hockey: NavigationCard = { name: "Hockey Turf", href: "/hockey", image: "/projects/kalinga.jpg", eyebrow: "POLIGRAS" };
 const football: NavigationCard = { name: "Football Turf", href: "/football", image: "/imageFootball/football.jpg", eyebrow: "LIGATURF" };
 const inbuilt: NavigationCard = { name: "Inbuilt", href: "/smartracks", image: "/imageSmartTrack/smartakcs.jpg", eyebrow: "SMARTRACKS" };
-const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "https://ast-sports.com/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
-const lighting: NavigationCard = { name: "Sports Lighting", href: "https://ast-sports.com/gigatera/", image: "/services/lighting.jpg" };
-const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "https://ast-sports.com/maintainence/", image: "/services/maintenance.jpg" };
+const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
+const lighting: NavigationCard = { name: "Sports Lighting", href: "/products/sports-lighting", image: "/services/lighting.jpg", eyebrow: "GIGATERA" };
+const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "/maintenance", image: "/services/maintenance.jpg", eyebrow: "POLYTAN" };
 
 export const productCategories: ProductCategory[] = [
   { id: "all", name: "All Products", cards: [track, hockey, football, inbuilt, timing, lighting, maintenance] },
@@ -41,11 +41,10 @@ export const navigationGroups: NavigationGroup[] = [
   //   { name: "Basketball", href: "https://ast-sports.com/basketball/", image: "/navigation/basketball.webp" },
   // ] },
   { id: "services", name: "Services", title: "What We Do", href: "#services", cards: homepageServices.map(service => ({ name: service.name, image: service.image, href: `#service-${service.slug}` })) },
-  { id: "projects", name: "Projects", title: "Our Projects", href: "#projects", cards: gallery.map(project => ({ name: project.name, href: "#projects", image: project.image, eyebrow: project.category })) },
+  { id: "projects", name: "Projects", title: "Our Projects", href: "/our-projects", cards: gallery.map(project => ({ name: project.name, href: "/our-projects", image: project.image, eyebrow: project.category })) },
   { id: "downloads", name: "Downloads", title: "Brochure", href: "#brochures", cards: downloadGroups.flatMap(group => group.items.map(item => ({ name: item.name, href: brochureUrl(item.file), image: group.image }))) },
   { id: "company", name: "Company", title: "Advanced Sports Technologies", href: "#about", cards: [
     { name: "About Us", href: "#about", image: "/placeholders/jrd-tata.jpg" },
-    { name: "Career", href: "https://ast-sports.com/career/", image: "/services/construction.jpg" },
     { name: "Contact Us", href: "#contact", image: "/placeholders/sports-facility.jpg" },
   ] },
 ];

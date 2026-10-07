@@ -11,6 +11,10 @@
 @import "../styles/hockey.css";
 @import "../styles/football.css";
 @import "../styles/smartracks.css";
+@import "../styles/wireless-timing-gate.css";
+@import "../styles/sports-lighting.css";
+@import "../styles/maintenance.css";
+@import "../styles/our-projects.css";
 
 @theme inline {
   --animate-aurora: aurora 8s ease-in-out infinite alternate;

@@ -14,9 +14,9 @@ export function TestingCertification() {
   const trigger = useRef<HTMLButtonElement>(null);
   const image = selected === null ? null : certificationImages[selected];
 
-  return <section id="products" className="section-pad products-section certification-section" data-nav-theme="light" aria-labelledby="certification-title">
-    <div id="testing-certification" className="page-container">
-      <div className="section-heading"><div><p className="eyebrow"><span className="red-rule" />TESTING & CERTIFICATION</p><h2 id="certification-title">TESTING &<br /><span className="quiet-text">CERTIFICATION.</span></h2></div><p>{testing.tagline}</p></div>
+  return <section id="testing-certification" className="section-pad products-section certification-section" data-nav-theme="light" aria-labelledby="certification-title">
+    <div className="page-container">
+      <div className="section-heading"><div><h2 id="certification-title">TESTING &{" "}<br /><span className="quiet-text">CERTIFICATION.</span></h2></div><p>{testing.tagline}</p></div>
       <p className="certification-introduction">{testing.description}</p>
       <div className="brand-grid certification-grid">
         {certificationImages.map((item, index) => <article className={`brand-card certification-card ${item.certificate ? "is-certificate" : ""}`} key={item.name}>

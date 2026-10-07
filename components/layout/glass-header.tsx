@@ -563,15 +563,15 @@ export function GlassHeader() {
               </div>
             </div>
 
-            {/* 5. Projects Map */}
+            {/* 5. Our Projects */}
             <Link
-              href="/projects-map"
+              href="/our-projects"
               className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-slate-200 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors"
             >
               <MapPin className="w-3.5 h-3.5 text-red-500" />
-              <span>Projects Map</span>
+              <span>Our Projects</span>
               <span className="text-[10px] bg-red-600/30 border border-red-500/50 text-red-300 px-1.5 py-0.2 rounded-full font-bold ml-0.5">
-                160+
+                100+
               </span>
             </Link>
 
@@ -809,19 +809,19 @@ export function GlassHeader() {
               </div>
             </div>
 
-            {/* Projects Map */}
+            {/* Our Projects */}
             <div className="pt-2 border-t border-white/5">
               <Link
-                href="/projects-map"
+                href="/our-projects"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between text-base font-semibold text-white py-2"
               >
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-red-500" />
-                  <span>Projects Map</span>
+                  <span>Our Projects</span>
                 </div>
                 <span className="text-xs bg-red-600/30 text-red-300 px-2 py-0.5 rounded-full font-bold">
-                  160+ Locations
+                  100+ Locations
                 </span>
               </Link>
             </div>
