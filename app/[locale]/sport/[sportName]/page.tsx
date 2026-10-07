@@ -61,6 +61,22 @@ export default async function SportDetailPage({
     redirect("/football");
   }
 
+  if (sportName === "basketball" || sportName === "basketball-court") {
+    redirect("/basketball");
+  }
+
+  if (sportName === "tennis" || sportName === "tennis-court") {
+    redirect("/tennis");
+  }
+
+  if (sportName === "badminton" || sportName === "badminton-court") {
+    redirect("/badminton");
+  }
+
+  if (sportName === "wooden-flooring" || sportName === "wood-flooring") {
+    redirect("/wooden-flooring");
+  }
+
   const sport = sportsData[sportName];
   if (!sport) notFound();
 

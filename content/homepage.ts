@@ -63,6 +63,24 @@ export const homeProducts = [
     image: "/imageFootball/football.jpg",
   },
   {
+    slug: "basketball",
+    name: "Basketball",
+    href: "/basketball",
+    image: "/courts/basketball-floor.jpg",
+  },
+  {
+    slug: "tennis",
+    name: "Tennis",
+    href: "/tennis",
+    image: "/courts/tennis-floor.jpg",
+  },
+  {
+    slug: "badminton",
+    name: "Badminton",
+    href: "/badminton",
+    image: "/courts/badminton-acrylic-floor.jpg",
+  },
+  {
     slug: "inbuilt",
     name: "Inbuilt",
     href: "/smartracks",

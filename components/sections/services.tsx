@@ -157,7 +157,7 @@ export function Services() {
       <div className="page-container">
         <div className="section-heading">
           <div>
-            <h2 id="services-title">WHAT{" "}<br /><span className="quiet-text">WE DO.</span></h2>
+            <h2 id="services-title">WHAT{" "}<span className="quiet-text">WE DO.</span></h2>
           </div>
           <p>We have the capabilities to support<br className="desktop-break" /> a project end-to-end.</p>
         </div>

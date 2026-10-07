@@ -12,11 +12,16 @@ const inbuilt: NavigationCard = { name: "Inbuilt", href: "/smartracks", image: "
 const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
 const lighting: NavigationCard = { name: "Sports Lighting", href: "/products/sports-lighting", image: "/services/lighting.jpg", eyebrow: "GIGATERA" };
 const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "/maintenance", image: "/services/maintenance.jpg", eyebrow: "POLYTAN" };
+const basketball: NavigationCard = { name: "Basketball", href: "/basketball", image: "/courts/basketball-floor.jpg", eyebrow: "FIBA STANDARDS" };
+const tennis: NavigationCard = { name: "Tennis", href: "/tennis", image: "/courts/tennis-floor.jpg", eyebrow: "ITF CLASSIFIED" };
+const badminton: NavigationCard = { name: "Badminton", href: "/badminton", image: "/courts/badminton-acrylic-floor.jpg", eyebrow: "ACRYLIC & WOODEN" };
+const woodenFlooring: NavigationCard = { name: "Wooden Flooring", href: "/wooden-flooring", image: "/courts/badminton-wooden-floor.jpg", eyebrow: "BWF & FIBA" };
 
 export const productCategories: ProductCategory[] = [
-  { id: "all", name: "All Products", cards: [track, hockey, football, inbuilt, timing, lighting, maintenance] },
+  { id: "all", name: "All Products", cards: [track, hockey, football, basketball, tennis, badminton, woodenFlooring, inbuilt, timing, lighting, maintenance] },
   { id: "tracks", name: "Athletic Track", cards: [track], description: "REKORTAN, THE ORIGINAL SYNTHETIC TRACK", links: [{ name: "Rekortan M99", href: brochureUrl("REKORTAN-M99.pdf") }, { name: "Rekortan M", href: brochureUrl("REKORTAN-M.pdf") }, { name: "Rekortan PUR E", href: brochureUrl("Rekortan-PUR-E-.pdf") }] },
   { id: "turf", name: "Synthetic Turf", cards: [hockey, football], description: "POLIGRAS & LIGATURF SYNTHETIC SPORTS TURF", links: [{ name: "Poligras Platinum GT", href: brochureUrl("BROCHURE-POLIGRAS-PLATINUM-GT.pdf") }, { name: "Poligras SuperPlay", href: brochureUrl("Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf") }, { name: "Poligras GT", href: brochureUrl("POLIGRAS-GT-CATALOGUE-two-page.pdf") }] },
+  { id: "courts", name: "Courts & Flooring", cards: [basketball, tennis, badminton, woodenFlooring], description: "FIBA, ITF & BWF CERTIFIED HARDWOOD & CUSHIONED ACRYLIC SURFACES" },
   { id: "smart", name: "SmarTracks", cards: [inbuilt, timing] },
   { id: "lighting", name: "Sports Lighting", cards: [lighting], description: homepageServices[6].description },
   { id: "maintenance", name: "Cleaning & Maintenance", cards: [maintenance], description: homepageServices[7].description },

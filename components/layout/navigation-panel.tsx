@@ -31,8 +31,14 @@ function ProductsPanel() {
     {productCategories.map(category => <TabsContent value={category.id} key={category.id} className="mega-tab-content">
       {category.id === "all" ? <div className="mega-product-overview">
         <FeatureCard card={category.cards[0]} description={productCategories[1].description} />
-        <div className="mega-directory"><span className="mega-kicker">Synthetic Turf & SmarTracks</span>{category.cards.slice(1, 5).map(card => <MenuEntry card={card} key={card.name} />)}</div>
-        <div className="mega-product-support">{category.cards.slice(5).map(card => <MenuEntry card={card} thumbnail key={card.name} />)}<p>{homepageServices[7].description}</p></div>
+        <div className="mega-directory">
+          <span className="mega-kicker">Synthetic Turf & SmarTracks</span>
+          {category.cards.filter(c => ["Hockey Turf", "Football Turf", "Inbuilt", "Wireless/Mobile Timing Gate"].includes(c.name)).map(card => <MenuEntry card={card} key={card.name} />)}
+        </div>
+        <div className="mega-product-support">
+          <span className="mega-kicker">Courts & Flooring Systems</span>
+          {category.cards.filter(c => ["Basketball", "Tennis", "Badminton", "Wooden Flooring", "Sports Lighting", "Cleaning & Maintenance"].includes(c.name)).map(card => <MenuEntry card={card} thumbnail key={card.name} />)}
+        </div>
       </div> : <div className={`mega-category-layout ${category.description ? "has-description" : ""}`}>
         <div className="mega-category-features">{category.cards.map(card => <FeatureCard card={card} key={card.name} />)}</div>
         {category.description && <aside className="mega-category-detail"><span className="mega-kicker">{category.name}</span><p>{category.description}</p>{category.links && <div className="mega-model-links">{category.links.map(link => <NavigationMenuLink key={link.name} href={link.href} target="_blank" rel="noopener noreferrer">{link.name}<Download size={17} /></NavigationMenuLink>)}</div>}</aside>}

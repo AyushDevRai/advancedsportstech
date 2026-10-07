@@ -75,7 +75,7 @@ export function Homepage() {
               <div className="about-title">
                 <h2 id="about-title">
                   ABOUT{" "}
-                  <br />
+
                   <span className="quiet-text">US.</span>
                 </h2>
                 <div className="about-image">
@@ -170,7 +170,7 @@ export function Homepage() {
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, 25vw"
                   />
-                  <span className="sport-number">0{index + 1}</span>
+                  <span className="sport-number">{String(index + 1).padStart(2, "0")}</span>
                   <span className="sport-card-label">
                     <span>{product.name}</span>
                     <ArrowUpRight size={21} />
