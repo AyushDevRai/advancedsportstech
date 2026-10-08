@@ -91,6 +91,139 @@ export const projectCategories = [
 ] as const;
 
 export const showcaseCreations: ShowcaseProject[] = [
+{
+    "id": "showcase-rourkela",
+    "name": "Birsa Munda International Hockey Stadium",
+    "venue": "Main Stadium & Training Complex",
+    "city": "Rourkela",
+    "state": "Odisha",
+    "category": "Hockey Turf",
+    "surface": "Poligras Platinum GT",
+    "certification": "FIH Global Certified",
+    "client": "IDCO & Government of Odisha",
+    "year": "2023",
+    "image": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg",
+    "highlight": "Host Venue: FIH Men's Hockey World Cup 2023 (World's Largest Seated Hockey Stadium)",
+    "description": "Guinness World Record holding 20,000+ seat stadium engineered for the 2023 FIH Men's World Cup, featuring Polytan's cutting-edge eco-friendly GT turf system.",
+    "lat": 22.26,
+    "lng": 84.853,
+    "x": 565,
+    "y": 508
+  },
+  {
+    "id": "showcase-jln",
+    "name": "Jawaharlal Nehru Stadium, New Delhi",
+    "venue": "Main Athletics Stadium & Warm-up Track",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "category": "Athletic Track",
+    "surface": "Rekortan M Full PUR 15mm In-Situ System",
+    "certification": "World Athletics Olympic Standard",
+    "client": "Sports Authority of India (SAI) / CPWD",
+    "year": "2016",
+    "image": "/projects/Delhi JNS/DJI_0291.JPG",
+    "highlight": "Olympic Standard 400m 8-Lane National Stadium Track",
+    "description": "India's premier international track and field facility, certified for World Athletics international competitions and hosting national trials for Olympic qualification.",
+    "lat": 28.583,
+    "lng": 77.234,
+    "x": 388,
+    "y": 338
+  },
+  {
+    "id": "showcase-dhyanchand",
+    "name": "Major Dhyan Chand National Stadium",
+    "venue": "India's Historic National Hockey Arena",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "category": "Hockey Turf",
+    "surface": "Poligras Platinum GT",
+    "certification": "FIH Global Certified",
+    "client": "Sports Authority of India (SAI)",
+    "year": "2019",
+    "image": "/projects/Major Dhyan Chandra Stadium/MAJOR DHYAN CHAND NATIONAL STADIUM.webp",
+    "highlight": "Crown Jewel of Indian Field Hockey at India Gate",
+    "description": "Historic stadium revitalized with Poligras FIH-certified water-based turf, setting the benchmark for elite ball roll consistency and player safety.",
+    "lat": 28.612,
+    "lng": 77.237,
+    "x": 388,
+    "y": 337
+  },
+  {
+    "id": "showcase-mrk",
+    "name": "Mayor Radhakrishnan Stadium (MRK)",
+    "venue": "International Hockey Stadium",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "category": "Hockey Turf",
+    "surface": "Poligras Olympic FIH Global Turf",
+    "certification": "FIH Global Certified",
+    "client": "Sports Development Authority of Tamil Nadu (SDAT)",
+    "year": "2017",
+    "image": "/projects/MRK Hockey Stadium/MRK HOCKEY STADIUM CHENNAI.JPG",
+    "highlight": "Host of Asian Champions Trophy & International Tests",
+    "description": "Iconic South Indian hockey battleground equipped with Polytan's Olympic-grade turf, engineered for high-intensity international gameplay in humid tropical conditions.",
+    "lat": 13.072,
+    "lng": 80.258,
+    "x": 458,
+    "y": 760
+  },
+  {
+    "id": "showcase-rajgir",
+    "name": "Rajgir International Sports Complex",
+    "venue": "Bihar State International Hockey Arena",
+    "city": "Rajgir",
+    "state": "Bihar",
+    "category": "Hockey Turf",
+    "surface": "Poligras Platinum GT System",
+    "certification": "FIH Global Certified",
+    "client": "BSEIDC / Department of Sports, Bihar",
+    "year": "2021",
+    "image": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg",
+    "highlight": "Bihar's First International FIH Global Hockey Stadium",
+    "description": "Landmark synthetic sports development in historic Rajgir, delivering international match turf, automated sub-surface drainage, and floodlit training pitch.",
+    "lat": 25.03,
+    "lng": 85.42,
+    "x": 577,
+    "y": 435
+  },
+  {
+    "id": "showcase-tantya-tope",
+    "name": "Tatya Tope Stadium (T.T. Nagar), Bhopal",
+    "venue": "Directorate of Sports & Youth Welfare",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "category": "Athletic Track",
+    "surface": "Rekortan M99 Full PUR System",
+    "certification": "World Athletics Certified",
+    "client": "Director Sports & Youth Welfare, Madhya Pradesh",
+    "year": "2016",
+    "image": "/projects/Bhopal/DJI_0007.JPG",
+    "highlight": "Championship 400m 8-Lane Synthetic Track & Field",
+    "description": "Central sports stadium of Madhya Pradesh, completely re-laid with World Athletics certified polyurethane surface with specialized high jump, pole vault, and steeplechase areas.",
+    "lat": 23.235,
+    "lng": 77.401,
+    "x": 392,
+    "y": 482
+  },
+  {
+    "id": "showcase-rampur",
+    "name": "Hockey Stadium, Rampur",
+    "venue": "Mahatma Gandhi Physical College Stadium",
+    "city": "Rampur",
+    "state": "Uttar Pradesh",
+    "category": "Hockey Turf",
+    "surface": "Poligras FIH Approved Synthetic Turf",
+    "certification": "FIH Certified System",
+    "client": "Department of Sports, Uttar Pradesh",
+    "year": "2019",
+    "image": "/projects/Rampur Hockey Ground/29_01_2019-29skh1001_18899460.jpg",
+    "highlight": "Championship FIH Approved Synthetic Hockey Ground",
+    "description": "Modern synthetic hockey arena installed in Rampur, Uttar Pradesh, featuring international water-based turf and tournament drainage.",
+    "lat": 28.815,
+    "lng": 79.025,
+    "x": 437,
+    "y": 336
+  },
   {
     "id": "showcase-championship-stadium-aerial",
     "name": "Championship 8-Lane Athletics Stadium",
@@ -187,25 +320,6 @@ export const showcaseCreations: ShowcaseProject[] = [
     "y": 562
   },
   {
-    "id": "showcase-rourkela",
-    "name": "Birsa Munda International Hockey Stadium",
-    "venue": "Main Stadium & Training Complex",
-    "city": "Rourkela",
-    "state": "Odisha",
-    "category": "Hockey Turf",
-    "surface": "Poligras Platinum GT",
-    "certification": "FIH Global Certified",
-    "client": "IDCO & Government of Odisha",
-    "year": "2023",
-    "image": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg",
-    "highlight": "Host Venue: FIH Men's Hockey World Cup 2023 (World's Largest Seated Hockey Stadium)",
-    "description": "Guinness World Record holding 20,000+ seat stadium engineered for the 2023 FIH Men's World Cup, featuring Polytan's cutting-edge eco-friendly GT turf system.",
-    "lat": 22.26,
-    "lng": 84.853,
-    "x": 565,
-    "y": 508
-  },
-  {
     "id": "showcase-jrd-tata",
     "name": "JRD Tata Sports Complex, Jamshedpur",
     "venue": "Athletics Arena & Football Ground",
@@ -225,25 +339,6 @@ export const showcaseCreations: ShowcaseProject[] = [
     "y": 494
   },
   {
-    "id": "showcase-jln",
-    "name": "Jawaharlal Nehru Stadium, New Delhi",
-    "venue": "Main Athletics Stadium & Warm-up Track",
-    "city": "New Delhi",
-    "state": "Delhi",
-    "category": "Athletic Track",
-    "surface": "Rekortan M Full PUR 15mm In-Situ System",
-    "certification": "World Athletics Olympic Standard",
-    "client": "Sports Authority of India (SAI) / CPWD",
-    "year": "2016",
-    "image": "/placeholders/sports-facility.jpg",
-    "highlight": "Olympic Standard 400m 8-Lane National Stadium Track",
-    "description": "India's premier international track and field facility, certified for World Athletics international competitions and hosting national trials for Olympic qualification.",
-    "lat": 28.583,
-    "lng": 77.234,
-    "x": 388,
-    "y": 338
-  },
-  {
     "id": "showcase-mp-sports",
     "name": "Maharana Pratap Sports College, Dehradun",
     "venue": "State Hockey Academy Stadium",
@@ -261,25 +356,6 @@ export const showcaseCreations: ShowcaseProject[] = [
     "lng": 78.104,
     "x": 408,
     "y": 298
-  },
-  {
-    "id": "showcase-tantya-tope",
-    "name": "Tatya Tope Stadium (T.T. Nagar), Bhopal",
-    "venue": "Directorate of Sports & Youth Welfare",
-    "city": "Bhopal",
-    "state": "Madhya Pradesh",
-    "category": "Athletic Track",
-    "surface": "Rekortan M99 Full PUR System",
-    "certification": "World Athletics Certified",
-    "client": "Director Sports & Youth Welfare, Madhya Pradesh",
-    "year": "2016",
-    "image": "/projects/tantya-tope.jpg",
-    "highlight": "Championship 400m 8-Lane Synthetic Track & Field",
-    "description": "Central sports stadium of Madhya Pradesh, completely re-laid with World Athletics certified polyurethane surface with specialized high jump, pole vault, and steeplechase areas.",
-    "lat": 23.235,
-    "lng": 77.401,
-    "x": 392,
-    "y": 482
   },
   {
     "id": "showcase-sai-aurangabad",
@@ -339,63 +415,6 @@ export const showcaseCreations: ShowcaseProject[] = [
     "y": 764
   },
   {
-    "id": "showcase-dhyanchand",
-    "name": "Major Dhyan Chand National Stadium",
-    "venue": "India's Historic National Hockey Arena",
-    "city": "New Delhi",
-    "state": "Delhi",
-    "category": "Hockey Turf",
-    "surface": "Poligras Platinum GT",
-    "certification": "FIH Global Certified",
-    "client": "Sports Authority of India (SAI)",
-    "year": "2019",
-    "image": "/projects/Major Dhyan Chandra Stadium/MAJOR DHYAN CHAND NATIONAL STADIUM.webp",
-    "highlight": "Crown Jewel of Indian Field Hockey at India Gate",
-    "description": "Historic stadium revitalized with Poligras FIH-certified water-based turf, setting the benchmark for elite ball roll consistency and player safety.",
-    "lat": 28.612,
-    "lng": 77.237,
-    "x": 388,
-    "y": 337
-  },
-  {
-    "id": "showcase-mrk",
-    "name": "Mayor Radhakrishnan Stadium (MRK)",
-    "venue": "International Hockey Stadium",
-    "city": "Chennai",
-    "state": "Tamil Nadu",
-    "category": "Hockey Turf",
-    "surface": "Poligras Olympic FIH Global Turf",
-    "certification": "FIH Global Certified",
-    "client": "Sports Development Authority of Tamil Nadu (SDAT)",
-    "year": "2017",
-    "image": "/projects/MRK Hockey Stadium/MRK HOCKEY STADIUM CHENNAI.JPG",
-    "highlight": "Host of Asian Champions Trophy & International Tests",
-    "description": "Iconic South Indian hockey battleground equipped with Polytan's Olympic-grade turf, engineered for high-intensity international gameplay in humid tropical conditions.",
-    "lat": 13.072,
-    "lng": 80.258,
-    "x": 458,
-    "y": 760
-  },
-  {
-    "id": "showcase-rajgir",
-    "name": "Rajgir International Sports Complex",
-    "venue": "Bihar State International Hockey Arena",
-    "city": "Rajgir",
-    "state": "Bihar",
-    "category": "Hockey Turf",
-    "surface": "Poligras Platinum GT System",
-    "certification": "FIH Global Certified",
-    "client": "BSEIDC / Department of Sports, Bihar",
-    "year": "2021",
-    "image": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg",
-    "highlight": "Bihar's First International FIH Global Hockey Stadium",
-    "description": "Landmark synthetic sports development in historic Rajgir, delivering international match turf, automated sub-surface drainage, and floodlit training pitch.",
-    "lat": 25.03,
-    "lng": 85.42,
-    "x": 577,
-    "y": 435
-  },
-  {
     "id": "showcase-football-jeyapal",
     "name": "Jeyapal Sports Centre & SAI NERC",
     "venue": "FIFA Standard Synthetic Football Arena",
@@ -431,7 +450,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.2343209161848,
     "x": 395.5,
     "y": 340.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755595914/1.jawaharlal-nehru-stadium-park-town-chennai-stadiums-1bqdjrl_ymzbnh.webp"
+    "imageUrl": "/projects/Delhi JNS/DJI_0291.JPG"
   },
   {
     "id": "project-2",
@@ -511,7 +530,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.39992032105656,
     "x": 393,
     "y": 484.5,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755596395/BHOPAL_TRACK_zwimxm.jpg"
+    "imageUrl": "/projects/Bhopal/DJI_0007.JPG"
   },
   {
     "id": "project-7",
@@ -655,7 +674,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.23428772698755,
     "x": 395.5,
     "y": 340.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755597318/DJI_0291_jr31ad.jpg"
+    "imageUrl": "/projects/Delhi JNS/DJI_0291.JPG"
   },
   {
     "id": "project-16",
@@ -1151,7 +1170,7 @@ export const mapProjects: MapProject[] = [
     "lng": 79.01775932303624,
     "x": 437.2,
     "y": 335.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755600401/42_wipxwp.jpg"
+    "imageUrl": "/projects/Rampur Hockey Ground/29_01_2019-29skh1001_18899460.jpg"
   },
   {
     "id": "project-47",
@@ -1327,7 +1346,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.209,
     "x": 395,
     "y": 340.1,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601420/53_oprlk8.jpg"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/MAJOR DHYAN CHAND NATIONAL STADIUM.webp"
   },
   {
     "id": "project-58",
@@ -1375,7 +1394,7 @@ export const mapProjects: MapProject[] = [
     "lng": 85.82510276394456,
     "x": 584.9,
     "y": 562.4,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601564/55_am3t69.jpg"
+    "imageUrl": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg"
   },
   {
     "id": "project-61",
@@ -1391,7 +1410,7 @@ export const mapProjects: MapProject[] = [
     "lng": 84.81342648435285,
     "x": 563.8,
     "y": 510.7,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601612/56_y2nfv0.jpg"
+    "imageUrl": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg"
   },
   {
     "id": "project-62",
@@ -1471,7 +1490,7 @@ export const mapProjects: MapProject[] = [
     "lng": 80.26101545951865,
     "x": 447.1,
     "y": 758.7,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601949/60_laiguv.jpg"
+    "imageUrl": "/projects/MRK Hockey Stadium/MRK HOCKEY STADIUM CHENNAI.JPG"
   },
   {
     "id": "project-67",
@@ -1503,7 +1522,7 @@ export const mapProjects: MapProject[] = [
     "lng": 85.36405952767493,
     "x": 579.9,
     "y": 436,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755602059/61_t2bfmv.webp"
+    "imageUrl": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg"
   },
   {
     "id": "project-69",
@@ -1983,7 +2002,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.23319717330298,
     "x": 395.6,
     "y": 339.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755603333/110_rks7on.jpg"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/imgi_4_Stadia-MDCS.jpg"
   },
   {
     "id": "project-102",
@@ -1999,7 +2018,7 @@ export const mapProjects: MapProject[] = [
     "lng": 77.23639070425452,
     "x": 395.6,
     "y": 340.2,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755603282/111_y7nmr0.avif"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/imgi_4_Stadia-MDCS.jpg"
   },
   {
     "id": "project-103",
@@ -2751,7 +2770,7 @@ export const mapProjects: MapProject[] = [
     "lng": 85.36405087116461,
     "x": 579.9,
     "y": 436,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755597982/169_blvc5u.webp"
+    "imageUrl": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg"
   }
 ];
 

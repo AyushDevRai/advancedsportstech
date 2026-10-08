@@ -13,7 +13,7 @@
     "lng": 77.2343209161848,
     "x": 395.5,
     "y": 340.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755595914/1.jawaharlal-nehru-stadium-park-town-chennai-stadiums-1bqdjrl_ymzbnh.webp"
+    "imageUrl": "/projects/Delhi JNS/DJI_0291.JPG"
   },
   {
     "id": "project-2",
@@ -93,7 +93,7 @@
     "lng": 77.39992032105656,
     "x": 393,
     "y": 484.5,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755596395/BHOPAL_TRACK_zwimxm.jpg"
+    "imageUrl": "/projects/Bhopal/DJI_0007.JPG"
   },
   {
     "id": "project-7",
@@ -237,7 +237,7 @@
     "lng": 77.23428772698755,
     "x": 395.5,
     "y": 340.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755597318/DJI_0291_jr31ad.jpg"
+    "imageUrl": "/projects/Delhi JNS/DJI_0291.JPG"
   },
   {
     "id": "project-16",
@@ -733,7 +733,7 @@
     "lng": 79.01775932303624,
     "x": 437.2,
     "y": 335.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755600401/42_wipxwp.jpg"
+    "imageUrl": "/projects/Rampur Hockey Ground/29_01_2019-29skh1001_18899460.jpg"
   },
   {
     "id": "project-47",
@@ -909,7 +909,7 @@
     "lng": 77.209,
     "x": 395,
     "y": 340.1,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601420/53_oprlk8.jpg"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/MAJOR DHYAN CHAND NATIONAL STADIUM.webp"
   },
   {
     "id": "project-58",
@@ -957,7 +957,7 @@
     "lng": 85.82510276394456,
     "x": 584.9,
     "y": 562.4,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601564/55_am3t69.jpg"
+    "imageUrl": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg"
   },
   {
     "id": "project-61",
@@ -973,7 +973,7 @@
     "lng": 84.81342648435285,
     "x": 563.8,
     "y": 510.7,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601612/56_y2nfv0.jpg"
+    "imageUrl": "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg"
   },
   {
     "id": "project-62",
@@ -1053,7 +1053,7 @@
     "lng": 80.26101545951865,
     "x": 447.1,
     "y": 758.7,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755601949/60_laiguv.jpg"
+    "imageUrl": "/projects/MRK Hockey Stadium/MRK HOCKEY STADIUM CHENNAI.JPG"
   },
   {
     "id": "project-67",
@@ -1085,7 +1085,7 @@
     "lng": 85.36405952767493,
     "x": 579.9,
     "y": 436,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755602059/61_t2bfmv.webp"
+    "imageUrl": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg"
   },
   {
     "id": "project-69",
@@ -1613,7 +1613,7 @@
     "lng": 77.23319717330298,
     "x": 395.6,
     "y": 339.9,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755603333/110_rks7on.jpg"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/imgi_4_Stadia-MDCS.jpg"
   },
   {
     "id": "project-102",
@@ -1629,7 +1629,7 @@
     "lng": 77.23639070425452,
     "x": 395.6,
     "y": 340.2,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755603282/111_y7nmr0.avif"
+    "imageUrl": "/projects/Major Dhyan Chandra Stadium/imgi_4_Stadia-MDCS.jpg"
   },
   {
     "id": "project-103",
@@ -2525,6 +2525,6 @@
     "lng": 85.36405087116461,
     "x": 579.9,
     "y": 436,
-    "imageUrl": "https://res.cloudinary.com/daxcwefqb/image/upload/v1755597982/169_blvc5u.webp"
+    "imageUrl": "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg"
   }
 ]

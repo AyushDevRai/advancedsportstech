@@ -39,7 +39,63 @@ export interface GalleryVideo {
 }
 
 export const gallery: readonly GalleryItem[] = [
-  // Prominent Projects
+  // Prominent Projects - Project 1 Featured Stadiums
+  {
+    slug: "birsa-munda-rourkela",
+    name: "Birsa Munda International Hockey Stadium",
+    location: "Rourkela, Odisha",
+    image: "/projects/Rourkela main/90092_24_12_2022_19_6_20_1_HOCKEY_WORLD_CUP_2.jpg",
+    category: "Prominent Projects",
+    description: "World's largest seated hockey stadium (20,000+ seats), host venue of the FIH Men's Hockey World Cup 2023."
+  },
+  {
+    slug: "jln",
+    name: "Jawaharlal Nehru Stadium, New Delhi",
+    location: "New Delhi",
+    image: "/projects/Delhi JNS/DJI_0291.JPG",
+    category: "Prominent Projects",
+    description: "National stadium synthetic track built for Commonwealth Games and international championships."
+  },
+  {
+    slug: "major-dhyan-chand",
+    name: "Major Dhyan Chand National Stadium",
+    location: "New Delhi",
+    image: "/projects/Major Dhyan Chandra Stadium/MAJOR DHYAN CHAND NATIONAL STADIUM.webp",
+    category: "Prominent Projects",
+    description: "India's historic hockey landmark at India Gate with Poligras Platinum GT synthetic turf."
+  },
+  {
+    slug: "mrk-hockey-stadium",
+    name: "Mayor Radhakrishnan Hockey Stadium",
+    location: "Chennai, Tamil Nadu",
+    image: "/projects/MRK Hockey Stadium/MRK HOCKEY STADIUM CHENNAI.JPG",
+    category: "Prominent Projects",
+    description: "FIH Global certified water-based hockey turf and host venue of the Asian Champions Trophy."
+  },
+  {
+    slug: "rajgir-hockey-stadium",
+    name: "Rajgir International Sports Complex",
+    location: "Rajgir, Bihar",
+    image: "/projects/Rajgir hockey stadium/RAJGIR HOCKEY STADIUM - BIHAR.jpeg",
+    category: "Prominent Projects",
+    description: "Bihar's first FIH Global certified hockey arena, host of the Women's Asian Champions Trophy 2024."
+  },
+  {
+    slug: "tantya-tope",
+    name: "Tatya Tope Stadium (T.T. Nagar)",
+    location: "Bhopal, Madhya Pradesh",
+    image: "/projects/Bhopal/DJI_0007.JPG",
+    category: "Prominent Projects",
+    description: "World Athletics certified 400m 8-lane synthetic track and field stadium for national championships."
+  },
+  {
+    slug: "rampur-hockey-ground",
+    name: "Hockey Stadium, Rampur",
+    location: "Rampur, Uttar Pradesh",
+    image: "/projects/Rampur Hockey Ground/29_01_2019-29skh1001_18899460.jpg",
+    category: "Prominent Projects",
+    description: "Championship FIH certified synthetic hockey turf installation for Uttar Pradesh sports department."
+  },
   {
     slug: "championship-8-lane-stadium",
     name: "International Athletics Stadium",
@@ -87,14 +143,6 @@ export const gallery: readonly GalleryItem[] = [
     image: "/new/Still%202026-04-01%20142646_1.54.7.jpg.jpeg",
     category: "Prominent Projects",
     description: "Full panoramic view of World Athletics certified running facility with custom safety perimeters and perimeter fencing."
-  },
-  {
-    slug: "jln",
-    name: "Jawaharlal Nehru Stadium, New Delhi",
-    location: "New Delhi",
-    image: "/placeholders/sports-facility.jpg",
-    category: "Prominent Projects",
-    description: "National stadium synthetic track built for Commonwealth Games and international championships."
   },
   {
     slug: "running-track-field-events",
@@ -170,14 +218,7 @@ export const gallery: readonly GalleryItem[] = [
     category: "Our Creations",
     description: "FIH certified water-based synthetic hockey pitch with automated sprinkler systems."
   },
-  {
-    slug: "tantya-tope",
-    name: "Tantya Tope Stadium",
-    location: "Bhopal, Madhya Pradesh",
-    image: "/projects/tantya-tope.jpg",
-    category: "Our Creations",
-    description: "400m synthetic running track and field installation for state championships."
-  },
+
   {
     slug: "sai",
     name: "SAI Centre, Aurangabad",
