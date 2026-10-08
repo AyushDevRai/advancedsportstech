@@ -19,7 +19,9 @@ import {
   X,
   Phone,
   MessageCircle,
-  FileText
+  FileText,
+  Camera,
+  Video
 } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
@@ -27,8 +29,10 @@ import { IndiaProjectMap } from "@/components/sections/india-project-map";
 import {
   projectStats,
   showcaseCreations,
+  projectVideos,
   type ShowcaseProject
 } from "@/content/our-projects";
+import { VideoCarousel } from "@/components/ui/video-carousel";
 import { company } from "@/content/ast";
 import {
   Dialog,
@@ -107,6 +111,7 @@ function AnimatedCounter({
 }
 
 export function OurProjectsPageView() {
+  const [mediaType, setMediaType] = useState<"photos" | "videos">("photos");
   const [activeCreationFilter, setActiveCreationFilter] = useState<string>("All");
   const [selectedCreation, setSelectedCreation] = useState<ShowcaseProject | null>(null);
 
@@ -126,7 +131,7 @@ export function OurProjectsPageView() {
         <section
           className="projects-hero-section"
           id="home"
-          data-nav-theme="light"
+          data-nav-theme="dark"
           aria-labelledby="projects-hero-title"
         >
           <div className="projects-hero-backdrop" aria-hidden="true">
@@ -138,6 +143,7 @@ export function OurProjectsPageView() {
               className="projects-hero-bg-img"
               sizes="100vw"
             />
+            <div className="projects-hero-dark-overlay" />
             <div className="projects-hero-gradient" />
             <div className="projects-hero-radial-vignette" />
           </div>
@@ -166,8 +172,19 @@ export function OurProjectsPageView() {
               <a href="#map-section" className="ast-button ast-button-red">
                 Explore India Map <ArrowDown size={16} />
               </a>
-              <a href="#creations-section" className="ast-button ast-button-ghost-dark">
-                Featured Stadiums <ArrowUpRight size={16} />
+              <a
+                href="#creations-section"
+                onClick={() => setMediaType("photos")}
+                className="ast-button ast-button-ghost-dark"
+              >
+                Photo Showcase <Camera size={16} />
+              </a>
+              <a
+                href="#creations-section"
+                onClick={() => setMediaType("videos")}
+                className="ast-button ast-button-ghost-dark"
+              >
+                Project Videos <Video size={16} />
               </a>
             </div>
           </div>
@@ -244,7 +261,7 @@ export function OurProjectsPageView() {
           </div>
         </section>
 
-        {/* 5. "Our Creations" Showcase Portfolio Grid */}
+        {/* 5. "Our Creations" Showcase Portfolio Grid & Video Showcase */}
         <section
           className="projects-showcase-section"
           id="creations-section"
@@ -256,86 +273,126 @@ export function OurProjectsPageView() {
               <div>
                 <span className="section-eyebrow">
                   <span className="red-rule" />
-                  FEATURED INSTALLATIONS
+                  FEATURED INSTALLATIONS & FOOTAGE
                 </span>
                 <h2 id="creations-title" className="showcase-title">
-                  OUR <span className="highlight-red">CREATIONS.</span>
+                  PROJECT <span className="highlight-red">{mediaType === "photos" ? "GALLERY." : "VIDEOS."}</span>
                 </h2>
               </div>
 
-              {/* Category Filter Toolbar */}
-              <div className="showcase-filters-toolbar" role="group" aria-label="Filter creations">
-                {creationFilters.map((tab) => (
+              {/* Media Option at Top: Photos (default) vs Videos */}
+              <div className="gallery-media-toggle-wrap" style={{ margin: 0 }}>
+                <div className="gallery-media-toggle" role="tablist" aria-label="Project media type">
                   <button
-                    key={tab}
                     type="button"
-                    onClick={() => setActiveCreationFilter(tab)}
-                    className={`showcase-filter-btn ${
-                      activeCreationFilter === tab ? "is-selected" : ""
-                    }`}
+                    role="tab"
+                    aria-selected={mediaType === "photos"}
+                    className={`media-tab-btn ${mediaType === "photos" ? "is-active" : ""}`}
+                    onClick={() => setMediaType("photos")}
                   >
-                    {tab}
+                    <Camera size={16} />
+                    <span>Photos</span>
+                    <span className="media-tab-count">{showcaseCreations.length}</span>
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={mediaType === "videos"}
+                    className={`media-tab-btn ${mediaType === "videos" ? "is-active" : ""}`}
+                    onClick={() => setMediaType("videos")}
+                  >
+                    <Video size={16} />
+                    <span>Videos</span>
+                    <span className="media-tab-count">{projectVideos.length}</span>
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Creations Cards Grid */}
-            <div className="showcase-cards-grid">
-              {visibleCreations.map((proj, idx) => (
-                <article
-                  key={proj.id}
-                  className="showcase-card"
-                  onClick={() => setSelectedCreation(proj)}
-                >
-                  <div className="showcase-card-media">
-                    <Image
-                      src={proj.image}
-                      alt={proj.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="showcase-card-img"
-                    />
-                    <div className="showcase-card-overlay" />
-
-                    <div className="showcase-card-badges">
-                      <span className="creation-cat-pill">{proj.category}</span>
-                      <span className="creation-year-pill">{proj.year}</span>
-                    </div>
-
-                    <div className="showcase-card-hover-action">
-                      <span className="action-circle">
-                        <ArrowUpRight size={18} />
-                      </span>
-                    </div>
+            {mediaType === "photos" && (
+              <>
+                {/* Category Filter Toolbar */}
+                <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: "26px" }}>
+                  <div className="showcase-filters-toolbar" role="group" aria-label="Filter creations">
+                    {creationFilters.map((tab) => (
+                      <button
+                        key={tab}
+                        type="button"
+                        onClick={() => setActiveCreationFilter(tab)}
+                        className={`showcase-filter-btn ${
+                          activeCreationFilter === tab ? "is-selected" : ""
+                        }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="showcase-card-details">
-                    <div className="card-location-row">
-                      <MapPin size={13} className="text-red-500" />
-                      <span>
-                        {proj.city}, {proj.state}
-                      </span>
-                    </div>
+                {/* Creations Cards Grid */}
+                <div className="showcase-cards-grid">
+                  {visibleCreations.map((proj, idx) => (
+                    <article
+                      key={proj.id}
+                      className="showcase-card"
+                      onClick={() => setSelectedCreation(proj)}
+                    >
+                      <div className="showcase-card-media">
+                        <Image
+                          src={proj.image}
+                          alt={proj.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="showcase-card-img"
+                        />
+                        <div className="showcase-card-overlay" />
 
-                    <h3 className="card-proj-name">{proj.name}</h3>
+                        <div className="showcase-card-badges">
+                          <span className="creation-cat-pill">{proj.category}</span>
+                          <span className="creation-year-pill">{proj.year}</span>
+                        </div>
 
-                    <p className="card-highlight-text">{proj.highlight}</p>
-
-                    <div className="card-specs-row">
-                      <div className="spec-badge">
-                        <Layers size={12} />
-                        <span>{proj.surface.split("(")[0]}</span>
+                        <div className="showcase-card-hover-action">
+                          <span className="action-circle">
+                            <ArrowUpRight size={18} />
+                          </span>
+                        </div>
                       </div>
-                      <div className="spec-badge cert-badge">
-                        <Award size={12} />
-                        <span>{proj.certification}</span>
+
+                      <div className="showcase-card-details">
+                        <div className="card-location-row">
+                          <MapPin size={13} className="text-red-500" />
+                          <span>
+                            {proj.city}, {proj.state}
+                          </span>
+                        </div>
+
+                        <h3 className="card-proj-name">{proj.name}</h3>
+
+                        <p className="card-highlight-text">{proj.highlight}</p>
+
+                        <div className="card-specs-row">
+                          <div className="spec-badge">
+                            <Layers size={12} />
+                            <span>{proj.surface.split("(")[0]}</span>
+                          </div>
+                          <div className="spec-badge cert-badge">
+                            <Award size={12} />
+                            <span>{proj.certification}</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
+                    </article>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {mediaType === "videos" && (
+              <div style={{ marginTop: "16px" }}>
+                <VideoCarousel videos={projectVideos} />
+              </div>
+            )}
           </div>
         </section>
 

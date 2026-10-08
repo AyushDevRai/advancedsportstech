@@ -29,9 +29,9 @@ type CategoryFilter = "all" | "tracks" | "hockey" | "football";
 export function IndiaProjectMap() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProject, setSelectedProject] = useState<MapProject | null>(null);
+  // Always default to the first verified project so a location card is perpetually rendered
+  const [selectedProject, setSelectedProject] = useState<MapProject>(mapProjects[0]);
   const [hoveredProject, setHoveredProject] = useState<MapProject | null>(null);
-  const [showStateNames, setShowStateNames] = useState(false);
   const [selectedState, setSelectedState] = useState<string>("all");
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
@@ -65,6 +65,17 @@ export function IndiaProjectMap() {
     });
   }, [activeCategory, searchQuery, selectedState]);
 
+  // Keep a selected project active whenever filters change
+  useEffect(() => {
+    if (filteredProjects.length > 0) {
+      if (!filteredProjects.some((p) => p.id === selectedProject?.id)) {
+        setSelectedProject(filteredProjects[0]);
+      }
+    } else {
+      setSelectedProject(mapProjects[0]);
+    }
+  }, [filteredProjects, selectedProject]);
+
   // Unique states with project counts for filter dropdown
   const statesList = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -90,7 +101,16 @@ export function IndiaProjectMap() {
     }
   };
 
-  const activeDisplayProject = selectedProject || hoveredProject;
+  // The active display project is guaranteed to always exist
+  const activeDisplayProject = hoveredProject || selectedProject || filteredProjects[0] || mapProjects[0];
+
+  // All facilities in the current project's state for large proximity browsing
+  const stateProjects = useMemo(() => {
+    if (!activeDisplayProject?.state) return [];
+    return mapProjects.filter(
+      (p) => p.state.toLowerCase() === activeDisplayProject.state.toLowerCase()
+    );
+  }, [activeDisplayProject]);
 
   return (
     <div className="india-map-section-wrapper" ref={mapContainerRef}>
@@ -109,7 +129,6 @@ export function IndiaProjectMap() {
                 className={`map-cat-pill ${isActive ? "is-active" : ""}`}
                 onClick={() => {
                   setActiveCategory(cat.id as CategoryFilter);
-                  setSelectedProject(null);
                 }}
               >
                 <span
@@ -154,7 +173,16 @@ export function IndiaProjectMap() {
             <Filter size={14} className="filter-icon" />
             <select
               value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
+              onChange={(e) => {
+                const newState = e.target.value;
+                setSelectedState(newState);
+                if (newState !== "all") {
+                  const stateMatch = mapProjects.find(
+                    (p) => p.state.toLowerCase() === newState.toLowerCase()
+                  );
+                  if (stateMatch) setSelectedProject(stateMatch);
+                }
+              }}
               className="map-state-select"
               aria-label="Filter by state"
             >
@@ -182,7 +210,7 @@ export function IndiaProjectMap() {
             <span className="ping-center" />
           </span>
           <span>
-            Showing <strong>{filteredProjects.length}</strong> installations nationwide
+            Showing <strong>{filteredProjects.length}</strong> verified installations nationwide
           </span>
         </div>
 
@@ -209,8 +237,10 @@ export function IndiaProjectMap() {
             <g id="india-states-layer" className="india-states-group">
               {indiaStatePaths.map((state) => {
                 const isStateMatch =
-                  selectedState !== "all" &&
-                  state.name.toLowerCase() === selectedState.toLowerCase();
+                  (selectedState !== "all" &&
+                    state.name.toLowerCase() === selectedState.toLowerCase()) ||
+                  activeDisplayProject.state.toLowerCase() === state.name.toLowerCase();
+
                 return (
                   <path
                     key={state.id}
@@ -219,7 +249,14 @@ export function IndiaProjectMap() {
                     data-state={state.name}
                     className={`india-state-polygon ${isStateMatch ? "is-highlighted-state" : ""}`}
                     onClick={() => {
-                      setSelectedState(selectedState === state.name ? "all" : state.name);
+                      const next = selectedState === state.name ? "all" : state.name;
+                      setSelectedState(next);
+                      const matchingProj = mapProjects.find(
+                        (p) => p.state.toLowerCase() === state.name.toLowerCase()
+                      );
+                      if (matchingProj) {
+                        setSelectedProject(matchingProj);
+                      }
                     }}
                   >
                     <title>{state.name}</title>
@@ -231,8 +268,10 @@ export function IndiaProjectMap() {
             {/* Project Pins & Pulsing Radar Rings */}
             <g id="india-pins-layer" className="india-pins-group">
               {filteredProjects.map((proj, idx) => {
-                const isSelected = selectedProject?.id === proj.id;
+                const isSelected = activeDisplayProject?.id === proj.id;
                 const isHovered = hoveredProject?.id === proj.id;
+                const isSameState =
+                  activeDisplayProject?.state.toLowerCase() === proj.state.toLowerCase();
                 const color = getCategoryColor(proj.category);
                 const delay = (idx % 12) * 0.25;
 
@@ -242,42 +281,49 @@ export function IndiaProjectMap() {
                     transform={`translate(${proj.x}, ${proj.y})`}
                     className={`project-pin-group ${isSelected ? "is-selected-pin" : ""} ${
                       isHovered ? "is-hovered-pin" : ""
-                    }`}
-                    onClick={() => setSelectedProject(proj)}
+                    } ${isSameState ? "is-same-state-pin" : ""}`}
+                    onClick={() => {
+                      setSelectedProject(proj);
+                      setSelectedState(proj.state);
+                    }}
                     onMouseEnter={() => setHoveredProject(proj)}
                     onMouseLeave={() => setHoveredProject(null)}
                     style={{ cursor: "pointer" }}
                   >
+                    {/* Generous touch/proximity target for effortless selection */}
+                    <circle r="30" fill="transparent" style={{ pointerEvents: "all" }} />
+
                     {/* Animated Ripple Radar Wave */}
                     <circle
-                      r="12"
+                      r={isSelected || isHovered ? "26" : "20"}
                       className="radar-ripple-circle"
                       stroke={color}
-                      strokeWidth="1.2"
+                      strokeWidth={isSelected || isHovered ? "2" : "1.4"}
                       fill="none"
                       style={{
                         animationDelay: `${delay}s`,
-                        opacity: isSelected || isHovered ? 1 : 0.65,
+                        opacity: isSelected || isHovered ? 1 : isSameState ? 0.75 : 0.55,
                         pointerEvents: "none"
                       }}
                     />
 
-                    {/* Outer Glow Halo */}
+                    {/* Outer Glow Halo (Noticeably Larger) */}
                     <circle
-                      r={isSelected || isHovered ? "9" : "6"}
+                      r={isSelected || isHovered ? "17" : isSameState ? "14" : "11"}
                       fill={color}
-                      opacity={isSelected || isHovered ? "0.45" : "0.22"}
+                      opacity={isSelected || isHovered ? "0.55" : isSameState ? "0.38" : "0.22"}
                       className="pin-halo"
                       style={{ pointerEvents: "none" }}
                     />
 
-                    {/* Core Solid Pin Dot */}
+                    {/* Core Solid Pin Dot (Noticeably Larger) */}
                     <circle
-                      r={isSelected || isHovered ? "5" : "3.6"}
+                      r={isSelected || isHovered ? "8.5" : isSameState ? "7" : "6"}
                       fill={color}
                       stroke="#ffffff"
-                      strokeWidth={isSelected || isHovered ? "1.8" : "1"}
+                      strokeWidth={isSelected || isHovered ? "2.4" : "1.8"}
                       className="pin-core"
+                      style={{ pointerEvents: "none" }}
                     />
                   </g>
                 );
@@ -286,7 +332,7 @@ export function IndiaProjectMap() {
           </svg>
         </div>
 
-        {/* Floating Interactive Project Tooltip Card */}
+        {/* Floating Interactive Project Card — Always selected & visible */}
         {activeDisplayProject && (
           <div className="map-tooltip-overlay-card" role="dialog" aria-label="Project details">
             <div className="tooltip-header">
@@ -300,17 +346,9 @@ export function IndiaProjectMap() {
               >
                 {activeDisplayProject.category}
               </span>
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedProject(null);
-                  setHoveredProject(null);
-                }}
-                className="tooltip-close-btn"
-                aria-label="Close project preview"
-              >
-                <X size={14} />
-              </button>
+              <span className="tooltip-state-badge">
+                {activeDisplayProject.state}
+              </span>
             </div>
 
             <div className="tooltip-body">
@@ -336,14 +374,41 @@ export function IndiaProjectMap() {
                   <span className="meta-val">{activeDisplayProject.client}</span>
                 </div>
               </div>
+
+              {/* State Proximity: All facilities in this state visible and selectable */}
+              {stateProjects.length > 1 && (
+                <div className="map-state-facilities-tray">
+                  <div className="facilities-tray-header">
+                    <span>
+                      All facilities in {activeDisplayProject.state} ({stateProjects.length})
+                    </span>
+                  </div>
+                  <div className="facilities-chips-list">
+                    {stateProjects.map((p) => {
+                      const isCurr = p.id === activeDisplayProject.id;
+                      return (
+                        <button
+                          key={p.id}
+                          type="button"
+                          className={`facility-chip ${isCurr ? "is-active" : ""}`}
+                          onClick={() => setSelectedProject(p)}
+                          title={`${p.venue} (${p.category})`}
+                        >
+                          <span
+                            className="chip-dot"
+                            style={{ backgroundColor: getCategoryColor(p.category) }}
+                          />
+                          <span className="chip-text">{p.venue}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="tooltip-footer">
-              <a
-                href="#contact"
-                className="tooltip-enquire-btn"
-                onClick={() => setSelectedProject(null)}
-              >
+              <a href="#contact" className="tooltip-enquire-btn">
                 <span>Enquire Similar Facility</span>
                 <ChevronRight size={14} />
               </a>

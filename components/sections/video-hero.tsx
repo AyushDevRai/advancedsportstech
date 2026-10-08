@@ -36,9 +36,10 @@ export function VideoHero() {
         setReady(false);
         return;
       }
-      const mobile = window.matchMedia("(max-width: 767px)").matches;
-      const webm = !!video.canPlayType('video/webm; codecs="vp9"');
-      setSource(mobile ? { src: "/video/hero-mobile.mp4", type: "video/mp4" } : { src: webm ? "/video/hero-desktop.webm" : "/video/hero-desktop.mp4", type: webm ? "video/webm" : "video/mp4" });
+      setSource({
+        src: "https://res.cloudinary.com/ddrzgbhnl/video/upload/v1763355658/astw3_ubxyop_aogana.mp4",
+        type: "video/mp4"
+      });
     };
     // Let the preloaded poster and first paint finish before video competes for bandwidth.
     const timer = window.setTimeout(() => { if (!cancelled) chooseSource(); }, 600);
@@ -85,8 +86,20 @@ export function VideoHero() {
       <div className="hero-lines" aria-hidden="true"><span /><span /><span /></div>
       <div className="page-container hero-content">
         <p className="eyebrow hero-eyebrow"><span className="status-dot" />{company.eyebrow}</p>
-        <h1 id="hero-title"><AuroraText className="hero-aurora" colors={["#FFFFFF", "#E8EEE9", "#FFFFFF", "#FFF4F0"]} speed={1.25}>FACILITATING</AuroraText><br /><AuroraText className="hero-aurora hero-aurora-excellence" colors={["#FF6B68", "#D32628", "#FFB5A2", "#FF3B49"]} speed={1.25}>EXCELLENCE.</AuroraText></h1>
-        <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br /><span>Exclusive partner of Polytan/SportGroup Germany.</span></p>
+        <h1 id="hero-title" className="hero-main-heading">
+          <span className="hero-heading-top">
+            <AuroraText className="hero-aurora" colors={["#FFFFFF", "#F0F5F1", "#FFFFFF", "#FFEFEA"]} speed={1.2}>
+              ENGINEERING
+            </AuroraText>
+          </span>
+          <br />
+          <span className="hero-heading-bottom">
+            <AuroraText className="hero-aurora hero-aurora-excellence" colors={["#FF6B68", "#E11D48", "#FFA392", "#FF2E44"]} speed={1.2}>
+              ELITE SURFACES.
+            </AuroraText>
+          </span>
+        </h1>
+        <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br /><span>Exclusive partner of Polytan/SportGroup Germany, delivering world-class sports surfaces with proven quality and innovation.</span></p>
         <div className="hero-bottom-content">
           <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>

@@ -18,6 +18,9 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { HomepageEffects } from "@/components/sections/homepage-effects";
 import { LogoCloud } from "@/components/ui/logo-cloud-4";
 import { Marquee } from "@/components/ui/marquee";
+import { IndiaProjectMap } from "@/components/sections/india-project-map";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { projectStats } from "@/content/our-projects";
 import { company } from "@/content/ast";
 import {
   aboutParagraphs,
@@ -98,45 +101,86 @@ export function Homepage() {
                     <p key={paragraph.slice(0, 20)}>{paragraph}</p>
                   ))}
                 </div>
-                <a href="#services" className="text-link">
-                  Discover what we do <ArrowUpRight size={17} />
+                <a href="#services" className="about-highlight-btn">
+                  <span>Discover what we do</span>
+                  <ArrowUpRight size={17} />
                 </a>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Modern Animated Number Counter Statistics Section with Red Accents */}
         <section
-          className="stats-band"
-          data-nav-theme="dark"
-          aria-label="AST published figures"
+          className="homepage-milestones-section"
+          data-nav-theme="light"
+          aria-label="AST Installation Milestones"
         >
-          <div className="page-container stats-grid">
-            <div>
-              <span className="stat-value">
-                100<small>+</small>
+          <div className="page-container">
+            <div className="stats-section-header" style={{ marginBottom: "34px" }}>
+              <span className="section-eyebrow">
+                <span className="red-rule" />
+                PROVEN TRACK RECORD
               </span>
-              <p>
-                Installation of Hockey,{" "}
-                <br />
-                Tracks & Football Projects
+              <h2 className="stats-section-title">
+                INSTALLATION MILESTONES <span className="quiet-text">BY SPORT</span>
+              </h2>
+              <p className="stats-section-desc">
+                From Olympic training centers to World Cup match venues, our track record is backed
+                by independent global certifications.
               </p>
             </div>
-            <div>
-              <span className="stat-value">
-                1,000<small>K+</small>
-              </span>
-              <p>
-                Square Meters{" "}
-                <br />
-                Sports Surfaces
+
+            <div className="projects-counter-grid homepage-red-accents-grid">
+              {projectStats.map((stat, idx) => (
+                <div key={stat.id} className="counter-card counter-card-red">
+                  <div className="counter-card-header">
+                    <span className="card-index">0{idx + 1}</span>
+                    <span className="category-tag">{stat.label}</span>
+                  </div>
+
+                  <div className="counter-display">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </div>
+
+                  <div className="counter-info">
+                    <h3 className="counter-title">{stat.label}</h3>
+                    <p className="counter-sublabel">{stat.sublabel}</p>
+                  </div>
+
+                  <div className="card-accent-line" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Animated India Map Section on Homepage */}
+        <section
+          className="homepage-map-section"
+          id="nationwide-map"
+          data-nav-theme="light"
+          aria-labelledby="homepage-map-title"
+        >
+          <div className="page-container">
+            <div className="map-section-heading">
+              <div>
+                <span className="section-eyebrow">
+                  <span className="red-rule" />
+                  INTERACTIVE GEOGRAPHIC DIRECTORY
+                </span>
+                <h2 id="homepage-map-title" className="map-heading-title">
+                  NATIONWIDE <span className="highlight-red">FOOTPRINT.</span>
+                </h2>
+              </div>
+              <p className="map-heading-desc">
+                Explore AST installations plotted with verified GPS coordinates across India. Click
+                or hover any animated pulsing pin to review venue specifications, certified systems,
+                and client authorities.
               </p>
             </div>
-            <div>
-              <span className="stat-value">
-                20<small>Yr+</small>
-              </span>
-              <p>Experience</p>
-            </div>
+
+            <IndiaProjectMap />
           </div>
         </section>
         <section

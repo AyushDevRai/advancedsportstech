@@ -19,7 +19,7 @@ const woodenFlooring: NavigationCard = { name: "Wooden Flooring", href: "/wooden
 
 export const productCategories: ProductCategory[] = [
   { id: "all", name: "All Products", cards: [track, hockey, football, basketball, tennis, badminton, woodenFlooring, inbuilt, timing, lighting, maintenance] },
-  { id: "tracks", name: "Athletic Track", cards: [track], description: "REKORTAN, THE ORIGINAL SYNTHETIC TRACK", links: [{ name: "Rekortan M99", href: brochureUrl("REKORTAN-M99.pdf") }, { name: "Rekortan M", href: brochureUrl("REKORTAN-M.pdf") }, { name: "Rekortan PUR E", href: brochureUrl("Rekortan-PUR-E-.pdf") }] },
+  { id: "tracks", name: "Athletic Track", cards: [track], description: "World Athletics Certified synthetic track systems engineered for elite international competition & high-performance venues.", links: [{ name: "Rekortan M99", href: brochureUrl("REKORTAN-M99.pdf") }, { name: "Rekortan M", href: brochureUrl("REKORTAN-M.pdf") }, { name: "Rekortan PUR E", href: brochureUrl("Rekortan-PUR-E-.pdf") }] },
   { id: "turf", name: "Synthetic Turf", cards: [hockey, football], description: "POLIGRAS & LIGATURF SYNTHETIC SPORTS TURF", links: [{ name: "Poligras Platinum GT", href: brochureUrl("BROCHURE-POLIGRAS-PLATINUM-GT.pdf") }, { name: "Poligras SuperPlay", href: brochureUrl("Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf") }, { name: "Poligras GT", href: brochureUrl("POLIGRAS-GT-CATALOGUE-two-page.pdf") }] },
   { id: "courts", name: "Courts & Flooring", cards: [basketball, tennis, badminton, woodenFlooring], description: "FIBA, ITF & BWF CERTIFIED HARDWOOD & CUSHIONED ACRYLIC SURFACES" },
   { id: "smart", name: "SmarTracks", cards: [inbuilt, timing] },
