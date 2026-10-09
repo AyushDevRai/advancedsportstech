@@ -108,3 +108,113 @@
   .bb-product { grid-template-columns: 1fr; }
   .bb-product:nth-child(even) .bb-product-visual { order: initial; }
 }
+
+@media (max-width: 768px) {
+  .basketball-page {
+    overflow-x: hidden !important;
+  }
+  .bb-section-nav > div {
+    flex-direction: column !important;
+  }
+  .bb-section-nav a {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--bb-line) !important;
+    padding: 14px 16px !important;
+    font-size: 13px !important;
+  }
+  .bb-section-nav a:first-child {
+    padding-left: 16px !important;
+  }
+  .bb-section-nav a:last-child {
+    border-bottom: 0 !important;
+  }
+  .bb-overview-visual > p {
+    margin: 16px 0 0 !important;
+    max-width: 100% !important;
+  }
+  .bb-overview-layout,
+  .bb-heritage-layout,
+  .bb-benefits-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .bb-proof-grid,
+  .bb-reason-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .bb-proof-card,
+  .bb-reason-card {
+    padding: 24px 18px !important;
+  }
+  .bb-global-stats {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 20px !important;
+  }
+  .bb-global-stats > div + div {
+    border-left: 0 !important;
+    border-top: 1px solid var(--bb-line) !important;
+    padding-left: 0 !important;
+    padding-top: 16px !important;
+  }
+  .bb-global-stats strong {
+    font-size: 38px !important;
+  }
+  .bb-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding-top: 20px !important;
+    text-align: center !important;
+  }
+  .bb-timeline > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid #ffffff24 !important;
+    padding-inline: 0 !important;
+    padding-bottom: 18px !important;
+    text-align: center !important;
+  }
+  .bb-timeline strong {
+    display: block !important;
+    text-align: center !important;
+  }
+  .bb-timeline p {
+    text-align: center !important;
+  }
+  .bb-timeline > div:last-child {
+    border: 0 !important;
+  }
+  .bb-product {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding-block: 36px !important;
+  }
+  .bb-products .section-heading {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .bb-product-jump {
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+  .bb-product-copy {
+    text-align: center !important;
+  }
+  .basketball-page .bb-product-copy h3 {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+  .bb-product-copy .eyebrow {
+    justify-content: center !important;
+  }
+  .bb-product-actions {
+    justify-content: center !important;
+    gap: 14px !important;
+  }
+  .bb-product-actions .ast-button {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+}

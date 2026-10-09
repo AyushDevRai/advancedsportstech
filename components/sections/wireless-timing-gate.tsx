@@ -550,63 +550,60 @@ export function WirelessTimingGateView() {
           data-nav-theme="light"
           aria-labelledby="timing-contact-title"
         >
-          <div className="page-container">
-            <div className="contact-layout">
-              <div className="contact-info">
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  GET IN TOUCH
-                </p>
-                <h2 id="timing-contact-title">
-                  EQUIP YOUR VENUE
-                  <br />
-                  WITH SMARTRACKS
-                  <br />
-                  <span className="quiet-text">WIRELESS TIMING.</span>
-                </h2>
-                <p className="timing-contact-intro">
-                  Whether you are planning a mobile combine testing kit for a football academy or equipping
-                  an Olympic athletics facility, our engineering team is here to assist.
-                </p>
+          <div className="page-container contact-layout">
+            <div className="contact-details">
+              <p className="eyebrow">
+                <span className="red-rule" />
+                GET IN TOUCH
+              </p>
+              <h2 id="timing-contact-title">
+                EQUIP YOUR VENUE{" "}
+                <br />
+                WITH SMARTRACKS{" "}
+                <br />
+                <span className="quiet-text">WIRELESS TIMING.</span>
+              </h2>
+              <p className="track-contact-intro">
+                Whether you are planning a mobile combine testing kit for a football academy or equipping
+                an Olympic athletics facility, our engineering team is here to assist.
+              </p>
+              <p className="contact-company">Advanced Sports Technologies LLP</p>
+              <address>
+                <a
+                  href="https://maps.google.com/?q=E-42+Okhla+Industrial+Area+Phase+II+New+Delhi+110020"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={19} />
+                  <span>
+                    {company.contact.address}
+                    <br />
+                    {company.contact.city}
+                  </span>
+                </a>
+                <a href={company.contact.phoneHref}>
+                  <Phone size={18} />
+                  <span>{company.contact.phone}</span>
+                </a>
+                <a href={`mailto:${company.contact.email}`}>
+                  <Mail size={18} />
+                  <span>{company.contact.email}</span>
+                </a>
+                <a
+                  href={company.contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={19} />
+                  <span>WhatsApp AST</span> <ArrowUpRight size={15} />
+                </a>
+              </address>
+            </div>
 
-                <div className="contact-details">
-                  <div>
-                    <MapPin size={22} className="contact-icon" />
-                    <div>
-                      <strong>Advanced Sport Technologies LLP</strong>
-                      <p>
-                        E-42, 3rd Floor, Okhla Industrial Area, Phase II
-                        <br />
-                        New Delhi – 110020, India
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <Phone size={22} className="contact-icon" />
-                    <div>
-                      <strong>Telephone</strong>
-                      <p>
-                        <a href={company.contact.phoneHref}>{company.contact.phone}</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <Mail size={22} className="contact-icon" />
-                    <div>
-                      <strong>Email Inquiries</strong>
-                      <p>
-                        <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="contact-form-panel">
-                <p className="eyebrow">DIRECT INQUIRY</p>
-                <h3>REQUEST SPECIFICATIONS & DEMO</h3>
-                <ContactForm />
-              </div>
+            <div className="contact-form-panel">
+              <h3>Have any queries?</h3>
+              <p>We’re here to help with your next sports facility.</p>
+              <ContactForm />
             </div>
           </div>
         </section>

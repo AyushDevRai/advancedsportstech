@@ -88,7 +88,7 @@ export const basketballProducts = [
   {
     id: "acrylic-basketball-court",
     name: "Cushioned Acrylic Court System",
-    image: "/Product Images/Basketball Court /FotoJet-2025-04-30T112651.784-1024x683.jpg",
+    image: "/courts/basketball-acrylic-court.jpg",
     imageAlt: "Outdoor multi-coat cushioned acrylic basketball court with crisp federation lines",
     type: "7-8 Layer · All-Weather Cushioned Acrylic",
     file: "BROCHURE-ACRYLIC-COURTS.pdf",
@@ -100,7 +100,7 @@ export const basketballProducts = [
   {
     id: "snapsports-modular-court",
     name: "Snapsports Modular Interlocking Court",
-    image: "/Product Images/Basketball Court /modular-sports-floor-for-basketball-3.jpg",
+    image: "/courts/basketball-modular-court.jpg",
     imageAlt: "Outdoor modular suspended polypropylene interlocking basketball tiles",
     type: "Modular Suspended · Polypropylene Tiles",
     file: "BROCHURE-SNAPSPORTS.pdf",

@@ -219,12 +219,16 @@
   .smartracks-page .smartracks-proof-card h3, .smartracks-page .smartracks-reason-card h3 { font-size: 30px; }
   .smartracks-benefits-layout { gap: 32px; }
   .smartracks-benefits-layout li p { font-size: 15px; }
-  .smartracks-products .section-heading { align-items: flex-start; flex-direction: column; }
-  .smartracks-product-jump { justify-content: flex-start; max-width: none; }
+  .smartracks-products .section-heading { align-items: center !important; text-align: center !important; }
+  .smartracks-product-jump { justify-content: center !important; margin-inline: auto !important; }
   .smartracks-product-visual { padding: 18px; }
   .smartracks-product-visual-top { font-size: 9px; letter-spacing: .025em; }
   .smartracks-product-image { aspect-ratio: 1.45; }
-  .smartracks-product-actions { gap: 20px; }
+  .smartracks-product-copy { text-align: center !important; }
+  .smartracks-page .smartracks-product-copy h3 { font-size: 28px !important; text-align: center !important; }
+  .smartracks-product-copy .eyebrow { justify-content: center !important; }
+  .smartracks-product-actions { justify-content: center !important; gap: 14px !important; }
+  .smartracks-product-actions .ast-button { width: 100% !important; max-width: 280px !important; justify-content: center !important; margin-inline: auto !important; }
   .smartracks-contact-intro { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -120,3 +120,113 @@
   .wood-product { grid-template-columns: 1fr; }
   .wood-product:nth-child(even) .wood-product-visual { order: initial; }
 }
+
+@media (max-width: 768px) {
+  .wooden-page {
+    overflow-x: hidden !important;
+  }
+  .wood-section-nav > div {
+    flex-direction: column !important;
+  }
+  .wood-section-nav a {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--wood-line) !important;
+    padding: 14px 16px !important;
+    font-size: 13px !important;
+  }
+  .wood-section-nav a:first-child {
+    padding-left: 16px !important;
+  }
+  .wood-section-nav a:last-child {
+    border-bottom: 0 !important;
+  }
+  .wood-overview-visual > p {
+    margin: 16px 0 0 !important;
+    max-width: 100% !important;
+  }
+  .wood-species-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 28px !important;
+  }
+  .wood-proof-grid,
+  .wood-reason-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .wood-proof-card,
+  .wood-reason-card {
+    padding: 24px 18px !important;
+  }
+  .wood-global-stats {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 20px !important;
+  }
+  .wood-global-stats > div + div {
+    border-left: 0 !important;
+    border-top: 1px solid var(--wood-line) !important;
+    padding-left: 0 !important;
+    padding-top: 16px !important;
+  }
+  .wood-global-stats strong {
+    font-size: 38px !important;
+  }
+  .wood-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 36px !important;
+    padding-top: 20px !important;
+    text-align: center !important;
+  }
+  .wood-timeline > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid #ffffff24 !important;
+    padding-inline: 0 !important;
+    padding-bottom: 18px !important;
+    text-align: center !important;
+  }
+  .wood-timeline strong {
+    display: block !important;
+    text-align: center !important;
+  }
+  .wood-timeline p {
+    text-align: center !important;
+  }
+  .wood-timeline > div:last-child {
+    border: 0 !important;
+  }
+  .wood-product {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding-block: 36px !important;
+  }
+  .wood-products .section-heading {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .wood-product-jump {
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+  .wood-product-copy {
+    text-align: center !important;
+  }
+  .wooden-page .wood-product-copy h3 {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+  .wood-product-copy .eyebrow {
+    justify-content: center !important;
+  }
+  .wood-product-actions {
+    justify-content: center !important;
+    gap: 14px !important;
+  }
+  .wood-product-actions .ast-button {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+}

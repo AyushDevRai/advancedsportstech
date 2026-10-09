@@ -451,68 +451,66 @@ export function SportsLightingView() {
             ================================================================== */}
         <section
           id="contact"
-          className="section-pad lighting-contact"
+          className="section-pad contact-section"
           data-nav-theme="light"
           aria-labelledby="lighting-contact-title"
         >
-          <div className="page-container">
-            <div className="contact-layout">
-              <div className="contact-info">
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  GET IN TOUCH
-                </p>
-                <h2 id="lighting-contact-title">
-                  ILLUMINATE YOUR ARENA
-                  <br />
-                  WITH GIGATERA
-                  <br />
-                  <span className="quiet-text">LED SPORTS LIGHTING.</span>
-                </h2>
-                <p className="lighting-contact-intro">
-                  Whether you are planning floodlighting for an Olympic hockey pitch, athletic track,
-                  FIFA football stadium, or multi-sport arena, our specialized engineering team is here to
-                  assist with turnkey calculations.
-                </p>
+          <div className="page-container contact-layout">
+            <div className="contact-details">
+              <p className="eyebrow">
+                <span className="red-rule" />
+                GET IN TOUCH
+              </p>
+              <h2 id="lighting-contact-title">
+                ILLUMINATE YOUR ARENA{" "}
+                <br />
+                WITH GIGATERA{" "}
+                <br />
+                <span className="quiet-text">LED SPORTS LIGHTING.</span>
+              </h2>
+              <p className="track-contact-intro">
+                Whether you are planning floodlighting for an Olympic hockey pitch, athletic track,
+                FIFA football stadium, or multi-sport arena, our specialized engineering team is here to
+                assist with turnkey calculations.
+              </p>
+              <p className="contact-company">Advanced Sports Technologies LLP</p>
+              <address>
+                <a
+                  href="https://maps.google.com/?q=E-42+Okhla+Industrial+Area+Phase+II+New+Delhi+110020"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={19} />
+                  <span>
+                    {company.contact.address}
+                    <br />
+                    {company.contact.city}
+                  </span>
+                </a>
+                <a href={company.contact.phoneHref}>
+                  <Phone size={18} />
+                  <span>{company.contact.phone}</span>
+                </a>
+                <a href={`mailto:${company.contact.email}`}>
+                  <Mail size={18} />
+                  <span>{company.contact.email}</span>
+                </a>
+                <a
+                  href={company.contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={19} />
+                  <span>WhatsApp AST</span>
+                  <ArrowUpRight size={15} />
+                </a>
+              </address>
+            </div>
 
-                <div className="contact-details">
-                  <div>
-                    <MapPin size={22} className="contact-icon" />
-                    <div>
-                      <strong>Advanced Sport Technologies LLP</strong>
-                      <p>
-                        E-42, 3rd Floor, Okhla Industrial Area, Phase II
-                        <br />
-                        New Delhi – 110020, India
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <Phone size={22} className="contact-icon" />
-                    <div>
-                      <strong>Telephone</strong>
-                      <p>
-                        <a href={company.contact.phoneHref}>{company.contact.phone}</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <Mail size={22} className="contact-icon" />
-                    <div>
-                      <strong>Email Inquiries</strong>
-                      <p>
-                        <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="contact-form-panel">
-                <p className="eyebrow">DIRECT INQUIRY</p>
-                <h3>REQUEST SPECIFICATIONS & LUX SIMULATION</h3>
-                <ContactForm />
-              </div>
+            <div className="contact-form-panel">
+              <p className="eyebrow">DIRECT INQUIRY</p>
+              <h3>REQUEST SPECIFICATIONS &amp; LUX SIMULATION</h3>
+              <ContactForm />
             </div>
           </div>
         </section>

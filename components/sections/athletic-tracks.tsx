@@ -47,7 +47,7 @@ export function AthleticTracks() {
 
         <section id="why-rekortan" className="section-pad track-reasons" data-nav-theme="light" aria-labelledby="track-reasons-title">
           <div className="page-container">
-            <div className="section-heading"><div><p className="eyebrow"><span className="red-rule" />PERFORMANCE. QUALITY. INNOVATION.</p><h2 id="track-reasons-title">WHY CHOOSE<br /><span className="quiet-text">REKORTAN?</span></h2></div><a href="#track-products" className="text-link">Find your track system <ArrowUpRight size={20} /></a></div>
+            <div className="section-heading"><div><p className="eyebrow"><span className="red-rule" />PERFORMANCE. QUALITY. INNOVATION.</p><h2 id="track-reasons-title">WHY CHOOSE{" "}<br /><span className="quiet-text">REKORTAN?</span></h2></div><a href="#track-products" className="text-link">Find your track system <ArrowUpRight size={20} /></a></div>
             <div className="track-proof-grid">
               <article className="track-proof-card track-certifications"><span className="track-card-number">01</span><h3>Most certified tracks<br />in the world</h3><div className="track-global-stats">{trackStatistics.map(stat => <div key={stat.value}><strong>{stat.value}</strong><p>{stat.text}</p></div>)}</div></article>
               <article className="track-proof-card track-diamond"><span className="track-card-number">02</span><h3>Chosen for 4<br />Diamond League venues</h3><ul>{diamondLeagueVenues.map(venue => <li key={venue}><span className="track-venue-marker" aria-hidden="true" />{venue}</li>)}</ul></article>
@@ -57,7 +57,7 @@ export function AthleticTracks() {
         </section>
 
         <section className="section-pad track-benefits" data-nav-theme="light" aria-labelledby="track-benefits-title"><div className="page-container">
-          <div className="track-benefits-layout"><div><p className="eyebrow"><span className="red-rule" />FROM RAW MATERIALS TO THE FINISH LINE</p><h2 id="track-benefits-title">WHY CHOOSE<br /><span className="quiet-text">OUR TRACKS?</span></h2></div><ol>{trackBenefits.map((benefit, index) => <li key={benefit}><span>{String(index + 1).padStart(2, "0")}</span><p>{benefit}</p></li>)}</ol></div>
+          <div className="track-benefits-layout"><div><p className="eyebrow"><span className="red-rule" />FROM RAW MATERIALS TO THE FINISH LINE</p><h2 id="track-benefits-title">WHY CHOOSE{" "}<br /><span className="quiet-text">OUR TRACKS?</span></h2></div><ol>{trackBenefits.map((benefit, index) => <li key={benefit}><span>{String(index + 1).padStart(2, "0")}</span><p>{benefit}</p></li>)}</ol></div>
           <figure className="track-smart-figure"><div className="track-smart-label"><span className="eyebrow">SMART TECHNOLOGY</span><span>Connecting surfaces to digital technology</span></div><Image src="/image/tracktrack-scaled-e1652685240732.jpg" alt="SmarTracks running track diagram showing timing gate positions and measured sprint distances" width={2470} height={666} sizes="(max-width: 900px) 100vw, 1800px" /><figcaption>SmarTracks — athlete timing on the track.</figcaption></figure>
         </div></section>
 

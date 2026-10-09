@@ -170,12 +170,16 @@
   .track-smart-figure { padding: 18px; margin-top: 32px; }
   .track-smart-label > span:last-child { font-size: 11px; }
   .track-smart-figure figcaption { font-size: 11px; }
-  .track-products .section-heading { align-items: flex-start; flex-direction: column; }
-  .track-product-jump { justify-content: flex-start; max-width: none; }
+  .track-products .section-heading { align-items: center !important; text-align: center !important; }
+  .track-product-jump { justify-content: center !important; margin-inline: auto !important; }
   .track-product-visual { padding: 18px; }
   .track-product-visual-top { font-size: 9px; letter-spacing: .025em; }
   .track-product-image { aspect-ratio: 1.45; }
-  .track-product-actions { gap: 20px; }
+  .track-product-copy { text-align: center !important; }
+  .athletic-page .track-product-copy h3 { font-size: 28px !important; text-align: center !important; }
+  .track-product-copy .eyebrow { justify-content: center !important; }
+  .track-product-actions { justify-content: center !important; gap: 14px !important; }
+  .track-product-actions .ast-button { width: 100% !important; max-width: 280px !important; justify-content: center !important; }
   .track-contact-intro { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {

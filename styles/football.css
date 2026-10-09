@@ -177,12 +177,16 @@
   .football-page .football-proof-card h3, .football-page .football-reason-card h3 { font-size: 30px; }
   .football-benefits-layout { gap: 32px; }
   .football-benefits-layout li p { font-size: 15px; }
-  .football-products .section-heading { align-items: flex-start; flex-direction: column; }
-  .football-product-jump { justify-content: flex-start; max-width: none; }
+  .football-products .section-heading { align-items: center !important; text-align: center !important; }
+  .football-product-jump { justify-content: center !important; margin-inline: auto !important; }
   .football-product-visual { padding: 18px; }
   .football-product-visual-top { font-size: 9px; letter-spacing: .025em; }
   .football-product-image { aspect-ratio: 1.45; }
-  .football-product-actions { gap: 20px; }
+  .football-product-copy { text-align: center !important; }
+  .football-page .football-product-copy h3 { font-size: 28px !important; text-align: center !important; }
+  .football-product-copy .eyebrow { justify-content: center !important; }
+  .football-product-actions { justify-content: center !important; gap: 14px !important; }
+  .football-product-actions .ast-button { width: 100% !important; max-width: 280px !important; justify-content: center !important; margin-inline: auto !important; }
   .football-contact-intro { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {

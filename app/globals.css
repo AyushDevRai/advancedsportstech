@@ -194,7 +194,8 @@
   .wood-hero-actions,
   .smartracks-hero-actions,
   .lighting-hero-actions,
-  .timing-hero-actions {
+  .timing-hero-actions,
+  .maintenance-hero-actions {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -212,7 +213,8 @@
   .wood-hero-actions .ast-button,
   .smartracks-hero-actions .ast-button,
   .lighting-hero-actions .ast-button,
-  .timing-hero-actions .ast-button {
+  .timing-hero-actions .ast-button,
+  .maintenance-hero-actions .ast-button {
     width: 100% !important;
     max-width: 290px !important;
     justify-content: center !important;
@@ -226,7 +228,8 @@
   .hockey-hero-foot,
   .track-hero-foot,
   .wood-hero-foot,
-  .smartracks-hero-foot {
+  .smartracks-hero-foot,
+  .maintenance-hero-foot {
     position: static !important;
     width: 100% !important;
     margin-top: 32px !important;
@@ -239,7 +242,8 @@
   .hockey-hero-foot > div,
   .track-hero-foot > div,
   .wood-hero-foot > div,
-  .smartracks-hero-foot > div {
+  .smartracks-hero-foot > div,
+  .maintenance-hero-foot > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;

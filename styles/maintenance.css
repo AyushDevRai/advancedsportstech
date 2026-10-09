@@ -939,6 +939,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .maintenance-machine-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+}
+
 @media (max-width: 640px) {
   .maintenance-page .maintenance-hero {
     min-height: auto;
@@ -982,6 +990,11 @@
   }
   .maintenance-machine-card {
     padding: 22px;
+  }
+  .maintenance-machine-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
   }
   .maintenance-steps-grid {
     grid-template-columns: 1fr;

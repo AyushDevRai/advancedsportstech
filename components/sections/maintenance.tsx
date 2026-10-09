@@ -7,6 +7,9 @@ import {
   Check,
   CheckCircle2,
   HelpCircle,
+  Mail,
+  MapPin,
+  MessageCircle,
   Phone,
   Play,
   RotateCcw,
@@ -84,14 +87,11 @@ export function MaintenanceView() {
             <p className="maintenance-hero-subtitle">{maintenanceHeroCopy.subtitle}</p>
 
             <div className="maintenance-hero-actions">
-              <a href="#maintenance-services" className="ast-button ast-button-red">
-                Explore Core Services <ArrowDown size={18} />
+              <a href="#contact" className="ast-button ast-button-red">
+                Schedule Surface Audit <ArrowUpRight size={18} />
               </a>
               <a href="#maintenance-videos" className="ast-button ast-button-glass">
                 <Play size={16} /> Watch Field Videos
-              </a>
-              <a href="#contact" className="ast-button ast-button-glass">
-                Schedule Surface Audit <ArrowUpRight size={18} />
               </a>
             </div>
           </div>
@@ -535,45 +535,66 @@ export function MaintenanceView() {
         {/* ==================================================================
             10. CONTACT / CONSULTATION
             ================================================================== */}
-        <section id="contact" className="home-contact" aria-labelledby="contact-title">
-          <div className="page-container">
-            <div className="home-contact-grid">
-              <div className="home-contact-copy">
-                <p className="eyebrow">
-                  <span className="red-rule" />
-                  SCHEDULE AN AUDIT
-                </p>
-                <h2 id="contact-title">
-                  LET&apos;S PRESERVE
-                  <br />
-                  <span>YOUR SPORTS INFRASTRUCTURE.</span>
-                </h2>
-                <p className="home-contact-lede">
-                  Whether you require an annual hydrodynamic high-pressure wash, seam repair, infill
-                  decompaction, or a full Polytan re-topping feasibility report, our certified engineers are
-                  ready to assist.
-                </p>
-                <div className="home-contact-meta">
-                  <div>
-                    <span className="home-contact-meta-label">DIRECT INQUIRIES</span>
-                    <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a>
-                  </div>
-                  <div>
-                    <span className="home-contact-meta-label">CENTRAL HELPLINE</span>
-                    <a href={company.contact.phoneHref}>{company.contact.phone}</a>
-                  </div>
-                  <div>
-                    <span className="home-contact-meta-label">HEADQUARTERS</span>
-                    <address>
-                      {company.contact.address}, {company.contact.city}
-                    </address>
-                  </div>
-                </div>
-              </div>
+        <section
+          id="contact"
+          className="section-pad contact-section"
+          data-nav-theme="light"
+          aria-labelledby="contact-title"
+        >
+          <div className="page-container contact-layout">
+            <div className="contact-details">
+              <p className="eyebrow">
+                <span className="red-rule" />
+                SCHEDULE AN AUDIT
+              </p>
+              <h2 id="contact-title">
+                LET&apos;S PRESERVE{" "}
+                <br />
+                <span className="quiet-text">YOUR SPORTS INFRASTRUCTURE.</span>
+              </h2>
+              <p className="track-contact-intro">
+                Whether you require an annual hydrodynamic high-pressure wash, seam repair, infill
+                decompaction, or a full Polytan re-topping feasibility report, our certified engineers are
+                ready to assist.
+              </p>
+              <p className="contact-company">Advanced Sports Technologies LLP</p>
+              <address>
+                <a
+                  href="https://maps.google.com/?q=E-42+Okhla+Industrial+Area+Phase+II+New+Delhi+110020"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={19} />
+                  <span>
+                    {company.contact.address}
+                    <br />
+                    {company.contact.city}
+                  </span>
+                </a>
+                <a href={company.contact.phoneHref}>
+                  <Phone size={18} />
+                  <span>{company.contact.phone}</span>
+                </a>
+                <a href={`mailto:${company.contact.email}`}>
+                  <Mail size={18} />
+                  <span>{company.contact.email}</span>
+                </a>
+                <a
+                  href={company.contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={19} />
+                  <span>WhatsApp AST</span>
+                  <ArrowUpRight size={15} />
+                </a>
+              </address>
+            </div>
 
-              <div className="home-contact-form-col">
-                <ContactForm />
-              </div>
+            <div className="contact-form-panel">
+              <h3>Have any queries?</h3>
+              <p>We’re here to help with your next sports facility.</p>
+              <ContactForm />
             </div>
           </div>
         </section>

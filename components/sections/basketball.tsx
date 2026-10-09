@@ -95,7 +95,7 @@ export function Basketball() {
             <div className="bb-overview-visual">
               <div className="bb-visual-image">
                 <Image
-                  src="/Product Images/Basketball Court /CAD DESIGN.jpg"
+                  src="/courts/basketball-overview-cad.jpg"
                   alt="Precision technical engineering and subfloor architecture for basketball courts"
                   fill
                   sizes="(max-width: 900px) 100vw, 40vw"
@@ -187,7 +187,7 @@ export function Basketball() {
                   PERFORMANCE. TRACTION. DURABILITY.
                 </p>
                 <h2 id="bb-reasons-title">
-                  WHY CHOOSE
+                  WHY CHOOSE{" "}
                   <br />
                   <span className="quiet-text">AST BASKETBALL COURTS?</span>
                 </h2>

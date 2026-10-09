@@ -231,7 +231,7 @@ export function WoodenFlooring() {
                   PERFORMANCE. TIMBER. PRECISION.
                 </p>
                 <h2 id="wood-reasons-title">
-                  WHY CHOOSE
+                  WHY CHOOSE{" "}
                   <br />
                   <span className="quiet-text">AST WOODEN FLOORS?</span>
                 </h2>
@@ -310,7 +310,7 @@ export function WoodenFlooring() {
                   CRAFTED FOR PEAK ATHLETIC OUTPUT
                 </p>
                 <h2 id="wood-benefits-title">
-                  WHY ARENAS
+                  WHY ARENAS{" "}
                   <br />
                   <span className="quiet-text">TRUST OUR TIMBER.</span>
                 </h2>

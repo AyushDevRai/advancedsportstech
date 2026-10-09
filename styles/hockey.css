@@ -177,12 +177,16 @@
   .hockey-page .hockey-proof-card h3, .hockey-page .hockey-reason-card h3 { font-size: 30px; }
   .hockey-benefits-layout { gap: 32px; }
   .hockey-benefits-layout li p { font-size: 15px; }
-  .hockey-products .section-heading { align-items: flex-start; flex-direction: column; }
-  .hockey-product-jump { justify-content: flex-start; max-width: none; }
+  .hockey-products .section-heading { align-items: center !important; text-align: center !important; }
+  .hockey-product-jump { justify-content: center !important; margin-inline: auto !important; }
   .hockey-product-visual { padding: 18px; }
   .hockey-product-visual-top { font-size: 9px; letter-spacing: .025em; }
   .hockey-product-image { aspect-ratio: 1.45; }
-  .hockey-product-actions { gap: 20px; }
+  .hockey-product-copy { text-align: center !important; }
+  .hockey-page .hockey-product-copy h3 { font-size: 28px !important; text-align: center !important; }
+  .hockey-product-copy .eyebrow { justify-content: center !important; }
+  .hockey-product-actions { justify-content: center !important; gap: 14px !important; }
+  .hockey-product-actions .ast-button { width: 100% !important; max-width: 280px !important; justify-content: center !important; margin-inline: auto !important; }
   .hockey-contact-intro { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
