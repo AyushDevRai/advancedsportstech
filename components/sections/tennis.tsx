@@ -95,8 +95,8 @@ export function Tennis() {
             <div className="tennis-overview-visual">
               <div className="tennis-visual-image">
                 <Image
-                  src="/Product Images/Tennis Court /tenniscourt1.png"
-                  alt="Engineering CAD plan and layer cross-section of championship tennis court"
+                  src="/courts/tennis-overview-court.jpg"
+                  alt="Championship standard acrylic tennis court facility"
                   fill
                   sizes="(max-width: 900px) 100vw, 40vw"
                 />

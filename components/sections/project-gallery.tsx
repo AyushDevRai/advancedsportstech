@@ -76,106 +76,150 @@ export function ProjectGallery() {
         {/* View Mode: Photos */}
         {mediaType === "photos" && (
           <>
-            <div className="project-toolbar">
-              <div className="project-filters" role="group" aria-label="Filter projects">
-                {filters.map((item) => (
+            {/* Desktop View: Full filters, 3D Circular Gallery & Grid */}
+            <div className="gallery-desktop-showcase">
+              <div className="project-toolbar">
+                <div className="project-filters" role="group" aria-label="Filter projects">
+                  {filters.map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => setFilter(item)}
+                      type="button"
+                      aria-pressed={filter === item}
+                      className={filter === item ? "is-selected" : ""}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+                <div className="project-view-controls" role="group" aria-label="Project display">
                   <button
-                    key={item}
-                    onClick={() => setFilter(item)}
                     type="button"
-                    aria-pressed={filter === item}
-                    className={filter === item ? "is-selected" : ""}
+                    aria-label="3D Circular Gallery view"
+                    aria-pressed={view === "circular"}
+                    onClick={() => setView("circular")}
                   >
-                    {item}
+                    <Rotate3D size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Grid view"
+                    aria-pressed={view === "grid"}
+                    onClick={() => setView("grid")}
+                  >
+                    <Grid2X2 size={18} />
+                  </button>
+                </div>
+              </div>
+
+              {view === "circular" && (
+                <div
+                  className="project-circular-wrap"
+                  style={{ height: "640px", width: "100%", position: "relative", margin: "25px 0 15px", overflow: "hidden" }}
+                >
+                  <CircularGallery
+                    key={filter}
+                    items={visible.map((item) => ({ image: item.image, text: item.name }))}
+                    bend={2}
+                    textColor="#ffffff"
+                    borderRadius={0.06}
+                    scrollSpeed={2}
+                    scrollEase={0.04}
+                    onItemSelect={(index) => {
+                      const target = visible[index];
+                      if (target) selectProject(target.slug);
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "12px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      pointerEvents: "none",
+                      fontSize: "11px",
+                      letterSpacing: "0.1em",
+                      color: "#a9b8ad",
+                      textTransform: "uppercase",
+                      background: "rgba(10, 16, 13, 0.65)",
+                      padding: "6px 16px",
+                      borderRadius: "20px",
+                      backdropFilter: "blur(8px)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    Drag to rotate &bull; Click to view details
+                  </div>
+                </div>
+              )}
+
+              <div className={`project-grid ${view === "circular" ? "project-grid-mobile" : ""}`}>
+                {visible.map((item, index) => (
+                  <button
+                    type="button"
+                    className="project-card"
+                    key={item.slug}
+                    onClick={() => selectProject(item.slug)}
+                  >
+                    <div className="project-card-image">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"
+                      />
+                      <span className="project-card-zoom">
+                        <ArrowUpRight size={21} />
+                      </span>
+                    </div>
+                    <div className="project-card-meta">
+                      <span className="project-card-number">0{index + 1}</span>
+                      <h3>{item.name}</h3>
+                    </div>
                   </button>
                 ))}
               </div>
-              <div className="project-view-controls" role="group" aria-label="Project display">
-                <button
-                  type="button"
-                  aria-label="3D Circular Gallery view"
-                  aria-pressed={view === "circular"}
-                  onClick={() => setView("circular")}
-                >
-                  <Rotate3D size={18} />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Grid view"
-                  aria-pressed={view === "grid"}
-                  onClick={() => setView("grid")}
-                >
-                  <Grid2X2 size={18} />
-                </button>
-              </div>
             </div>
 
-            {view === "circular" && (
-              <div
-                className="project-circular-wrap"
-                style={{ height: "640px", width: "100%", position: "relative", margin: "25px 0 15px", overflow: "hidden" }}
-              >
-                <CircularGallery
-                  key={filter}
-                  items={visible.map((item) => ({ image: item.image, text: item.name }))}
-                  bend={2}
-                  textColor="#ffffff"
-                  borderRadius={0.06}
-                  scrollSpeed={2}
-                  scrollEase={0.04}
-                  onItemSelect={(index) => {
-                    const target = visible[index];
-                    if (target) selectProject(target.slug);
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "12px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    pointerEvents: "none",
-                    fontSize: "11px",
-                    letterSpacing: "0.1em",
-                    color: "#a9b8ad",
-                    textTransform: "uppercase",
-                    background: "rgba(10, 16, 13, 0.65)",
-                    padding: "6px 16px",
-                    borderRadius: "20px",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                >
-                  Drag to rotate &bull; Click to view details
-                </div>
+            {/* Mobile View: No heavy animated 3D components, showing latest 5 projects with View All button */}
+            <div className="gallery-mobile-showcase">
+              <div className="gallery-mobile-list">
+                {gallery.slice(0, 5).map((item, index) => (
+                  <button
+                    type="button"
+                    className="gallery-mobile-card"
+                    key={item.slug}
+                    onClick={() => selectProject(item.slug)}
+                  >
+                    <div className="gallery-mobile-thumb">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 400px"
+                      />
+                      <span className="gallery-mobile-badge">{item.category}</span>
+                      <span className="gallery-mobile-zoom">
+                        <ArrowUpRight size={17} />
+                      </span>
+                    </div>
+                    <div className="gallery-mobile-info">
+                      <div className="gallery-mobile-title-wrap">
+                        <span className="gallery-mobile-index">0{index + 1}</span>
+                        <h3 className="gallery-mobile-title">{item.name}</h3>
+                      </div>
+                      <span className="gallery-mobile-loc">{item.location}</span>
+                    </div>
+                  </button>
+                ))}
               </div>
-            )}
 
-            <div className={`project-grid ${view === "circular" ? "project-grid-mobile" : ""}`}>
-              {visible.map((item, index) => (
-                <button
-                  type="button"
-                  className="project-card"
-                  key={item.slug}
-                  onClick={() => selectProject(item.slug)}
-                >
-                  <div className="project-card-image">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"
-                    />
-                    <span className="project-card-zoom">
-                      <ArrowUpRight size={21} />
-                    </span>
-                  </div>
-                  <div className="project-card-meta">
-                    <span className="project-card-number">0{index + 1}</span>
-                    <h3>{item.name}</h3>
-                  </div>
-                </button>
-              ))}
+              <div className="gallery-mobile-actions">
+                <a href="/projects" className="ast-button ast-button-red gallery-mobile-viewall-btn">
+                  <span>View All Projects</span>
+                  <ArrowUpRight size={17} />
+                </a>
+              </div>
             </div>
           </>
         )}

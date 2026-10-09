@@ -1783,6 +1783,32 @@
     min-height: auto;
   }
 
+  .projects-counter-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .counter-card {
+    padding: 16px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .animated-counter-value {
+    font-size: clamp(30px, 8vw, 40px) !important;
+    line-height: 1 !important;
+  }
+
+  .counter-title {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+
+  .counter-sublabel {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin-top: 3px !important;
+  }
+
   .map-section-heading,
   .showcase-section-heading {
     flex-direction: column;
@@ -1793,6 +1819,28 @@
   .india-map-controls-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+  }
+
+  .india-map-category-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    gap: 6px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .india-map-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .map-cat-pill {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
 
   .map-search-input {
@@ -1801,22 +1849,40 @@
 
   .india-map-secondary-controls {
     flex-direction: column;
+    gap: 8px;
   }
 
   .india-map-canvas-container {
-    min-height: 500px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 14px !important;
   }
 
   .india-svg-viewport {
-    height: 500px;
+    height: 340px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .india-svg-map {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 340px !important;
   }
 
   .map-tooltip-overlay-card {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    margin-top: 16px;
+    position: relative !important;
+    inset: auto !important;
+    width: calc(100% - 20px) !important;
+    margin: 12px auto 0 !important;
   }
 
   .map-legend-overlay {
@@ -1855,18 +1921,52 @@
 
 @media (max-width: 480px) {
   .projects-counter-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 
   .counter-card {
-    padding: 24px 20px;
+    padding: 14px 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .counter-card-header {
+    margin-bottom: 8px !important;
+  }
+
+  .card-index {
+    font-size: 10px !important;
+  }
+
+  .category-tag {
+    font-size: 9px !important;
+    padding: 2px 6px !important;
   }
 
   .animated-counter-value {
-    font-size: 54px;
+    font-size: clamp(26px, 7vw, 34px) !important;
+  }
+
+  .counter-title {
+    font-size: 12px !important;
+  }
+
+  .counter-sublabel {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
   }
 
   .india-map-section-wrapper {
-    padding: 14px;
+    padding: 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .india-map-canvas-container {
+    min-height: 360px !important;
+    height: 380px !important;
+  }
+
+  .india-svg-viewport {
+    height: 380px !important;
   }
 }

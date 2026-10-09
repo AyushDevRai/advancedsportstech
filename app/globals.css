@@ -40,3 +40,215 @@
   }
 }
 
+/* Mobile Mode Universal Section Headings & Text Centering */
+@media (max-width: 768px) {
+  .section-heading,
+  .sports-section .section-heading,
+  .products-showcase-section .section-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 28px !important;
+  }
+  .section-heading > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .section-heading h2,
+  .section-heading h1 {
+    text-align: center !important;
+  }
+  .section-heading > p,
+  .section-heading .text-muted-foreground {
+    text-align: center !important;
+    margin-inline: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Universal Product & Subpage Mobile Hero Centering & Alignment */
+@media (max-width: 768px) {
+  .tennis-page .tennis-hero,
+  .badminton-page .bm-hero,
+  .basketball-page .bb-hero,
+  .football-page .football-hero,
+  .hockey-page .hockey-hero,
+  .athletic-page .track-hero,
+  .wooden-page .wood-hero,
+  .smartracks-page .smartracks-hero,
+  .lighting-page .lighting-hero,
+  .maintenance-page .maintenance-hero,
+  .timing-page .timing-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: auto !important;
+    padding-top: clamp(100px, 15svh, 130px) !important;
+    padding-bottom: 40px !important;
+    width: 100% !important;
+  }
+
+  .tennis-hero-content,
+  .bm-hero-content,
+  .bb-hero-content,
+  .football-hero-content,
+  .hockey-hero-content,
+  .track-hero-content,
+  .wood-hero-content,
+  .smartracks-hero-content,
+  .lighting-hero-content,
+  .timing-hero-content,
+  .maintenance-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .tennis-breadcrumb,
+  .bm-breadcrumb,
+  .bb-breadcrumb,
+  .football-breadcrumb,
+  .hockey-breadcrumb,
+  .track-breadcrumb,
+  .wood-breadcrumb,
+  .smartracks-breadcrumb,
+  .lighting-breadcrumb,
+  .timing-breadcrumb {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .tennis-hero .eyebrow,
+  .bm-hero .eyebrow,
+  .bb-hero .eyebrow,
+  .football-hero .eyebrow,
+  .hockey-hero .eyebrow,
+  .track-hero .eyebrow,
+  .wood-hero .eyebrow,
+  .smartracks-hero .eyebrow,
+  .lighting-hero .eyebrow,
+  .timing-hero .eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+  }
+
+  .tennis-page .tennis-hero h1,
+  .badminton-page .bm-hero h1,
+  .basketball-page .bb-hero h1,
+  .football-page .football-hero h1,
+  .hockey-page .hockey-hero h1,
+  .athletic-page .track-hero h1,
+  .wooden-page .wood-hero h1,
+  .smartracks-page .smartracks-hero h1,
+  .lighting-page .lighting-hero h1,
+  .timing-page .timing-hero h1,
+  .maintenance-page .maintenance-hero h1 {
+    font-size: clamp(34px, 10vw, 52px) !important;
+    line-height: 1.02 !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .tennis-hero-subtitle,
+  .bm-hero-subtitle,
+  .bb-hero-subtitle,
+  .football-hero-subtitle,
+  .hockey-hero-subtitle,
+  .track-hero-subtitle,
+  .wood-hero-subtitle,
+  .smartracks-hero-subtitle,
+  .lighting-hero-subtitle,
+  .timing-hero-subtitle {
+    text-align: center !important;
+    font-size: 15px !important;
+    margin: 16px auto 24px !important;
+    max-width: 90% !important;
+  }
+
+  .tennis-hero-actions,
+  .bm-hero-actions,
+  .bb-hero-actions,
+  .football-hero-actions,
+  .hockey-hero-actions,
+  .track-hero-actions,
+  .wood-hero-actions,
+  .smartracks-hero-actions,
+  .lighting-hero-actions,
+  .timing-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .tennis-hero-actions .ast-button,
+  .bm-hero-actions .ast-button,
+  .bb-hero-actions .ast-button,
+  .football-hero-actions .ast-button,
+  .hockey-hero-actions .ast-button,
+  .track-hero-actions .ast-button,
+  .wood-hero-actions .ast-button,
+  .smartracks-hero-actions .ast-button,
+  .lighting-hero-actions .ast-button,
+  .timing-hero-actions .ast-button {
+    width: 100% !important;
+    max-width: 290px !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+
+  .tennis-hero-foot,
+  .bm-hero-foot,
+  .bb-hero-foot,
+  .football-hero-foot,
+  .hockey-hero-foot,
+  .track-hero-foot,
+  .wood-hero-foot,
+  .smartracks-hero-foot {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 32px !important;
+  }
+
+  .tennis-hero-foot > div,
+  .bm-hero-foot > div,
+  .bb-hero-foot > div,
+  .football-hero-foot > div,
+  .hockey-hero-foot > div,
+  .track-hero-foot > div,
+  .wood-hero-foot > div,
+  .smartracks-hero-foot > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding-top: 16px !important;
+    font-size: 10px !important;
+    width: 100% !important;
+  }
+}
+

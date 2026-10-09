@@ -117,15 +117,15 @@ export function Homepage() {
           aria-label="AST Installation Milestones"
         >
           <div className="page-container">
-            <div className="stats-section-header" style={{ marginBottom: "34px" }}>
-              <span className="section-eyebrow">
+            <div className="stats-section-header stats-section-header-left" style={{ marginBottom: "34px", textAlign: "left", marginLeft: 0, marginRight: "auto" }}>
+              <span className="section-eyebrow" style={{ justifyContent: "flex-start" }}>
                 <span className="red-rule" />
                 PROVEN TRACK RECORD
               </span>
-              <h2 className="stats-section-title">
+              <h2 className="stats-section-title" style={{ textAlign: "left" }}>
                 INSTALLATION MILESTONES <span className="quiet-text">BY SPORT</span>
               </h2>
-              <p className="stats-section-desc">
+              <p className="stats-section-desc" style={{ textAlign: "left", marginLeft: 0 }}>
                 From Olympic training centers to World Cup match venues, our track record is backed
                 by independent global certifications.
               </p>

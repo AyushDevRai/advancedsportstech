@@ -5,6 +5,15 @@ import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/content/ast";
 import { AuroraText } from "@/components/ui/aurora-text";
+import { TypewriterAurora } from "@/components/ui/typewriter-aurora";
+
+const rotatingHeroHeadlines = [
+  "ELITE SURFACES.",
+  "PERFORMING TURFS.",
+  "OLYMPIC TRACKS.",
+  "CERTIFIED COURTS.",
+  "WORLD-CLASS ARENAS.",
+];
 
 type Connection = { saveData?: boolean; effectiveType?: string; addEventListener?: (name: string, listener: () => void) => void; removeEventListener?: (name: string, listener: () => void) => void };
 
@@ -87,25 +96,29 @@ export function VideoHero() {
       <div className="page-container hero-content">
         <p className="eyebrow hero-eyebrow"><span className="status-dot" />{company.eyebrow}</p>
         <h1 id="hero-title" className="hero-main-heading">
-          <span className="hero-heading-top">
-            <AuroraText className="hero-aurora" colors={["#FFFFFF", "#F0F5F1", "#FFFFFF", "#FFEFEA"]} speed={1.2}>
-              ENGINEERING
-            </AuroraText>
+          <span className="hero-heading-top hero-bright-white">
+            ENGINEERING
           </span>
-          <br />
           <span className="hero-heading-bottom">
-            <AuroraText className="hero-aurora hero-aurora-excellence" colors={["#FF6B68", "#E11D48", "#FFA392", "#FF2E44"]} speed={1.2}>
-              ELITE SURFACES.
-            </AuroraText>
+            <TypewriterAurora
+              words={rotatingHeroHeadlines}
+              className="hero-aurora hero-aurora-excellence"
+              colors={["#FF2D55", "#FF3B5C", "#FF1744", "#FF4566", "#FF2D55"]}
+            />
           </span>
         </h1>
-        <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br /><span>Exclusive partner of Polytan/SportGroup Germany, delivering world-class sports surfaces with proven quality and innovation.</span></p>
+        <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br className="hero-copy-break" /><span>Exclusive partner of Polytan/SportGroup Germany, delivering world-class sports surfaces with proven quality and innovation.</span></p>
         <div className="hero-bottom-content">
           <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>
       </div>
-      <div className="page-container hero-foot">
-        {source && <button type="button" onClick={toggleVideo} className="video-control" aria-label={playing ? "Pause background video" : "Play background video"}>{playing ? <Pause size={16} /> : <Play size={16} />}<span>{playing ? "Pause film" : "Play film"}</span></button>}
+      <div className="hero-foot">
+        <div className="page-container">
+          <div className="hero-foot-inner">
+            <span>EXCLUSIVE PARTNER OF POLYTAN / SPORTGROUP GERMANY</span>
+            <span>SYNTHETIC TURF &bull; ATHLETIC TRACKS &bull; ACRYLIC COURTS &bull; SPORTS LIGHTING</span>
+          </div>
+        </div>
       </div>
     </section>
   );

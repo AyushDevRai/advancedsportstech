@@ -53,9 +53,10 @@
 
 /* COMPARISON TABLE */
 .bm-comparison-section { padding-block: 80px; }
-.bm-comparison-wrap { overflow-x: auto; margin-top: 40px; border: 1px solid var(--bm-line); border-radius: 10px; background: var(--home-light); }
+.bm-comparison-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 40px; border: 1px solid var(--bm-line); border-radius: 10px; background: var(--home-light); }
 .dark .bm-comparison-wrap { background: #151d18; }
-.bm-comparison-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+.bm-table-scroll-hint { display: none; }
+.bm-comparison-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; text-align: left; }
 .bm-comparison-table th, .bm-comparison-table td { padding: 18px 24px; border-bottom: 1px solid var(--bm-line); }
 .bm-comparison-table th { background: var(--bm-panel); font-family: var(--font-display), sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
 .bm-comparison-table th:first-child { width: 28%; }
@@ -138,4 +139,353 @@
   .bm-timeline > div:last-child { border: 0; }
   .bm-product { grid-template-columns: 1fr; }
   .bm-product:nth-child(even) .bm-product-visual { order: initial; }
+}
+
+@media (max-width: 768px) {
+  .badminton-page .bm-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: auto !important;
+    padding-top: clamp(100px, 15svh, 130px) !important;
+    padding-bottom: 40px !important;
+    width: 100% !important;
+  }
+  .bm-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .bm-breadcrumb {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .bm-hero .eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+  }
+  .badminton-page .bm-hero h1 {
+    font-size: clamp(34px, 10vw, 52px) !important;
+    line-height: 1.02 !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .bm-hero-subtitle {
+    text-align: center !important;
+    font-size: 15px !important;
+    margin: 16px auto 24px !important;
+    max-width: 90% !important;
+  }
+  .bm-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .bm-hero-actions .ast-button {
+    width: 100% !important;
+    max-width: 290px !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+  .bm-hero-foot {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 32px !important;
+  }
+  .bm-hero-foot > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    font-size: 10px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding-top: 16px !important;
+    width: 100% !important;
+  }
+  .bm-section-nav > div {
+    flex-direction: column !important;
+  }
+  .bm-section-nav a {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--bm-line) !important;
+    padding: 14px 16px !important;
+    font-size: 13px !important;
+  }
+  .bm-overview-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .bm-overview-copy {
+    text-align: center !important;
+  }
+  .bm-overview-copy .eyebrow {
+    justify-content: center !important;
+  }
+  .badminton-page .bm-overview-copy h2 {
+    font-size: clamp(28px, 8vw, 38px) !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+  .bm-visual-image {
+    aspect-ratio: 16/10 !important;
+    max-height: 280px !important;
+  }
+  .bm-overview-visual > p {
+    position: static !important;
+    margin: 16px auto 0 !important;
+    max-width: 100% !important;
+    font-size: 15px !important;
+    padding: 16px 20px !important;
+    text-align: center !important;
+  }
+  .bm-visual-line {
+    margin: 20px auto 0 !important;
+  }
+
+  /* Two Types Spotlight (Dual Flooring System Portfolio) */
+  .bm-types-grid {
+    gap: 22px !important;
+    margin-top: 28px !important;
+  }
+  .bm-type-card {
+    border-radius: 10px !important;
+  }
+  .bm-type-image {
+    aspect-ratio: 16/10 !important;
+  }
+  .bm-type-copy {
+    padding: 22px 18px !important;
+    text-align: center !important;
+  }
+  .badminton-page .bm-type-copy h3 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+  }
+  .bm-type-copy > p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    margin-bottom: 18px !important;
+  }
+  .bm-type-highlights {
+    text-align: left !important;
+    margin-bottom: 22px !important;
+  }
+  .bm-type-cta {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding-top: 14px !important;
+  }
+  .bm-type-cta .ast-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Comparison Matrix Section */
+  .bm-comparison-section {
+    padding-block: 44px !important;
+  }
+  .bm-comparison-wrap {
+    margin-top: 22px !important;
+    border-radius: 8px !important;
+  }
+  .bm-table-scroll-hint {
+    display: block !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: var(--home-red, #dc2626) !important;
+    padding: 9px 14px !important;
+    background: rgba(220, 38, 38, 0.08) !important;
+    border-bottom: 1px solid var(--bm-line) !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+  .bm-comparison-table {
+    min-width: 580px !important;
+  }
+  .bm-comparison-table th,
+  .bm-comparison-table td {
+    padding: 12px 14px !important;
+    font-size: 12.5px !important;
+  }
+  .bm-comparison-table th {
+    font-size: 13px !important;
+  }
+
+  /* Certified for International Play & Dual Flooring Proof Cards */
+  .bm-proof-grid,
+  .bm-reason-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .bm-proof-card,
+  .bm-reason-card {
+    padding: 24px 18px !important;
+    text-align: center !important;
+  }
+  .badminton-page .bm-proof-card h3,
+  .badminton-page .bm-reason-card h3 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    word-break: normal !important;
+  }
+  .bm-proof-card p,
+  .bm-reason-card p,
+  .bm-reason-card li {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+  }
+  .bm-card-number {
+    margin-inline: auto !important;
+    margin-bottom: 16px !important;
+  }
+  .bm-global-stats {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 20px !important;
+  }
+  .bm-global-stats > div + div {
+    border-left: 0 !important;
+    border-top: 1px solid var(--bm-line) !important;
+    padding-left: 0 !important;
+    padding-top: 14px !important;
+  }
+  .bm-global-stats strong {
+    font-size: 38px !important;
+  }
+  .bm-global-stats p {
+    font-size: 13px !important;
+    margin-top: 6px !important;
+    line-height: 1.4 !important;
+  }
+  .bm-reason-card ul {
+    text-align: left !important;
+  }
+  .bm-accent-stat {
+    font-size: 64px !important;
+  }
+
+  /* Heritage Section */
+  .bm-heritage-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: center !important;
+  }
+  .bm-heritage-layout .eyebrow {
+    justify-content: center !important;
+  }
+  .badminton-page .bm-heritage h2 {
+    font-size: clamp(28px, 8.5vw, 40px) !important;
+    text-align: center !important;
+  }
+  .bm-heritage-copy {
+    text-align: center !important;
+    font-size: 14.5px !important;
+  }
+  .bm-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 36px !important;
+    padding-top: 24px !important;
+    text-align: center !important;
+  }
+  .bm-timeline > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid #ffffff24 !important;
+    padding-inline: 0 !important;
+    padding-bottom: 20px !important;
+  }
+  .bm-timeline strong {
+    font-size: 42px !important;
+  }
+
+  /* Benefits */
+  .bm-benefits-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+  .bm-benefits-layout .eyebrow {
+    justify-content: center !important;
+  }
+  .badminton-page .bm-benefits h2 {
+    font-size: clamp(28px, 8vw, 38px) !important;
+    text-align: center !important;
+  }
+  .bm-benefits-layout ol {
+    text-align: left !important;
+  }
+  .bm-benefits-layout li p {
+    font-size: 15px !important;
+  }
+
+  /* Product Jump & Products List */
+  .bm-product-jump {
+    justify-content: center !important;
+    max-width: 100% !important;
+    margin-top: 14px !important;
+  }
+  .bm-product-jump a {
+    font-size: 11px !important;
+    padding: 8px 10px !important;
+  }
+  .bm-product {
+    grid-template-columns: 1fr !important;
+    padding-block: 40px !important;
+    gap: 28px !important;
+    text-align: center !important;
+  }
+  .bm-product-visual {
+    padding: 16px !important;
+  }
+  .bm-product-visual-top {
+    font-size: 9px !important;
+  }
+  .bm-product-image {
+    aspect-ratio: 16/10 !important;
+    margin: 16px 0 14px !important;
+  }
+  .bm-product-copy {
+    text-align: center !important;
+  }
+  .badminton-page .bm-product-copy h3 {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+  .bm-product-copy .eyebrow {
+    justify-content: center !important;
+  }
+  .bm-product-actions {
+    justify-content: center !important;
+    gap: 14px !important;
+  }
+  .bm-product-actions .ast-button {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+  }
 }

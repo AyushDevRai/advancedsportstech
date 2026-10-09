@@ -88,7 +88,7 @@ export const tennisProducts = [
   {
     id: "synthetic-clay-court",
     name: "All-Weather Synthetic Clay Court",
-    image: "/Product Images/Tennis Court /claycourt.jpg",
+    image: "/courts/tennis-clay-court.jpg",
     imageAlt: "Synthetic red clay tennis court with authentic sliding texture and net",
     type: "Synthetic Clay · Low Maintenance Slide System",
     file: "BROCHURE-CLAY-COURTS.pdf",
@@ -100,7 +100,7 @@ export const tennisProducts = [
   {
     id: "synthetic-grass-court",
     name: "Sand-Filled Synthetic Grass Tennis Turf",
-    image: "/Product Images/Tennis Court /tennis-rackets-on-grass-2024-10-13-21-34-18-utc-2.jpg",
+    image: "/courts/tennis-grass-court.jpg",
     imageAlt: "Synthetic grass tennis turf surface with rackets and balls",
     type: "Short Pile PE Turf · Fast Lawn Tennis System",
     file: "BROCHURE-SYNTHETIC-TURF.pdf",

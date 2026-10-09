@@ -225,7 +225,7 @@ export function Badminton() {
                   TECHNICAL COMPARISON
                 </p>
                 <h2 id="comparison-title">
-                  ACRYLIC VS WOODEN
+                  ACRYLIC VS WOODEN{" "}
                   <br />
                   <span className="quiet-text">SPECIFICATION MATRIX.</span>
                 </h2>
@@ -236,6 +236,9 @@ export function Badminton() {
             </div>
 
             <div className="bm-comparison-wrap">
+              <div className="bm-table-scroll-hint" aria-hidden="true">
+                <span>← Swipe sideways to compare full specifications →</span>
+              </div>
               <table className="bm-comparison-table" aria-label="Acrylic versus Wooden Badminton Flooring Comparison">
                 <thead>
                   <tr>

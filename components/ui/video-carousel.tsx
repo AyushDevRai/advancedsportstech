@@ -37,8 +37,26 @@ export function VideoCarousel({
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const currentVideo = videos[currentIndex];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+  };
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % videos.length);
@@ -201,7 +219,11 @@ export function VideoCarousel({
         </button>
 
         {/* Video Player Card */}
-        <div className="video-player-card">
+        <div
+          className="video-player-card"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="video-screen-container" onClick={togglePlay}>
             <video
               ref={videoRef}
