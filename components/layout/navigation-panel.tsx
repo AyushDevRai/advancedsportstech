@@ -237,9 +237,11 @@ function ProjectsPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: 
   );
 }
 
-function CompanyPanel({ cards }: { cards: NavigationCard[] }) {
+function CompanyPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: () => void }) {
   const aboutCard = cards.find(c => c.name === "About Us") || cards[0];
-  const contactCard = cards.find(c => c.name === "Contact Us") || cards[1];
+  const listItems = cards.filter(c => c.name !== "Contact Us" && c.name !== "About Us");
+  const contactCard = cards.find(c => c.name === "Contact Us");
+
   return (
     <motion.div
       variants={megaContainerVariants}
@@ -250,22 +252,46 @@ function CompanyPanel({ cards }: { cards: NavigationCard[] }) {
       <motion.div variants={megaCardVariants} className="mega-company-about">
         <span className="mega-kicker">Advanced Sports Technologies</span>
         <p>{aboutParagraphs[0]}</p>
+        <div className="mega-company-links">
+          <NavLink
+            href="/about"
+            onClick={onClose}
+            className="ast-button ast-button-red mega-show-all-btn !flex-row"
+          >
+            <span>Learn About AST</span>
+            <ArrowUpRight size={15} />
+          </NavLink>
+        </div>
       </motion.div>
-      {aboutCard && <FeatureCard card={aboutCard} />}
-      {contactCard && (
-        <motion.a
-          href={contactCard.href}
-          variants={megaCardVariants}
-          className="mega-contact-card"
-          aria-label={contactCard.name}
-          data-menu-entry
-        >
-          <span className="mega-kicker">{contactCard.name}</span>
-          <strong>AST</strong>
-          <span className="mega-contact-details">{company.contact.phone}<br />{company.contact.email}</span>
-          <ArrowUpRight size={25} />
-        </motion.a>
+      {aboutCard && (
+        <FeatureCard
+          card={{ ...aboutCard, href: "/about" }}
+          description="Pioneering certified sports surfaces & athletic engineering across India since 2012."
+          ctaLabel="Explore our journey"
+        />
       )}
+      <div className="mega-company-right">
+        <div className="mega-company-entries">
+          {listItems.map((card) => (
+            <MenuEntry card={card} thumbnail key={card.name} />
+          ))}
+        </div>
+        {contactCard && (
+          <motion.a
+            href={contactCard.href}
+            onClick={onClose}
+            variants={megaCardVariants}
+            className="mega-contact-card"
+            aria-label={contactCard.name}
+            data-menu-entry
+          >
+            <span className="mega-kicker">{contactCard.name}</span>
+            <strong>AST</strong>
+            <span className="mega-contact-details">{company.contact.phone}<br />{company.contact.email}</span>
+            <ArrowUpRight size={22} />
+          </motion.a>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -317,7 +343,7 @@ export function NavigationPanel({ group, onClose, homeHref = "" }: { group: Navi
           <X size={19} />
         </button>
       </div>
-      {group.id === "products" ? <ProductsPanel /> : group.id === "downloads" ? <DownloadsPanel /> : group.id === "sports" ? <SportsPanel cards={group.cards} /> : group.id === "services" ? <ServicesPanel cards={group.cards} /> : group.id === "projects" ? <ProjectsPanel cards={group.cards} onClose={onClose} /> : <CompanyPanel cards={group.cards} />}
+      {group.id === "products" ? <ProductsPanel /> : group.id === "downloads" ? <DownloadsPanel /> : group.id === "sports" ? <SportsPanel cards={group.cards} /> : group.id === "services" ? <ServicesPanel cards={group.cards} /> : group.id === "projects" ? <ProjectsPanel cards={group.cards} onClose={onClose} /> : <CompanyPanel cards={group.cards} onClose={onClose} />}
       <div className="mega-panel-footer">
         <span>ADVANCED SPORTS TECHNOLOGIES</span>
         <div>

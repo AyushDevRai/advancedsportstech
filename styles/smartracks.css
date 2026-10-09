@@ -63,9 +63,9 @@
 .smartracks-timeline p { font-size: 15px; color: #bcc9c0; margin-top: 12px; }
 
 /* Track Timing Diagram */
-.smartracks-diagram-figure { margin-top: 60px; border: 1px solid #ffffff24; border-radius: 8px; overflow: hidden; background: #00000040; }
-.smartracks-diagram-figure img { width: 100%; height: auto; display: block; object-fit: cover; }
-.smartracks-diagram-figure figcaption { padding: 16px 24px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #bcc9c0; border-top: 1px solid #ffffff15; }
+.smartracks-diagram-figure { margin-top: 60px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 12px; overflow: hidden; background: #ffffff; padding: 24px 24px 0; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.smartracks-diagram-figure img { width: 100%; height: auto; display: block; object-fit: contain; }
+.smartracks-diagram-figure figcaption { margin: 16px -24px 0; padding: 16px 24px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #bcc9c0; background: #111d17; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 
 /* Why Choose SmarTracks */
 .smartracks-proof-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24px; margin-bottom: 24px; }

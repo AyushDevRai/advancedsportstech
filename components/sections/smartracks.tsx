@@ -247,7 +247,7 @@ export function Smartracks() {
             {/* SmarTracks Track Timing Diagram Figure */}
             <figure className="smartracks-diagram-figure">
               <Image
-                src="/image/tracktrack-scaled-e1652685240732.jpg"
+                src="/imageSmartTrack/smartracks-diagram.png"
                 alt="SmarTracks running track diagram showing magnetic gate positions along sprint straights and 400m circuits"
                 width={2470}
                 height={666}

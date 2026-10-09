@@ -38,7 +38,7 @@ export function ContactForm({ idPrefix = "contact", onSuccess, inModal = false }
     { name: "name", label: "Name", placeholder: "Your name", type: "text", autocomplete: "name" },
     { name: "email", label: "Email", placeholder: "you@company.com", type: "email", autocomplete: "email" },
     { name: "mobile", label: "Mobile", placeholder: "+91", type: "tel", autocomplete: "tel" },
-    { name: "subject", label: "Subject", placeholder: "Tell us what you have in mind", type: "text", autocomplete: "off" }
+    { name: "subject", label: "Department", placeholder: "e.g. Athletic Tracks, Sports Infrastructure, Procurement", type: "text", autocomplete: "off" }
   ] as const;
 
   const onSubmit = (data: EnquiryValues) => {

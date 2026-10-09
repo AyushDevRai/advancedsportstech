@@ -7,13 +7,14 @@ import { productCategories } from "@/content/navigation";
 import { FooterCursor } from "@/components/layout/footer-cursor";
 
 const exploreLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Our Projects", href: "#projects" },
-  { name: "Testimonials", href: "#testimonials" },
+  { name: "Home", href: "/#home" },
+  { name: "About Us", href: "/about" },
+  { name: "Our Projects", href: "/our-projects" },
+  { name: "Terms & Policy", href: "/terms-and-policy" },
   { name: "Testing & Certification", href: "/certificates" },
-  { name: "Brochures", href: "#brochures" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Testimonials", href: "/#testimonials" },
+  { name: "Brochures", href: "/#brochures" },
+  { name: "Contact Us", href: "/#contact" },
 ];
 
 export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {

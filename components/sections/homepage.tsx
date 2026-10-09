@@ -101,10 +101,16 @@ export function Homepage() {
                     <p key={paragraph.slice(0, 20)}>{paragraph}</p>
                   ))}
                 </div>
-                <a href="#services" className="about-highlight-btn">
-                  <span>Discover what we do</span>
-                  <ArrowUpRight size={17} />
-                </a>
+                <div className="about-actions" style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginTop: "28px" }}>
+                  <a href="/about" className="ast-button ast-button-red">
+                    <span>Learn more about AST</span>
+                    <ArrowUpRight size={17} />
+                  </a>
+                  <a href="#services" className="about-highlight-btn">
+                    <span>Discover what we do</span>
+                    <ArrowUpRight size={17} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

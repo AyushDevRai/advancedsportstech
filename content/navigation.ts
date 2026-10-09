@@ -48,9 +48,10 @@ export const navigationGroups: NavigationGroup[] = [
   { id: "services", name: "Services", title: "What We Do", href: "#services", cards: homepageServices.map(service => ({ name: service.name, image: service.image, href: `#service-${service.slug}` })) },
   { id: "projects", name: "Projects", title: "Our Projects", href: "/our-projects", cards: gallery.map(project => ({ name: project.name, href: "/our-projects", image: project.image, eyebrow: project.category })) },
   { id: "downloads", name: "Downloads", title: "Brochure", href: "#brochures", cards: downloadGroups.flatMap(group => group.items.map(item => ({ name: item.name, href: brochureUrl(item.file), image: group.image }))) },
-  { id: "company", name: "Company", title: "Advanced Sports Technologies", href: "#about", cards: [
-    { name: "About Us", href: "#about", image: "/placeholders/jrd-tata.jpg" },
+  { id: "company", name: "Company", title: "Advanced Sports Technologies", href: "/about", cards: [
+    { name: "About Us", href: "/about", image: "/placeholders/jrd-tata.jpg", eyebrow: "HERITAGE" },
+    { name: "Terms & Policy", href: "/terms-and-policy", image: "/placeholders/sports-facility.jpg", eyebrow: "LEGAL" },
     { name: "Testing & Certifications", href: "/certificates", image: "/certificates/previews/bhubaneswar-kalinga-stadium-pitch-1-world-cup-2023.png", eyebrow: "OFFICIAL" },
-    { name: "Contact Us", href: "#contact", image: "/placeholders/sports-facility.jpg" },
+    { name: "Contact Us", href: "/#contact", image: "/placeholders/sports-facility.jpg", eyebrow: "REACH OUT" },
   ] },
 ];

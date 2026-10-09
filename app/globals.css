@@ -19,6 +19,8 @@
 @import "../styles/tennis.css";
 @import "../styles/badminton.css";
 @import "../styles/wooden-flooring.css";
+@import "../styles/about.css";
+@import "../styles/terms-and-policy.css";
 
 @theme inline {
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
