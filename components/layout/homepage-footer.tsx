@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { ArrowUp, ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { company, sports } from "@/content/ast";
 import { homepageServices } from "@/content/homepage";
 import { productCategories } from "@/content/navigation";
@@ -10,7 +11,7 @@ const exploreLinks = [
   { name: "About Us", href: "#about" },
   { name: "Our Projects", href: "#projects" },
   { name: "Testimonials", href: "#testimonials" },
-  { name: "Testing & Certification", href: "#testing-certification" },
+  { name: "Testing & Certification", href: "/certificates" },
   { name: "Brochures", href: "#brochures" },
   { name: "Contact Us", href: "#contact" },
 ];
@@ -52,7 +53,7 @@ export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
         </div>
         <div className="footer-connect">
           <div className="footer-contact-actions">
-            <a href={company.contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with AST on WhatsApp"><MessageCircle size={21} /></a>
+            <a href={company.contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with AST on WhatsApp"><WhatsAppIcon size={21} /></a>
             <a href={company.contact.phoneHref} aria-label="Call AST"><Phone size={19} /></a>
             <a href={`mailto:${company.contact.email}`} aria-label="Email AST"><Mail size={20} /></a>
           </div>

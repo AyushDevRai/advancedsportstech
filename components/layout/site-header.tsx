@@ -80,7 +80,7 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
     closeTimeout.current = setTimeout(() => {
       setActiveMenu("");
-    }, 180);
+    }, 280);
   };
 
   const activeGroup = groups.find(g => g.id === activeMenu);
@@ -205,59 +205,55 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
         {activeMenu && activeGroup && (
           <motion.div
             className="mega-dropdown-wrapper"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            initial={{ opacity: 0, y: -6, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.985 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             onMouseEnter={() => {
               if (closeTimeout.current) clearTimeout(closeTimeout.current);
             }}
             onMouseLeave={handleMouseLeaveNav}
           >
-            <AnimatePresence mode="popLayout" custom={direction} initial={false}>
-              <motion.div
-                key={activeMenu}
-                custom={direction}
-                className="mega-dropdown-shell"
-                variants={{
-                  enter: (dir: number) => ({
-                    x: dir > 0 ? 32 : dir < 0 ? -32 : 0,
-                    y: dir === 0 ? -8 : 0,
-                    opacity: 0,
-                    scale: 0.985,
-                  }),
-                  center: {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    scale: 1,
-                    transition: {
-                      duration: 0.24,
-                      ease: [0.16, 1, 0.3, 1],
+            <div className="mega-dropdown-shell">
+              <AnimatePresence mode="wait" custom={direction} initial={false}>
+                <motion.div
+                  key={activeMenu}
+                  custom={direction}
+                  className="mega-dropdown-panel-wrap"
+                  variants={{
+                    enter: (dir: number) => ({
+                      x: dir > 0 ? 10 : dir < 0 ? -10 : 0,
+                      opacity: 0,
+                    }),
+                    center: {
+                      x: 0,
+                      opacity: 1,
+                      transition: {
+                        duration: 0.22,
+                        ease: [0.16, 1, 0.3, 1] as const,
+                      },
                     },
-                  },
-                  exit: (dir: number) => ({
-                    x: dir > 0 ? -32 : dir < 0 ? 32 : 0,
-                    y: dir === 0 ? -8 : 0,
-                    opacity: 0,
-                    scale: 0.985,
-                    transition: {
-                      duration: 0.18,
-                      ease: [0.16, 1, 0.3, 1],
-                    },
-                  }),
-                }}
-                initial="enter"
-                animate="center"
-                exit="exit"
-              >
-                <NavigationPanel
-                  group={activeGroup}
-                  homeHref={homeHref}
-                  onClose={() => setActiveMenu("")}
-                />
-              </motion.div>
-            </AnimatePresence>
+                    exit: (dir: number) => ({
+                      x: dir > 0 ? -8 : dir < 0 ? 8 : 0,
+                      opacity: 0,
+                      transition: {
+                        duration: 0.1,
+                        ease: [0.16, 1, 0.3, 1] as const,
+                      },
+                    }),
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                >
+                  <NavigationPanel
+                    group={activeGroup}
+                    homeHref={homeHref}
+                    onClose={() => setActiveMenu("")}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

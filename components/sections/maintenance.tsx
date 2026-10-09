@@ -9,7 +9,6 @@ import {
   HelpCircle,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   Play,
   RotateCcw,
@@ -19,6 +18,7 @@ import {
   Zap,
 } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { ContactForm } from "@/components/sections/contact-form";
 import { HomepageEffects } from "@/components/sections/homepage-effects";
@@ -584,7 +584,7 @@ export function MaintenanceView() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle size={19} />
+                  <WhatsAppIcon size={19} />
                   <span>WhatsApp AST</span>
                   <ArrowUpRight size={15} />
                 </a>
@@ -601,6 +601,15 @@ export function MaintenanceView() {
       </main>
 
       <HomepageFooter />
+      <a
+        href={company.contact.whatsapp}
+        className="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with AST on WhatsApp"
+      >
+        <WhatsAppIcon size={26} />
+      </a>
     </div>
   );
 }

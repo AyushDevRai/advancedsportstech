@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Download, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download, Mail, MapPin, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { ContactForm } from "@/components/sections/contact-form";
@@ -77,7 +78,7 @@ export function AthleticTracks() {
         </div></section>
       </main>
       <HomepageFooter homeHref="/" />
-      <a href={company.contact.whatsapp} className="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with AST on WhatsApp"><MessageCircle size={24} /></a>
+      <a href={company.contact.whatsapp} className="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with AST on WhatsApp"><WhatsAppIcon size={26} /></a>
     </div>
   );
 }

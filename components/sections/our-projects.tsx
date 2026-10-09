@@ -18,11 +18,11 @@ import {
   ChevronRight,
   X,
   Phone,
-  MessageCircle,
   FileText,
   Camera,
   Video
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { IndiaProjectMap } from "@/components/sections/india-project-map";
@@ -448,7 +448,7 @@ export function OurProjectsPageView() {
                     rel="noopener noreferrer"
                     className="ast-button ast-button-outline"
                   >
-                    <MessageCircle size={16} /> WhatsApp Inquiry
+                    <WhatsAppIcon size={16} /> WhatsApp Inquiry
                   </a>
                 </div>
               </div>
@@ -553,7 +553,7 @@ export function OurProjectsPageView() {
                     rel="noopener noreferrer"
                     className="ast-button ast-button-outline"
                   >
-                    <MessageCircle size={16} /> WhatsApp Inquiry
+                    <WhatsAppIcon size={16} /> WhatsApp Inquiry
                   </a>
                 </div>
               </div>
@@ -564,6 +564,15 @@ export function OurProjectsPageView() {
 
       {/* 9. Global Footer */}
       <HomepageFooter />
+      <a
+        href={company.contact.whatsapp}
+        className="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with AST on WhatsApp"
+      >
+        <WhatsAppIcon size={26} />
+      </a>
     </div>
   );
 }

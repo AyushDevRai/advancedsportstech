@@ -7,11 +7,11 @@ import {
   Download,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { ContactForm } from "@/components/sections/contact-form";
@@ -498,7 +498,7 @@ export function WirelessTimingGateView() {
                   className="ast-button ast-button-glass"
                   aria-label="Share Wireless Timing Gate catalogue via WhatsApp"
                 >
-                  <MessageCircle size={18} /> Share via WhatsApp
+                  <WhatsAppIcon size={18} /> Share via WhatsApp
                 </a>
               </div>
             </div>
@@ -594,7 +594,7 @@ export function WirelessTimingGateView() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle size={19} />
+                  <WhatsAppIcon size={19} />
                   <span>WhatsApp AST</span> <ArrowUpRight size={15} />
                 </a>
               </address>
@@ -617,7 +617,7 @@ export function WirelessTimingGateView() {
         rel="noopener noreferrer"
         aria-label="Chat with AST on WhatsApp"
       >
-        <MessageCircle size={24} />
+        <WhatsAppIcon size={26} />
       </a>
     </div>
   );

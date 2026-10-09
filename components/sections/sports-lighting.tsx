@@ -6,13 +6,13 @@ import {
   Download,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   ShieldCheck,
   Sparkles,
   Sun,
   Zap,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { ContactForm } from "@/components/sections/contact-form";
@@ -424,7 +424,7 @@ export function SportsLightingView() {
                   className="ast-button ast-button-glass"
                   aria-label="Chat with AST about Sports Lighting on WhatsApp"
                 >
-                  <MessageCircle size={18} /> WhatsApp Engineering
+                  <WhatsAppIcon size={18} /> WhatsApp Engineering
                 </a>
               </div>
             </div>
@@ -500,7 +500,7 @@ export function SportsLightingView() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle size={19} />
+                  <WhatsAppIcon size={19} />
                   <span>WhatsApp AST</span>
                   <ArrowUpRight size={15} />
                 </a>
@@ -524,7 +524,7 @@ export function SportsLightingView() {
         rel="noopener noreferrer"
         aria-label="Chat with AST on WhatsApp"
       >
-        <MessageCircle size={24} />
+        <WhatsAppIcon size={26} />
       </a>
     </div>
   );

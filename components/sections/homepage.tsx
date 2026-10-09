@@ -4,10 +4,10 @@ import {
   Download,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   Quote,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { VideoHero } from "@/components/sections/video-hero";
@@ -454,7 +454,7 @@ export function Homepage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle size={19} />
+                  <WhatsAppIcon size={19} />
                   WhatsApp AST <ArrowUpRight size={15} />
                 </a>
               </address>
@@ -475,7 +475,7 @@ export function Homepage() {
         className="floating-whatsapp"
         aria-label="Contact AST on WhatsApp"
       >
-        <MessageCircle size={23} />
+        <WhatsAppIcon size={26} />
       </a>
     </div>
   );

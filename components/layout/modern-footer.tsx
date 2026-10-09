@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight, ShieldCheck, ExternalLink } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export function ModernFooter() {
   return (
@@ -189,6 +190,7 @@ export function ModernFooter() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-[13px] bg-emerald-950/60 border border-emerald-800/40 text-emerald-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
                 >
+                  <WhatsAppIcon size={15} className="shrink-0" />
                   <span>Chat on WhatsApp</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>

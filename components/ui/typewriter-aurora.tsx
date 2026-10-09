@@ -17,7 +17,7 @@ export function TypewriterAurora({
   typingSpeed = 80,
   deletingSpeed = 40,
   pauseDuration = 2200,
-  colors = ["#FF6B68", "#E11D48", "#FFA392", "#FF2E44"],
+  colors = ["#d32628", "#e63538", "#d32628", "#bd1d20"],
   className = "hero-aurora hero-aurora-excellence",
 }: TypewriterAuroraProps) {
   const [wordIndex, setWordIndex] = useState(0);

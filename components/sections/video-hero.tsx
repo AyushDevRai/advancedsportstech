@@ -97,13 +97,13 @@ export function VideoHero() {
         <p className="eyebrow hero-eyebrow"><span className="status-dot" />{company.eyebrow}</p>
         <h1 id="hero-title" className="hero-main-heading">
           <span className="hero-heading-top hero-bright-white">
-            ENGINEERING
+            Engineering
           </span>
           <span className="hero-heading-bottom">
             <TypewriterAurora
               words={rotatingHeroHeadlines}
               className="hero-aurora hero-aurora-excellence"
-              colors={["#FF2D55", "#FF3B5C", "#FF1744", "#FF4566", "#FF2D55"]}
+              colors={["#d32628", "#e63538", "#d32628", "#bd1d20", "#d32628"]}
             />
           </span>
         </h1>

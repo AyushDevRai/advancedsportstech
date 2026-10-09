@@ -50,6 +50,7 @@ export const navigationGroups: NavigationGroup[] = [
   { id: "downloads", name: "Downloads", title: "Brochure", href: "#brochures", cards: downloadGroups.flatMap(group => group.items.map(item => ({ name: item.name, href: brochureUrl(item.file), image: group.image }))) },
   { id: "company", name: "Company", title: "Advanced Sports Technologies", href: "#about", cards: [
     { name: "About Us", href: "#about", image: "/placeholders/jrd-tata.jpg" },
+    { name: "Testing & Certifications", href: "/certificates", image: "/certificates/previews/bhubaneswar-kalinga-stadium-pitch-1-world-cup-2023.png", eyebrow: "OFFICIAL" },
     { name: "Contact Us", href: "#contact", image: "/placeholders/sports-facility.jpg" },
   ] },
 ];
