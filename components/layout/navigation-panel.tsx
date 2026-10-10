@@ -276,21 +276,6 @@ function CompanyPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: (
             <MenuEntry card={card} thumbnail key={card.name} />
           ))}
         </div>
-        {contactCard && (
-          <motion.a
-            href={contactCard.href}
-            onClick={onClose}
-            variants={megaCardVariants}
-            className="mega-contact-card"
-            aria-label={contactCard.name}
-            data-menu-entry
-          >
-            <span className="mega-kicker">{contactCard.name}</span>
-            <strong>AST</strong>
-            <span className="mega-contact-details">{company.contact.phone}<br />{company.contact.email}</span>
-            <ArrowUpRight size={22} />
-          </motion.a>
-        )}
       </div>
     </motion.div>
   );

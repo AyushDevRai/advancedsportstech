@@ -22,6 +22,10 @@
 @import "../styles/about.css";
 @import "../styles/terms-and-policy.css";
 
+:root {
+  --home-red: #d32628;
+}
+
 @theme inline {
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   @keyframes aurora {

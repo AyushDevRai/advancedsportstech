@@ -1063,20 +1063,21 @@
   display: grid;
   grid-template-columns: 1.15fr 1fr 1fr;
   gap: 28px;
+  align-items: start;
 }
 
 .mega-company-about {
   padding-right: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .mega-company-about>p {
   font-size: 13px;
   color: var(--mega-muted);
   line-height: 1.85;
-  margin: 16px 0;
+  margin: 16px 0 0;
 }
 
 .mega-company-about>.mega-kicker {
@@ -1084,21 +1085,20 @@
 }
 
 .mega-company-links {
-  margin-top: auto;
-  padding-top: 10px;
+  margin-top: 22px;
+  padding-top: 0;
 }
 
 .mega-company-right {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  justify-content: space-between;
+  gap: 12px;
 }
 
 .mega-company-entries {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .mega-company-layout .mega-feature-image {
@@ -5621,15 +5621,17 @@
   gap: 15px;
   padding: 20px 24px;
   border-radius: 50px;
-  background: var(--home-red);
-  color: white;
+  background: #d32628 !important;
+  color: #ffffff !important;
   font-size: 17px;
   font-weight: 650;
-  transition: background .2s;
+  transition: background .2s, transform .2s;
+  box-shadow: 0 8px 24px rgba(211, 38, 40, 0.3);
 }
 
 .footer-email:hover {
-  background: #b71c20;
+  background: #b71c20 !important;
+  color: #ffffff !important;
 }
 
 .footer-email svg {

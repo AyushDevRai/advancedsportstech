@@ -102,10 +102,10 @@ export function Homepage() {
                   ))}
                 </div>
                 <div className="about-actions" style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginTop: "28px" }}>
-                  <a href="/about" className="ast-button ast-button-red">
+                  {/* <a href="/about" className="ast-button ast-button-red">
                     <span>Learn more about AST</span>
                     <ArrowUpRight size={17} />
-                  </a>
+                  </a> */}
                   <a href="#services" className="about-highlight-btn">
                     <span>Discover what we do</span>
                     <ArrowUpRight size={17} />
