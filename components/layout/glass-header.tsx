@@ -535,7 +535,7 @@ export function GlassHeader() {
                           <p className="text-xs text-slate-400">Panasonic Japan LED Floodlighting</p>
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link
                           href="/products/smartracks/wireless-timing-gate"
                           className="group block p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
@@ -545,7 +545,7 @@ export function GlassHeader() {
                           </div>
                           <p className="text-xs text-slate-400">Mobile Combine & Sprint Gates</p>
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link
                           href="/products/cleaning-and-maintenance"

@@ -205,6 +205,26 @@
   object-fit: cover;
 }
 
+.about-heritage-video-wrap {
+  aspect-ratio: 16 / 9;
+  min-height: 450px;
+  background: #09130d;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.24);
+  isolation: isolate;
+}
+
+.about-heritage-video-wrap .about-bg-video-iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 115%;
+  height: 115%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .about-heritage-badge {
   position: absolute;
   bottom: -24px;
@@ -215,6 +235,7 @@
   border-radius: 8px;
   max-width: 320px;
   box-shadow: 0 12px 30px rgba(227, 30, 36, 0.35);
+  z-index: 3;
 }
 
 .about-heritage-badge strong {

@@ -13,6 +13,7 @@ import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { VideoHero } from "@/components/sections/video-hero";
 import { Services } from "@/components/sections/services";
 import { ProjectGallery } from "@/components/sections/project-gallery";
+import { MinimalVideoCarousel } from "@/components/sections/minimal-video-carousel";
 import { TestingCertification } from "@/components/sections/testing-certification";
 import { ContactForm } from "@/components/sections/contact-form";
 import { HomepageEffects } from "@/components/sections/homepage-effects";
@@ -20,6 +21,8 @@ import { LogoCloud } from "@/components/ui/logo-cloud-4";
 import { Marquee } from "@/components/ui/marquee";
 import { IndiaProjectMap } from "@/components/sections/india-project-map";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { AboutVideoPlayer } from "@/components/sections/about-video-player";
 import { projectStats } from "@/content/our-projects";
 import { company } from "@/content/ast";
 import {
@@ -33,9 +36,8 @@ import {
 const partnerLogos = [
   { src: "/brand/ligature.png", alt: "LigaTurf" },
   { src: "/brand/spurtan.png", alt: "Spurtan" },
-  { src: "/brand/smartracks.png", alt: "SmarTracks" },
-  { src: "/brand/gigatera.png", alt: "GigaTera" },
-  { src: "/brand/humotion.png", alt: "Humotion" },
+  { src: "/brand/panasonic.png", alt: "Panasonic" },
+  { src: "/brand/rekortan.png", alt: "Rekortan" },
   { src: "/brand/poligras.png", alt: "Poligras" },
 ];
 
@@ -73,6 +75,14 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="about-title"
         >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_left,white_20%,transparent_75%)]" aria-hidden="true">
+            <InteractiveGridPattern
+              width={38}
+              height={38}
+              squares={[32, 22]}
+              className="pointer-events-auto opacity-60"
+            />
+          </div>
           <div className="page-container">
             <div className="about-layout">
               <div className="about-title">
@@ -81,16 +91,11 @@ export function Homepage() {
 
                   <span className="quiet-text">US.</span>
                 </h2>
-                <div className="about-image">
-                  <Image
-                    src="/placeholders/jrd-tata.jpg"
-                    alt="AST athletics track at JRD Tata Sports Complex, Jamshedpur"
-                    fill
-                    sizes="(max-width: 900px) 100vw, 35vw"
-                  />
+                <div className="about-video-wrapper">
+                  <AboutVideoPlayer />
                   <span className="image-location">
                     <MapPin size={13} />
-                    JAMSHEDPUR, INDIA
+                    CHAMPIONSHIP VENUES · INDIA
                   </span>
                 </div>
               </div>
@@ -101,7 +106,7 @@ export function Homepage() {
                     <p key={paragraph.slice(0, 20)}>{paragraph}</p>
                   ))}
                 </div>
-                <div className="about-actions" style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginTop: "28px" }}>
+                <div className="about-actions">
                   {/* <a href="/about" className="ast-button ast-button-red">
                     <span>Learn more about AST</span>
                     <ArrowUpRight size={17} />
@@ -122,6 +127,14 @@ export function Homepage() {
           data-nav-theme="light"
           aria-label="AST Installation Milestones"
         >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_right,white_20%,transparent_75%)]" aria-hidden="true">
+            <InteractiveGridPattern
+              width={38}
+              height={38}
+              squares={[32, 22]}
+              className="pointer-events-auto opacity-50"
+            />
+          </div>
           <div className="page-container">
             <div className="stats-section-header stats-section-header-left" style={{ marginBottom: "34px", textAlign: "left", marginLeft: 0, marginRight: "auto" }}>
               <span className="section-eyebrow" style={{ justifyContent: "flex-start" }}>
@@ -195,6 +208,14 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="products-title"
         >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_15%,transparent_70%)]" aria-hidden="true">
+            <InteractiveGridPattern
+              width={38}
+              height={38}
+              squares={[32, 24]}
+              className="pointer-events-auto opacity-50"
+            />
+          </div>
           <div id="sports" />
           <div className="page-container">
             <div className="section-heading">
@@ -218,13 +239,22 @@ export function Homepage() {
                     src={product.image}
                     alt={product.name}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                   />
                   <span className="sport-number">{String(index + 1).padStart(2, "0")}</span>
                   <span className="sport-card-label">
                     <span>{product.name}</span>
-                    <ArrowUpRight size={21} />
+                    <ArrowUpRight size={18} />
                   </span>
+                  <div className="sport-card-hover-project" aria-hidden="true">
+                    <span className="sport-hover-tag">Major Project</span>
+                    <h4 className="sport-hover-name">{product.majorProject.name}</h4>
+                    <span className="sport-hover-loc">
+                      <MapPin size={11} />
+                      {product.majorProject.location}
+                    </span>
+                    <span className="sport-hover-badge">{product.majorProject.badge}</span>
+                  </div>
                 </a>
               ))}
             </div>
@@ -268,6 +298,7 @@ export function Homepage() {
         <Services />
         {/* <section id="maintenance" className="maintenance-band" data-nav-theme="dark" aria-labelledby="maintenance-title"><div className="page-container"><p className="eyebrow">CLEANING & MAINTENANCE</p><div className="maintenance-heading"><h2 id="maintenance-title"><span>FAIL & FIXED.</span><br />PREDICT & PREVENT.</h2><a href="#service-cleaning-maintenance" className="circle-link" aria-label="Explore cleaning and maintenance"><ArrowUpRight size={30} /></a></div><p>{homepageServices[7].description}</p></div></section> */}
         <ProjectGallery />
+        <MinimalVideoCarousel />
         <section
           id="testimonials"
           className="section-pad testimonials-section"
@@ -320,6 +351,14 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="brochures-title"
         >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_right,white_20%,transparent_75%)]" aria-hidden="true">
+            <InteractiveGridPattern
+              width={38}
+              height={38}
+              squares={[32, 20]}
+              className="pointer-events-auto opacity-55"
+            />
+          </div>
           <div className="page-container">
             <div className="section-heading">
               <div>
@@ -358,6 +397,14 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="clients-title"
         >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_20%,transparent_75%)]" aria-hidden="true">
+            <InteractiveGridPattern
+              width={38}
+              height={38}
+              squares={[32, 20]}
+              className="pointer-events-auto opacity-50"
+            />
+          </div>
           <div className="page-container clients-heading">
             <h2 id="clients-title"><span className="red-rule" aria-hidden="true" />OUR CLIENTS.</h2>
             <a href="#projects" className="ast-button ast-button-red clients-project-link">Our projects <ArrowUpRight size={18} /></a>

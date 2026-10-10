@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { WirelessTimingGateView } from "@/components/sections/wireless-timing-gate";
+import { notFound } from "next/navigation";
+// import { WirelessTimingGateView } from "@/components/sections/wireless-timing-gate";
 
 export const metadata: Metadata = {
   title: "SmarTracks Wireless Timing Gate System | AST Sports",
@@ -15,5 +16,7 @@ export default async function WirelessTimingGateSystemPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <WirelessTimingGateView />;
+  // Page commented out as requested
+  notFound();
+  // return <WirelessTimingGateView />;
 }

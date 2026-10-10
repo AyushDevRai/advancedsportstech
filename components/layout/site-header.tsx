@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, Moon, Phone, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -107,9 +108,9 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
       onMouseLeave={handleMouseLeaveNav}
     >
       <div className="nav-glass">
-        <a href={`${homeHref}#home`} aria-label="AST — homepage" className="nav-logo">
+        <Link href="/" aria-label="AST — homepage" className="nav-logo">
           <Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="Advanced Sports Technologies" width={160} height={40} sizes="(max-width: 640px) 120px, 160px" />
-        </a>
+        </Link>
         
         {/* Desktop Navigation Triggers */}
         <nav className="desktop-navigation mega-navigation" aria-label="Main Navigation">
@@ -150,7 +151,7 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
             <Sun size={17} className="theme-sun" />
             <Moon size={17} className="theme-moon" />
           </button>
-          <a href="#contact" className="ast-button ast-button-red nav-quote">
+          <a href={`${homeHref || "/"}#contact`} className="ast-button ast-button-red nav-quote">
             Get a quote <ArrowUpRight size={16} />
           </a>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -162,7 +163,9 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
             <SheetContent className="mobile-nav">
               <SheetHeader>
                 <SheetTitle>
-                  <Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="AST" width={160} height={40} />
+                  <Link href="/" onClick={() => setMobileOpen(false)} aria-label="AST — homepage">
+                    <Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="AST" width={160} height={40} />
+                  </Link>
                 </SheetTitle>
                 <SheetDescription>Advanced Sports Technologies</SheetDescription>
               </SheetHeader>

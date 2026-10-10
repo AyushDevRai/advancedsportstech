@@ -9,7 +9,7 @@ const track: NavigationCard = { name: "Athletic Track", href: "/athletic-tracks"
 const hockey: NavigationCard = { name: "Hockey Turf", href: "/hockey", image: "/projects/kalinga.jpg", eyebrow: "POLIGRAS" };
 const football: NavigationCard = { name: "Football Turf", href: "/football", image: "/imageFootball/football.jpg", eyebrow: "LIGATURF" };
 const inbuilt: NavigationCard = { name: "Inbuilt", href: "/smartracks", image: "/imageSmartTrack/smartakcs.jpg", eyebrow: "SMARTRACKS" };
-const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
+// const timing: NavigationCard = { name: "Wireless/Mobile Timing Gate", href: "/wireless-timing-gate-system", image: "/navigation/wireless-timing-gate-system.webp", eyebrow: "SMARTRACKS" };
 const lighting: NavigationCard = { name: "Sports Lighting", href: "/products/sports-lighting", image: "/services/lighting.jpg", eyebrow: "GIGATERA" };
 const maintenance: NavigationCard = { name: "Cleaning & Maintenance", href: "/maintenance", image: "/services/maintenance.jpg", eyebrow: "POLYTAN" };
 const basketball: NavigationCard = { name: "Basketball", href: "/basketball", image: "/courts/basketball-floor.jpg", eyebrow: "FIBA STANDARDS" };
@@ -18,11 +18,11 @@ const badminton: NavigationCard = { name: "Badminton", href: "/badminton", image
 const woodenFlooring: NavigationCard = { name: "Wooden Flooring", href: "/wooden-flooring", image: "/courts/badminton-wooden-floor.jpg", eyebrow: "BWF & FIBA" };
 
 export const productCategories: ProductCategory[] = [
-  { id: "all", name: "All Products", cards: [track, hockey, football, basketball, tennis, badminton, woodenFlooring, inbuilt, timing, lighting, maintenance] },
+  { id: "all", name: "All Products", cards: [track, hockey, football, basketball, tennis, badminton, woodenFlooring, inbuilt, lighting, maintenance] },
   { id: "tracks", name: "Athletic Track", cards: [track], description: "World Athletics Certified synthetic track systems engineered for elite international competition & high-performance venues.", links: [{ name: "Rekortan M99", href: brochureUrl("REKORTAN-M99.pdf") }, { name: "Rekortan M", href: brochureUrl("REKORTAN-M.pdf") }, { name: "Rekortan PUR E", href: brochureUrl("Rekortan-PUR-E-.pdf") }] },
   { id: "turf", name: "Synthetic Turf", cards: [hockey, football], description: "POLIGRAS & LIGATURF SYNTHETIC SPORTS TURF", links: [{ name: "Poligras Platinum GT", href: brochureUrl("BROCHURE-POLIGRAS-PLATINUM-GT.pdf") }, { name: "Poligras SuperPlay", href: brochureUrl("Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf") }, { name: "Poligras GT", href: brochureUrl("POLIGRAS-GT-CATALOGUE-two-page.pdf") }] },
   { id: "courts", name: "Courts & Flooring", cards: [basketball, tennis, badminton, woodenFlooring], description: "FIBA, ITF & BWF CERTIFIED HARDWOOD & CUSHIONED ACRYLIC SURFACES" },
-  { id: "smart", name: "SmarTracks", cards: [inbuilt, timing] },
+  { id: "smart", name: "SmarTracks", cards: [inbuilt] },
   { id: "lighting", name: "Sports Lighting", cards: [lighting], description: homepageServices[6].description },
   { id: "maintenance", name: "Cleaning & Maintenance", cards: [maintenance], description: homepageServices[7].description },
 ];
@@ -30,7 +30,7 @@ export const productCategories: ProductCategory[] = [
 export const downloadGroups = [
   { name: "Rekortan", image: "/placeholders/jrd-tata.jpg", items: [{ name: "Rekortan M99", file: "REKORTAN-M99.pdf" }, { name: "Rekortan M", file: "REKORTAN-M.pdf" }, { name: "Rekortan PUR E", file: "Rekortan-PUR-E-.pdf" }] },
   { name: "Poligras", image: "/projects/kalinga.jpg", items: [{ name: "Poligras GT", file: "POLIGRAS-GT-CATALOGUE-two-page.pdf" }, { name: "Poligras Platinum GT", file: "BROCHURE-POLIGRAS-PLATINUM-GT.pdf" }, { name: "Poligras Superplay", file: "Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf" }, { name: "Poligras Terra CP", file: "CATALOGUE-POLIGRAS-TERRA-CP-2018-EL-15-SAND.pdf" }] },
-  { name: "SmarTracks", image: "/navigation/smartracks.webp", items: [{ name: "Smartrack", file: "CATALOGUE-SMARTRACK-RED.pdf" }, { name: "Wireless/Mobile Timing Gate", file: "WIRELESS-TIMING-GATE-CATALOGUE.pdf" }] },
+  { name: "SmarTracks", image: "/navigation/smartracks.webp", items: [{ name: "Smartrack", file: "CATALOGUE-SMARTRACK-RED.pdf" } /* , { name: "Wireless/Mobile Timing Gate", file: "WIRELESS-TIMING-GATE-CATALOGUE.pdf" } */] },
 ];
 
 export const navigationGroups: NavigationGroup[] = [

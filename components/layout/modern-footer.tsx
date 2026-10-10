@@ -141,11 +141,11 @@ export function ModernFooter() {
                   Inbuilt Magnetic Gates
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/wireless-timing-gate-system" className="hover:text-red-400 transition-colors">
                   Wireless Timing Gates
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/products/sports-lighting" className="hover:text-red-400 transition-colors">
                   Panasonic LED Lighting

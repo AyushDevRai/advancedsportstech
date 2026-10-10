@@ -19,6 +19,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { HomepageFooter } from "@/components/layout/homepage-footer";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { ContactForm } from "@/components/sections/contact-form";
+import { AboutVideoPlayer } from "@/components/sections/about-video-player";
 import { company } from "@/content/ast";
 
 const stats = [
@@ -37,18 +38,18 @@ const alliances = [
       "Exclusive India partner for Poligras hockey turf, LigaTurf football systems, and Rekortan athletic tracks. Decades of Olympic and World Cup pedigree.",
   },
   {
-    name: "Panasonic / GigaTera",
-    country: "JAPAN & KOREA",
-    logo: "/brand/gigatera.png",
+    name: "Rekortan Athletic Tracks",
+    country: "GERMANY",
+    logo: "/brand/rekortan.png",
     description:
-      "Elite broadcast-grade LED sports floodlighting with precision glare control, flicker-free slow-motion compliance, and high optical efficacy.",
+      "World Athletics Class 1 & 2 certified track surfaces engineered with pure virgin polymers, sub-millimeter level paving, and record-breaking energy restitution.",
   },
   {
-    name: "SmarTracks / Humotion",
+    name: "LigaTurf Football Systems",
     country: "GERMANY",
-    logo: "/brand/smartracks.png",
+    logo: "/brand/ligature.png",
     description:
-      "Sub-surface magnetic sensor gates permanently embedded below running tracks, delivering millimeter-level athlete split timing without optical barriers.",
+      "FIFA Quality Pro certified football systems engineered for elite ball roll, natural rotational resistance, and long-term durability in high-demand environments.",
   },
 ];
 
@@ -213,13 +214,8 @@ export function AboutPageView() {
               </div>
 
               <div className="about-heritage-visual">
-                <div className="about-heritage-main-img">
-                  <Image
-                    src="/projects/Rourkela%20main/Banner-17.jpg"
-                    alt="Birsa Munda Hockey Stadium constructed by AST"
-                    fill
-                    sizes="(max-width: 900px) 100vw, 45vw"
-                  />
+                <div className="about-heritage-main-img about-heritage-video-wrap">
+                  <AboutVideoPlayer />
                 </div>
                 <div className="about-heritage-badge">
                   <strong>Official Representative</strong>

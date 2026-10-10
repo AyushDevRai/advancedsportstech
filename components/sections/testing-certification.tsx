@@ -23,6 +23,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { featuredCertificates, getCompactStandardBadge, type ASTCertificate } from "@/content/certificates-data";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 
 export function TestingCertification() {
   const [selectedCert, setSelectedCert] = useState<ASTCertificate | null>(null);
@@ -120,6 +121,14 @@ export function TestingCertification() {
       data-nav-theme="light"
       aria-labelledby="certification-title"
     >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_left,white_20%,transparent_75%)]" aria-hidden="true">
+        <InteractiveGridPattern
+          width={38}
+          height={38}
+          squares={[32, 22]}
+          className="pointer-events-auto opacity-55"
+        />
+      </div>
       <div className="page-container">
         {/* Section Heading & Trust Badges */}
         <div className="certification-header-wrap">

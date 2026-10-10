@@ -105,7 +105,19 @@ export function CertificatesPageView() {
           data-nav-theme="dark"
           aria-labelledby="cert-page-title"
         >
-          <div className="page-container">
+          <div className="cert-hero-bg-media" aria-hidden="true">
+            <Image
+              src="/projects/kalinga.jpg"
+              alt="FIH Certified Stadium Arena built by AST"
+              fill
+              priority
+              sizes="100vw"
+              className="cert-hero-image"
+            />
+            <div className="cert-hero-overlay" />
+          </div>
+
+          <div className="page-container relative z-10">
             <div className="cert-hero-content">
               <nav className="cert-breadcrumbs" aria-label="Breadcrumbs">
                 <Link href="/">Home</Link>

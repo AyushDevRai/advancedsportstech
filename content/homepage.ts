@@ -6,7 +6,7 @@ export const aboutParagraphs = [
 ] as const;
 
 export const homepageServices = [
-  { slug: "conceptualization", name: "Conceptualization", image: "/services/concept.jpg", tagline: "Conceptualization is the process of refining abstract thought into tangible form.", description: "We have the capabilities to support a project end-to-end. In coordination with our International partners, we have developed design concepts which are based on Internationally acceptable practices, tweaked adequately to the India limitations and conditions. Once we get to understand a vision and mission statements, we convert them into site designs for implementation." },
+  { slug: "conceptualization", name: "Conceptualization", image: "/projects/Bhopal/DJI_0007.JPG", tagline: "Conceptualization is the process of refining abstract thought into tangible form.", description: "We have the capabilities to support a project end-to-end. In coordination with our International partners, we have developed design concepts which are based on Internationally acceptable practices, tweaked adequately to the India limitations and conditions. Once we get to understand a vision and mission statements, we convert them into site designs for implementation." },
   { slug: "survey-planning-designing", name: "Survey, Planning & Designing", image: "/services/survey.png", tagline: "Survey and planning is a bridge that connects a concept to its brick and mortar form.", description: "We have fully equipped in house team for complete survey of the existing facilities and the free land available for new developments. Following this we undertake the soil test and other tests to understand the load bearing capacity etc. for the area in question. The final outcome of the exercise is a well planned site design that is perfected and leaves no scope for imperfections." },
   { slug: "construction", name: "Construction", image: "/services/construction.jpg", tagline: "Construction is the mammoth task of converting plans into reality.", description: "Most of the sports facilities are required to be planned and constructed according to the International norms and standards. Construction of these facilities are different to the normal construction jobs as the acceptable tolerances are far more stringent. Advanced Sport has a fully dedicated construction division having expertise and equipment required for any type and size of project in any part of India." },
   { slug: "refurbishment", name: "Refurbishment", image: "/services/refurbishment.png", tagline: "Refurbishment is the financially and environmentally friendly option.", description: "Sports Surfaces become unsuitable after prolonged use. The facilities therefore need to be built from scratch, thus imposing a heavy financial burden on the owner and also generating a lot of environmentally harmful waste. At AST we encourage the facility owners to examine the possibility for refurbishment of the sports facility, rather than complete replacement. This not only benefits financially but also environmentally." },
@@ -312,7 +312,7 @@ export const brochures = [
   { name: "POLIGRAS SuperPlay", file: "Poligras-SuperPlay_Flyer-A4_EN_low-res.pdf" },
   { name: "POLIGRAS Terra", file: "CATALOGUE-POLIGRAS-TERRA-CP-2018-EL-15-SAND.pdf" },
   { name: "SMARTRACKS", file: "CATALOGUE-SMARTRACK-RED.pdf" },
-  { name: "Wireless Timing Gate", file: "WIRELESS-TIMING-GATE-CATALOGUE.pdf" },
+  // { name: "Wireless Timing Gate", file: "WIRELESS-TIMING-GATE-CATALOGUE.pdf" },
 ] as const;
 export const brochureUrl = (file: string) => `https://ast-sports.com/wp-content/uploads/2022/05/${file}`;
 
@@ -322,59 +322,109 @@ export const homeProducts = [
     name: "Athletic Track",
     href: "/athletic-tracks",
     image: "/image/header-1.jpg",
+    majorProject: {
+      name: "JRD Tata Sports Complex",
+      location: "Jamshedpur, Jharkhand",
+      badge: "World Athletics Class 1 Track",
+    },
   },
   {
     slug: "hockey-turf",
     name: "Hockey Turf",
     href: "/hockey",
     image: "/background/hockey.jpg",
+    majorProject: {
+      name: "Birsa Munda Hockey Stadium",
+      location: "Rourkela, Odisha",
+      badge: "FIH Men's World Cup 2023",
+    },
   },
   {
     slug: "football-turf",
     name: "Football Turf",
     href: "/football",
     image: "/imageFootball/football.jpg",
+    majorProject: {
+      name: "Regional Football Arena",
+      location: "Sports Authority of India",
+      badge: "FIFA Quality Standard Turf",
+    },
   },
   {
     slug: "basketball",
     name: "Basketball",
     href: "/basketball",
     image: "/courts/basketball-floor.jpg",
+    majorProject: {
+      name: "State Sports Complex Arena",
+      location: "Bhopal, Madhya Pradesh",
+      badge: "FIBA Point-Elastic Cushion",
+    },
   },
   {
     slug: "tennis",
     name: "Tennis",
     href: "/tennis",
     image: "/courts/tennis-floor.jpg",
+    majorProject: {
+      name: "Championship Tennis Academy",
+      location: "New Delhi",
+      badge: "ITF Certified 8-Layer Acrylic",
+    },
   },
   {
     slug: "badminton",
     name: "Badminton",
     href: "/badminton",
     image: "/courts/badminton-acrylic-floor.jpg",
+    majorProject: {
+      name: "Indoor Multisport Arena",
+      location: "Punjab Sports Hub",
+      badge: "BWF Compliant System",
+    },
   },
   {
     slug: "inbuilt",
     name: "Inbuilt",
     href: "/smartracks",
     image: "/imageSmartTrack/smartakcs.jpg",
+    majorProject: {
+      name: "Jawaharlal Nehru Stadium",
+      location: "New Delhi",
+      badge: "SmarTracks Sensor Diagnostics",
+    },
   },
-  {
-    slug: "wireless-timing-gate",
-    name: "Wireless/Mobile Timing Gate",
-    href: "/wireless-timing-gate-system",
-    image: "/navigation/wireless-timing-gate-system.webp",
-  },
+  // {
+  //   slug: "wireless-timing-gate",
+  //   name: "Wireless/Mobile Timing Gate",
+  //   href: "/wireless-timing-gate-system",
+  //   image: "/navigation/wireless-timing-gate-system.webp",
+  //   majorProject: {
+  //     name: "High-Performance Athletics Lab",
+  //     location: "SAI Centre of Excellence",
+  //     badge: "Millisecond Precision Timing",
+  //   },
+  // },
   {
     slug: "sports-lighting",
     name: "Sports Lighting",
     href: "/products/sports-lighting",
     image: "/services/lighting.jpg",
+    majorProject: {
+      name: "International Stadium Lighting",
+      location: "Panasonic Japan Partner",
+      badge: "Broadcast 2000+ Lux LED",
+    },
   },
   {
     slug: "cleaning-maintenance",
     name: "Cleaning & Maintenance",
     href: "/maintenance",
     image: "/services/maintenance.jpg",
+    majorProject: {
+      name: "FIH World Cup Pitch Maintenance",
+      location: "Kalinga & Birsa Munda Venues",
+      badge: "German Hydro-Jet Deep Clean",
+    },
   },
 ] as const;

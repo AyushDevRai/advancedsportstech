@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUp, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { company, sports } from "@/content/ast";
@@ -31,9 +32,9 @@ export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
       <div className="page-container">
         <div className="footer-main">
           <div className="footer-profile">
-            <a href={`${homeHref}#home`} className="footer-logo">
+            <Link href="/" className="footer-logo" aria-label="AST — homepage">
               <Image className="ast-brand-logo" src="/brand/ast-logo1.png" alt="Advanced Sports Technologies" width={190} height={54} />
-            </a>
+            </Link>
             <p className="footer-introduction">Synthetic sports surfaces, built across India. Exclusive partner of Polytan/SportGroup Germany.</p>
             <address className="footer-contact">
               <p><MapPin size={19} aria-hidden="true" /><span>{company.contact.address}<br />{company.contact.city}</span></p>

@@ -54,14 +54,15 @@ export function MaintenanceView() {
           data-nav-theme="dark"
           aria-labelledby="maintenance-hero-title"
         >
-          <Image
-            className="maintenance-hero-image"
-            src="/services/maintenance.jpg"
-            alt="AST professional synthetic track and sports turf cleaning maintenance crew in action"
-            fill
-            priority
-            sizes="100vw"
-          />
+          <div className="maintenance-hero-video-bg" aria-hidden="true">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/8qA5DiYK4WQ?autoplay=1&mute=1&loop=1&playlist=8qA5DiYK4WQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&cc_load_policy=0"
+              title="AST Specialized Cleaning and Maintenance Machinery"
+              className="maintenance-hero-video-iframe"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              tabIndex={-1}
+            />
+          </div>
           <div className="maintenance-hero-shade" />
 
           <div className="page-container maintenance-hero-content">
@@ -296,9 +297,11 @@ export function MaintenanceView() {
                   <div className="maintenance-video-player">
                     {video.type === "local" ? (
                       <video
-                        controls
+                        autoPlay
+                        muted
+                        loop
                         playsInline
-                        preload="metadata"
+                        preload="auto"
                         src={video.src}
                         aria-label={video.title}
                       >
@@ -306,12 +309,15 @@ export function MaintenanceView() {
                       </video>
                     ) : (
                       <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${video.src}?rel=0`}
+                        src={`https://www.youtube-nocookie.com/embed/${video.src}?autoplay=1&mute=1&loop=1&playlist=${video.src}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&cc_load_policy=0`}
                         title={video.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                        tabIndex={-1}
                       />
                     )}
+                    <div className="maintenance-video-badge" aria-hidden="true">
+                      <span className="pulse-dot" /> LIVE DEMO
+                    </div>
                   </div>
 
                   <div className="maintenance-video-body">

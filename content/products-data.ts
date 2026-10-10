@@ -196,7 +196,7 @@ export const productsData: Record<string, ProductPageData> = {
       "/Product Images/athletics track/CAD Case+study+image+-+Qatar .webp"
     ]
   },
-  "smartracks/wireless-timing-gate": {
+  /* "smartracks/wireless-timing-gate": {
     slug: "smartracks/wireless-timing-gate",
     title: "Wireless & Mobile Timing Gate Systems",
     subtitle: "Portable Olympic-Grade Timing for Multi-Sport Agility & Speed Testing",
@@ -223,7 +223,7 @@ export const productsData: Record<string, ProductPageData> = {
       "/Products Images/Athletic Tracks/SRI KANTEERAVA STADIUM BANGALORE.jpeg",
       "/Fallback/Football.jpg"
     ]
-  },
+  }, */
   "sports-lighting": {
     slug: "sports-lighting",
     title: "Panasonic LED Sports Lighting Systems",

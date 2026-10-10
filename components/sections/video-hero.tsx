@@ -108,6 +108,24 @@ export function VideoHero() {
           </span>
         </h1>
         <p className="hero-supporting-copy">Synthetic sports surfaces, built across India.<br className="hero-copy-break" /><span>Exclusive partner of Polytan/SportGroup Germany, delivering world-class sports surfaces with proven quality and innovation.</span></p>
+        <div className="hero-credentials-bar" aria-label="AST Credentials & Experience">
+          <div className="hero-cred-item">
+            <span className="hero-cred-bar" aria-hidden="true" />
+            <span className="hero-cred-text">ITF Certified</span>
+          </div>
+          <div className="hero-cred-item">
+            <span className="hero-cred-bar" aria-hidden="true" />
+            <span className="hero-cred-text">15+ Years Experience</span>
+          </div>
+          <div className="hero-cred-item">
+            <span className="hero-cred-bar" aria-hidden="true" />
+            <span className="hero-cred-text">12000+ Courts Built</span>
+          </div>
+          <div className="hero-cred-item">
+            <span className="hero-cred-bar" aria-hidden="true" />
+            <span className="hero-cred-text">250+ Dealers Pan India</span>
+          </div>
+        </div>
         <div className="hero-bottom-content">
           <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>
