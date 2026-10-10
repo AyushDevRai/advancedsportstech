@@ -24,14 +24,14 @@
 .hockey-section-nav a:hover { color: var(--home-red); }
 .hockey-section-nav svg { color: var(--home-red); }
 
-.hockey-overview-layout { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 6vw, 90px); align-items: start; }
-.hockey-overview-visual { position: relative; margin-top: 6px; }
-.hockey-player-image { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
-.hockey-player-image img { object-fit: cover; object-position: center; }
-.hockey-overview-visual > p { position: relative; margin: -76px 22px 0; padding: 24px 28px; background: var(--home-red); color: white; font-size: 18px; font-weight: 600; line-height: 1.6; border-radius: 5px; max-width: 350px; }
-.hockey-visual-line { display: block; width: 60px; height: 2px; background: var(--home-red); margin: 36px 0 0; }
-.hockey-page .hockey-overview-copy h2 { font-size: clamp(3rem, 4.4vw, 4.4rem); margin-bottom: 32px; }
-.hockey-overview-copy > p:not(.eyebrow) { font-size: 16px; color: var(--hockey-muted); margin-top: 20px; }
+.hockey-overview-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(36px, 5vw, 76px); align-items: center; }
+.hockey-overview-visual { position: relative; margin-top: 0; max-width: 480px; width: 100%; }
+.hockey-player-image { position: relative; aspect-ratio: 1.12 / 1; max-height: 410px; overflow: hidden; border-radius: 10px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12); }
+.hockey-player-image img { object-fit: cover; object-position: center 30%; }
+.hockey-overview-visual > p { position: relative; margin: -46px 20px 0; padding: 20px 24px; background: var(--home-red); color: white; font-size: 16px; font-weight: 600; line-height: 1.5; border-radius: 6px; max-width: 330px; box-shadow: 0 12px 28px rgba(227, 30, 36, 0.25); }
+.hockey-visual-line { display: block; width: 50px; height: 2px; background: var(--home-red); margin: 24px 0 0; }
+.hockey-page .hockey-overview-copy h2 { font-size: clamp(3rem, 4.4vw, 4.4rem); margin-bottom: 24px; line-height: 1.05; }
+.hockey-overview-copy > p:not(.eyebrow) { font-size: 16px; color: var(--hockey-muted); margin-top: 18px; line-height: 1.7; }
 
 .hockey-heritage { position: relative; background: var(--home-dark); color: #f2f5ee; overflow: hidden; }
 .hockey-heritage::before { position: absolute; content: ""; width: 650px; height: 650px; right: -200px; bottom: -430px; border: 1px solid #ffffff12; box-shadow: 0 0 0 50px #ffffff04, 0 0 0 100px #ffffff03, 0 0 0 150px #ffffff02; border-radius: 50%; pointer-events: none; }
