@@ -102,19 +102,27 @@ export function VideoHero() {
         <div className="hero-credentials-bar" aria-label="AST Credentials & Experience">
           <div className="hero-cred-item">
             <span className="hero-cred-bar" aria-hidden="true" />
-            <span className="hero-cred-text">ITF Certified</span>
+            <span className="hero-cred-text">
+              <strong className="hero-cred-num">ITF</strong> Certified
+            </span>
           </div>
           <div className="hero-cred-item">
             <span className="hero-cred-bar" aria-hidden="true" />
-            <span className="hero-cred-text">15+ Years Experience</span>
+            <span className="hero-cred-text">
+              <strong className="hero-cred-num">15+</strong> Years Experience
+            </span>
           </div>
           <div className="hero-cred-item">
             <span className="hero-cred-bar" aria-hidden="true" />
-            <span className="hero-cred-text">12000+ Courts Built</span>
+            <span className="hero-cred-text">
+              <strong className="hero-cred-num">12000+</strong> Courts Built
+            </span>
           </div>
           <div className="hero-cred-item">
             <span className="hero-cred-bar" aria-hidden="true" />
-            <span className="hero-cred-text">250+ Dealers Pan India</span>
+            <span className="hero-cred-text">
+              <strong className="hero-cred-num">250+</strong> Dealers Pan India
+            </span>
           </div>
         </div>
         <div className="hero-bottom-content">
