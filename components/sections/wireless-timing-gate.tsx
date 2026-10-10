@@ -316,11 +316,10 @@ export function WirelessTimingGateView() {
             <div className="timing-video-grid">
               <div className="timing-video-box">
                 <iframe
-                  src="https://www.youtube-nocookie.com/embed/-w4l4MzG4PU?rel=0"
+                  src="https://www.youtube-nocookie.com/embed/-w4l4MzG4PU?autoplay=1&mute=1&playsinline=1&loop=1&playlist=-w4l4MzG4PU&rel=0"
                   title="SmarTracks Wireless Timing Gate & Live Diagnostics Demonstration"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  loading="lazy"
                 />
               </div>
 

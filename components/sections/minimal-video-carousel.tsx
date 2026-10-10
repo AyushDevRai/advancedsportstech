@@ -155,19 +155,24 @@ function GridVideoCard({
     }
   };
 
-  const handleMouseEnter = () => {
+  useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
     el.muted = true;
-    setIsMuted(true);
     void el.play().then(() => setIsPlaying(true)).catch(() => {});
+  }, []);
+
+  const handleMouseEnter = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.paused) {
+      el.muted = isMuted;
+      void el.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
   };
 
   const handleMouseLeave = () => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.pause();
-    setIsPlaying(false);
+    // Keep playing video smoothly in motion without pausing
   };
 
   return (
@@ -183,9 +188,10 @@ function GridVideoCard({
         src={video.src}
         poster={video.poster}
         muted={isMuted}
+        autoPlay
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onTimeUpdate={() => {
@@ -201,8 +207,8 @@ function GridVideoCard({
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      {/* Top Gradient + Badges */}
-      <div className="absolute inset-x-0 top-0 p-3 md:p-3.5 bg-gradient-to-b from-black/80 via-black/30 to-transparent flex items-center justify-between gap-2 pointer-events-none z-10">
+      {/* Top Gradient + Badges (Shown only on hover) */}
+      <div className="absolute inset-x-0 top-0 p-3 md:p-3.5 bg-gradient-to-b from-black/80 via-black/30 to-transparent flex items-center justify-between gap-2 pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="flex items-center gap-1.5">
           <span className="w-1 h-3.5 bg-[#d32628] rounded-full inline-block flex-shrink-0" />
           <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-white/95 truncate drop-shadow">
@@ -214,17 +220,17 @@ function GridVideoCard({
         </span>
       </div>
 
-      {/* Center Subtle Play Button (Visible when paused) */}
+      {/* Center Subtle Play Button (Visible on hover when paused) */}
       {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/25 flex items-center justify-center text-white opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all">
             <Play size={18} className="translate-x-0.5 fill-white/80" />
           </div>
         </div>
       )}
 
-      {/* Bottom Gradient + Details + Controls Bar (Matching Screenshot UI) */}
-      <div className="absolute inset-x-0 bottom-0 p-3 md:p-3.5 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end pointer-events-auto z-10">
+      {/* Bottom Gradient + Details + Controls Bar (Shown only on hover) */}
+      <div className="absolute inset-x-0 bottom-0 p-3 md:p-3.5 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end pointer-events-none group-hover:pointer-events-auto z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {/* Title & Location */}
         <div className="mb-2">
           <h4 className="text-white text-xs md:text-sm font-bold tracking-tight line-clamp-1 group-hover:text-red-400 transition-colors">
@@ -292,7 +298,7 @@ export function MinimalVideoCarousel() {
   return (
     <section
       id="project-video-stream"
-      className="minimal-video-carousel-section relative py-16 md:py-24 bg-[#0a140e] overflow-hidden text-white"
+      className="minimal-video-carousel-section relative pt-6 md:pt-8 pb-16 md:pb-24 bg-[#0a140e] overflow-hidden text-white"
       data-nav-theme="dark"
       aria-labelledby="video-stream-title"
     >

@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { ArrowUpRight, Pause, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/content/ast";
-import { AuroraText } from "@/components/ui/aurora-text";
 import { TypewriterAurora } from "@/components/ui/typewriter-aurora";
+
+const HERO_VIDEO_SRC = "https://res.cloudinary.com/ddrzgbhnl/video/upload/v1763355658/astw3_ubxyop_aogana.mp4";
 
 const rotatingHeroHeadlines = [
   "ELITE SURFACES.",
@@ -15,82 +15,73 @@ const rotatingHeroHeadlines = [
   "WORLD-CLASS ARENAS.",
 ];
 
-type Connection = { saveData?: boolean; effectiveType?: string; addEventListener?: (name: string, listener: () => void) => void; removeEventListener?: (name: string, listener: () => void) => void };
-
 export function VideoHero() {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const manuallyPaused = useRef(false);
-  const [source, setSource] = useState<{ src: string; type: string } | null>(null);
-  const [playing, setPlaying] = useState(false);
-  const [ready, setReady] = useState(false);
+  const [, setPlaying] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     const hero = heroRef.current;
     if (!video || !hero) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const connection = (navigator as Navigator & { connection?: Connection }).connection;
-    let visible = true;
-    let cancelled = false;
-    const blocked = () => reduced.matches || connection?.saveData || /^(slow-2g|2g|3g)$/.test(connection?.effectiveType ?? "");
-    const updatePlayback = () => {
-      if (blocked() || manuallyPaused.current || !visible || document.hidden) video.pause();
-      else if (video.getAttribute("src")) void video.play().catch(() => { /* Poster remains if autoplay is unavailable. */ });
-    };
-    const chooseSource = () => {
-      if (blocked()) {
-        video.pause();
-        setSource(null);
-        setReady(false);
-        return;
-      }
-      setSource({
-        src: "https://res.cloudinary.com/ddrzgbhnl/video/upload/v1763355658/astw3_ubxyop_aogana.mp4",
-        type: "video/mp4"
-      });
-    };
-    // Let the preloaded poster and first paint finish before video competes for bandwidth.
-    const timer = window.setTimeout(() => { if (!cancelled) chooseSource(); }, 600);
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updatePlayback(); }, { threshold: 0.05 });
+
+    // Trigger instant playback immediately on mount
+    video.muted = true;
+    const p = video.play();
+    if (p !== undefined) {
+      p.catch(() => {});
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!manuallyPaused.current && !document.hidden) {
+          if (entry.isIntersecting) {
+            void video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
+      },
+      { threshold: 0.05 }
+    );
     observer.observe(hero);
-    document.addEventListener("visibilitychange", updatePlayback);
-    reduced.addEventListener("change", chooseSource);
-    connection?.addEventListener?.("change", chooseSource);
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        video.pause();
+      } else if (!manuallyPaused.current) {
+        void video.play().catch(() => {});
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
-      cancelled = true;
-      window.clearTimeout(timer);
-      video.pause();
       observer.disconnect();
-      document.removeEventListener("visibilitychange", updatePlayback);
-      reduced.removeEventListener("change", chooseSource);
-      connection?.removeEventListener?.("change", chooseSource);
+      document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (!source) { video.removeAttribute("src"); video.load(); return; }
-    const rect = heroRef.current?.getBoundingClientRect();
-    if (rect && rect.bottom > 0 && rect.top < window.innerHeight && !document.hidden && !manuallyPaused.current) void video.play().catch(() => setPlaying(false));
-  }, [source]);
-
-  function toggleVideo() {
-    const video = videoRef.current;
-    if (!video) return;
-    manuallyPaused.current = !video.paused;
-    if (video.paused) void video.play().catch(() => setPlaying(false));
-    else video.pause();
-  }
-
   return (
     <section ref={heroRef} id="home" className="home-hero" data-nav-theme="dark" aria-labelledby="hero-title">
-      <Image src="/video/hero-poster.webp" alt="Aerial view of sports courts from AST’s own project footage" fill preload sizes="100vw" className="hero-media" />
-      <video ref={videoRef} src={source?.src} width={1280} height={720} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1}
-        className={`hero-media hero-video ${ready ? "is-ready" : ""}`}
-        onCanPlay={() => { setReady(true); if (!manuallyPaused.current && !document.hidden && (heroRef.current?.getBoundingClientRect().bottom ?? 0) > 0) void videoRef.current?.play().catch(() => setPlaying(false)); }}
-        onPlaying={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => { setReady(false); setPlaying(false); }} />
+      <link rel="preload" as="video" href={HERO_VIDEO_SRC} type="video/mp4" />
+      <video
+        ref={videoRef}
+        src={HERO_VIDEO_SRC}
+        width={1280}
+        height={720}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/video/hero-poster.webp"
+        aria-hidden="true"
+        tabIndex={-1}
+        className="hero-media hero-video is-ready"
+        onPlaying={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
       <div className="hero-shade" />
       <div className="hero-lines" aria-hidden="true"><span /><span /><span /></div>
       <div className="page-container hero-content">

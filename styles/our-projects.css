@@ -203,12 +203,13 @@
 
 .projects-hero-heading {
   font-family: var(--font-display, "Barlow Condensed", sans-serif);
-  font-size: clamp(68px, 10.5vw, 138px);
+  font-size: clamp(48px, 8.2vw, 108px);
   font-weight: 800;
-  line-height: 0.94;
+  line-height: 0.98;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   margin-bottom: 22px;
+  margin-inline: auto;
   text-align: center;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);

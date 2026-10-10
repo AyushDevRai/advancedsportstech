@@ -161,7 +161,9 @@ export function OurProjectsPageView() {
             </p>
 
             <h1 id="projects-hero-title" className="projects-hero-heading">
-              OUR <span className="highlight-red">PROJECTS.</span>
+              OUR LANDMARK
+              <br />
+              <span className="highlight-red">SPORTS PROJECTS.</span>
             </h1>
 
             <p className="projects-hero-lead">

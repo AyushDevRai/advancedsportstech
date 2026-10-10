@@ -1,23 +1,236 @@
 "use client";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { ArrowUpRight, Camera, ChevronLeft, ChevronRight, Grid2X2, Rotate3D, Video, X } from "lucide-react";
-import { useState } from "react";
+import {
+  ArrowUpRight,
+  Camera,
+  ChevronLeft,
+  ChevronRight,
+  Grid2X2,
+  MapPin,
+  MoveHorizontal,
+  Rotate3D,
+  Video,
+  X,
+} from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
 import { gallery, galleryVideos } from "@/content/homepage";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { VideoCarousel } from "@/components/ui/video-carousel";
 
-const CircularGallery = dynamic(() => import("@/components/ui/circular-gallery"), {
-  ssr: false,
-  loading: () => (
-    <div style={{ height: "600px", display: "grid", placeItems: "center", color: "#8a968f", fontSize: "14px" }}>
-      Loading 3D gallery…
-    </div>
-  ),
-});
-
 const filters = ["All", "Prominent Projects", "Our Creations"] as const;
+
+type GalleryItemType = (typeof gallery)[number];
+
+interface DraggableMarqueeRowProps {
+  items: GalleryItemType[];
+  direction: "left" | "right";
+  speed?: number;
+  onSelectProject: (slug: string) => void;
+  rowId: string;
+}
+
+function DraggableMarqueeRow({
+  items,
+  direction,
+  speed = 0.65,
+  onSelectProject,
+  rowId,
+}: DraggableMarqueeRowProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const lastXRef = useRef(0);
+  const hasMovedRef = useRef(false);
+  const velocityRef = useRef(0);
+  const speedMultRef = useRef(1.0);
+  const setWidthRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
+  // Repeat items 4 times for seamless infinite horizontal loop
+  const repeatCount = 4;
+  const repeatedItems = [...items, ...items, ...items, ...items];
+
+  // Measure single set width dynamically
+  useEffect(() => {
+    function measure() {
+      if (trackRef.current) {
+        const fullWidth = trackRef.current.scrollWidth;
+        const setWidth = fullWidth / repeatCount;
+        setWidthRef.current = setWidth;
+        if (posRef.current === 0 && direction === "right") {
+          posRef.current = setWidth / 2;
+        }
+      }
+    }
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (trackRef.current) ro.observe(trackRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [items.length, direction]);
+
+  // RequestAnimationFrame animation loop
+  useEffect(() => {
+    let prevTime = performance.now();
+
+    function step(currentTime: number) {
+      const dt = Math.min((currentTime - prevTime) / 1000, 0.1);
+      prevTime = currentTime;
+
+      const setWidth = setWidthRef.current;
+
+      if (!isDraggingRef.current && setWidth > 0) {
+        // Auto scroll step
+        const dir = direction === "left" ? 1 : -1;
+        const move = dir * (speed * 60) * speedMultRef.current * dt;
+        posRef.current += move;
+
+        // Apply decaying inertia
+        if (Math.abs(velocityRef.current) > 0.05) {
+          posRef.current -= velocityRef.current;
+          velocityRef.current *= 0.94;
+        }
+
+        // Seamless wrap
+        if (posRef.current >= setWidth) {
+          posRef.current -= setWidth;
+        } else if (posRef.current < 0) {
+          posRef.current += setWidth;
+        }
+
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${-posRef.current}px, 0, 0)`;
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(step);
+    }
+
+    rafRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [direction, speed]);
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    lastXRef.current = e.clientX;
+    hasMovedRef.current = false;
+    velocityRef.current = 0;
+
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+
+    const deltaX = e.clientX - lastXRef.current;
+    if (Math.abs(e.clientX - dragStartXRef.current) > 4) {
+      hasMovedRef.current = true;
+    }
+
+    posRef.current -= deltaX;
+    const setWidth = setWidthRef.current;
+    if (setWidth > 0) {
+      if (posRef.current >= setWidth) posRef.current -= setWidth;
+      else if (posRef.current < 0) posRef.current += setWidth;
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${-posRef.current}px, 0, 0)`;
+    }
+
+    velocityRef.current = deltaX;
+    lastXRef.current = e.clientX;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const handleCardClick = (slug: string) => {
+    if (hasMovedRef.current) return; // Prevent click when dragging
+    onSelectProject(slug);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="project-marquee-row"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onMouseEnter={() => {
+        speedMultRef.current = 0.22; // Smooth deceleration on hover
+      }}
+      onMouseLeave={() => {
+        speedMultRef.current = 1.0;
+      }}
+      aria-label={`Gallery showcase row ${rowId}`}
+    >
+      <div ref={trackRef} className="project-marquee-track">
+        {repeatedItems.map((item, idx) => (
+          <div
+            key={`${item.slug}-${rowId}-${idx}`}
+            className="project-animated-card"
+            onClick={() => handleCardClick(item.slug)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelectProject(item.slug);
+              }
+            }}
+          >
+            <div className="project-animated-card-img">
+              <Image
+                src={item.image}
+                alt={item.name}
+                fill
+                sizes="(max-width: 640px) 280px, 360px"
+                style={{ objectFit: "cover" }}
+                draggable={false}
+              />
+            </div>
+            {/* Details only shown on hover */}
+            <div className="project-animated-card-hover-details" aria-hidden="true">
+              <div className="project-animated-card-overlay" />
+              <div className="project-animated-card-top">
+                <span className="project-animated-card-zoom">
+                  <ArrowUpRight size={13} />
+                </span>
+              </div>
+              <div className="project-animated-card-bottom">
+                <h3 className="project-animated-card-title">{item.name}</h3>
+                <span className="project-animated-card-loc">
+                  <MapPin size={11} className="text-red-500" />
+                  {item.location}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function ProjectGallery() {
   const [mediaType, setMediaType] = useState<"photos" | "videos">("photos");
@@ -28,6 +241,14 @@ export function ProjectGallery() {
   const visible = gallery.filter((project) => filter === "All" || project.category === filter);
   const project = selected === null ? null : gallery[selected];
   const selectProject = (slug: string) => setSelected(gallery.findIndex((item) => item.slug === slug));
+
+  // Split visible items into two distinct rows with different photos
+  const row1 = visible.filter((_, idx) => idx % 2 === 0);
+  const row2 = visible.filter((_, idx) => idx % 2 === 1);
+
+  // If a filter has very few items, ensure both rows have items
+  const finalRow1 = row1.length > 0 ? row1 : visible;
+  const finalRow2 = row2.length > 0 ? row2 : [...visible].reverse();
 
   return (
     <section id="projects" className="section-pad project-section" data-nav-theme="dark" aria-labelledby="projects-title">
@@ -75,85 +296,74 @@ export function ProjectGallery() {
 
         {/* View Mode: Photos */}
         {mediaType === "photos" && (
-          <>
-            {/* Desktop View: Full filters, 3D Circular Gallery & Grid */}
-            <div className="gallery-desktop-showcase">
-              <div className="project-toolbar">
-                <div className="project-filters" role="group" aria-label="Filter projects">
-                  {filters.map((item) => (
-                    <button
-                      key={item}
-                      onClick={() => setFilter(item)}
-                      type="button"
-                      aria-pressed={filter === item}
-                      className={filter === item ? "is-selected" : ""}
-                    >
-                      {item}
-                    </button>
-                  ))}
+          <div className="gallery-desktop-showcase">
+            <div className="project-toolbar">
+              <div className="project-filters" role="group" aria-label="Filter projects">
+                {filters.map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => setFilter(item)}
+                    type="button"
+                    aria-pressed={filter === item}
+                    className={filter === item ? "is-selected" : ""}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+              <div className="project-view-controls" role="group" aria-label="Project display">
+                <button
+                  type="button"
+                  aria-label="Animated Cards view"
+                  aria-pressed={view === "circular"}
+                  onClick={() => setView("circular")}
+                >
+                  <Rotate3D size={18} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Grid view"
+                  aria-pressed={view === "grid"}
+                  onClick={() => setView("grid")}
+                >
+                  <Grid2X2 size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* 1. Animated Two-Row Draggable Showcase (Default) */}
+            {view === "circular" && (
+              <div className="project-animated-gallery">
+                <div className="project-animated-rows">
+                  <DraggableMarqueeRow
+                    items={finalRow1}
+                    direction="left"
+                    speed={0.65}
+                    onSelectProject={selectProject}
+                    rowId="1"
+                  />
+                  <DraggableMarqueeRow
+                    items={finalRow2}
+                    direction="right"
+                    speed={0.65}
+                    onSelectProject={selectProject}
+                    rowId="2"
+                  />
                 </div>
-                <div className="project-view-controls" role="group" aria-label="Project display">
-                  <button
-                    type="button"
-                    aria-label="3D Circular Gallery view"
-                    aria-pressed={view === "circular"}
-                    onClick={() => setView("circular")}
-                  >
-                    <Rotate3D size={18} />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Grid view"
-                    aria-pressed={view === "grid"}
-                    onClick={() => setView("grid")}
-                  >
-                    <Grid2X2 size={18} />
-                  </button>
+                <div className="project-animated-hint" aria-hidden="true">
+                  <span className="hint-pill">
+                    <MoveHorizontal size={13} />
+                    <span>DRAG HORIZONTALLY TO SCRUB · AUTO-SLIDING</span>
+                  </span>
+                  <span className="hint-dot">•</span>
+                  <span>CLICK ANY CARD TO VIEW DETAILS</span>
                 </div>
               </div>
+            )}
 
-              {view === "circular" && (
-                <div
-                  className="project-circular-wrap"
-                  style={{ height: "640px", width: "100%", position: "relative", margin: "25px 0 15px", overflow: "hidden" }}
-                >
-                  <CircularGallery
-                    key={filter}
-                    items={visible.map((item) => ({ image: item.image, text: item.name }))}
-                    bend={2}
-                    textColor="#ffffff"
-                    borderRadius={0.06}
-                    scrollSpeed={2}
-                    scrollEase={0.04}
-                    onItemSelect={(index) => {
-                      const target = visible[index];
-                      if (target) selectProject(target.slug);
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: "12px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      pointerEvents: "none",
-                      fontSize: "11px",
-                      letterSpacing: "0.1em",
-                      color: "#a9b8ad",
-                      textTransform: "uppercase",
-                      background: "rgba(10, 16, 13, 0.65)",
-                      padding: "6px 16px",
-                      borderRadius: "20px",
-                      backdropFilter: "blur(8px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  >
-                    Drag to rotate &bull; Click to view details
-                  </div>
-                </div>
-              )}
-
-              <div className={`project-grid ${view === "circular" ? "project-grid-mobile" : ""}`}>
+            {/* 2. Full Grid View (When Grid button clicked) */}
+            {view === "grid" && (
+              <div className="project-grid">
                 {visible.map((item, index) => (
                   <button
                     type="button"
@@ -179,49 +389,8 @@ export function ProjectGallery() {
                   </button>
                 ))}
               </div>
-            </div>
-
-            {/* Mobile View: No heavy animated 3D components, showing latest 5 projects with View All button */}
-            <div className="gallery-mobile-showcase">
-              <div className="gallery-mobile-list">
-                {gallery.slice(0, 5).map((item, index) => (
-                  <button
-                    type="button"
-                    className="gallery-mobile-card"
-                    key={item.slug}
-                    onClick={() => selectProject(item.slug)}
-                  >
-                    <div className="gallery-mobile-thumb">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 400px"
-                      />
-                      <span className="gallery-mobile-badge">{item.category}</span>
-                      <span className="gallery-mobile-zoom">
-                        <ArrowUpRight size={17} />
-                      </span>
-                    </div>
-                    <div className="gallery-mobile-info">
-                      <div className="gallery-mobile-title-wrap">
-                        <span className="gallery-mobile-index">0{index + 1}</span>
-                        <h3 className="gallery-mobile-title">{item.name}</h3>
-                      </div>
-                      <span className="gallery-mobile-loc">{item.location}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              <div className="gallery-mobile-actions">
-                <a href="/projects" className="ast-button ast-button-red gallery-mobile-viewall-btn">
-                  <span>View All Projects</span>
-                  <ArrowUpRight size={17} />
-                </a>
-              </div>
-            </div>
-          </>
+            )}
+          </div>
         )}
 
         {/* View Mode: Videos */}

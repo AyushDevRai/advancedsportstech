@@ -22,6 +22,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { IndiaProjectMap } from "@/components/sections/india-project-map";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { HexagonPattern } from "@/components/ui/hexagon-pattern";
 import { AboutVideoPlayer } from "@/components/sections/about-video-player";
 import { projectStats } from "@/content/our-projects";
 import { company } from "@/content/ast";
@@ -36,7 +37,7 @@ import {
 const partnerLogos = [
   { src: "/brand/ligature.png", alt: "LigaTurf" },
   { src: "/brand/spurtan.png", alt: "Spurtan" },
-  { src: "/brand/panasonic.png", alt: "Panasonic" },
+  { src: "/panasonic-logo-png-svg.webp", alt: "Panasonic" },
   { src: "/brand/rekortan.png", alt: "Rekortan" },
   { src: "/brand/poligras.png", alt: "Poligras" },
 ];
@@ -75,12 +76,12 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="about-title"
         >
-          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_left,white_20%,transparent_75%)]" aria-hidden="true">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_15%,transparent_75%)]" aria-hidden="true">
             <InteractiveGridPattern
               width={38}
               height={38}
-              squares={[32, 22]}
-              className="pointer-events-auto opacity-60"
+              squares={[52, 28]}
+              className="pointer-events-auto opacity-50"
             />
           </div>
           <div className="page-container">
@@ -208,12 +209,12 @@ export function Homepage() {
           data-nav-theme="light"
           aria-labelledby="products-title"
         >
-          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_15%,transparent_70%)]" aria-hidden="true">
-            <InteractiveGridPattern
-              width={38}
-              height={38}
-              squares={[32, 24]}
-              className="pointer-events-auto opacity-50"
+          <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_20%,transparent_75%)]" aria-hidden="true">
+            <HexagonPattern
+              radius={28}
+              gap={2}
+              direction="horizontal"
+              className="stroke-gray-400/35 opacity-40"
             />
           </div>
           <div id="sports" />
@@ -352,11 +353,11 @@ export function Homepage() {
           aria-labelledby="brochures-title"
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_right,white_20%,transparent_75%)]" aria-hidden="true">
-            <InteractiveGridPattern
-              width={38}
-              height={38}
-              squares={[32, 20]}
-              className="pointer-events-auto opacity-55"
+            <HexagonPattern
+              radius={28}
+              gap={2}
+              direction="horizontal"
+              className="stroke-gray-400/35 opacity-40"
             />
           </div>
           <div className="page-container">

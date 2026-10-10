@@ -41,6 +41,7 @@ export function InteractiveGridPattern({
   return (
     <svg
       viewBox={`0 0 ${width * horizontal} ${height * vertical}`}
+      preserveAspectRatio="xMidYMid slice"
       className={cn(
         "absolute inset-0 h-full w-full",
         className

@@ -105,11 +105,10 @@ export function Smartracks() {
             <div className="smartracks-overview-visual">
               <div className="smartracks-video-box">
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${smartracksVideos.overview.id}?rel=0`}
+                  src={`https://www.youtube-nocookie.com/embed/${smartracksVideos.overview.id}?autoplay=1&mute=1&playsinline=1&loop=1&playlist=${smartracksVideos.overview.id}&rel=0`}
                   title={smartracksVideos.overview.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  loading="lazy"
                 />
               </div>
               <p>Patented In-Ground Magnetic Diagnostics For Running Tracks & Turf</p>
@@ -223,11 +222,10 @@ export function Smartracks() {
             <div className="smartracks-heritage-video-layout">
               <div className="smartracks-video-box">
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${smartracksVideos.millisecond.id}?rel=0`}
+                  src={`https://www.youtube-nocookie.com/embed/${smartracksVideos.millisecond.id}?autoplay=1&mute=1&playsinline=1&loop=1&playlist=${smartracksVideos.millisecond.id}&rel=0`}
                   title={smartracksVideos.millisecond.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  loading="lazy"
                 />
               </div>
               <div className="smartracks-heritage-video-copy">
@@ -447,11 +445,10 @@ export function Smartracks() {
                     {product.videoId ? (
                       <div className="smartracks-video-box">
                         <iframe
-                          src={`https://www.youtube-nocookie.com/embed/${product.videoId}?rel=0`}
+                          src={`https://www.youtube-nocookie.com/embed/${product.videoId}?autoplay=1&mute=1&playsinline=1&loop=1&playlist=${product.videoId}&rel=0`}
                           title={product.videoTitle ?? product.name}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           allowFullScreen
-                          loading="lazy"
                         />
                       </div>
                     ) : (
