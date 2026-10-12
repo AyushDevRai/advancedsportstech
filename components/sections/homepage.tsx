@@ -54,7 +54,7 @@ export function Homepage() {
         Skip to content
       </a>
       <SiteHeader />
-      <HomepageEffects />
+      {/* <HomepageEffects /> */}
       <main id="main-content">
         <VideoHero />
         <div className="brand-ribbon">
