@@ -1,33 +1,21 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
+import React, { memo } from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
-
-/**
- * InteractiveGridPattern is a component that renders a grid pattern with interactive squares.
- *
- * @param width - The width of each square.
- * @param height - The height of each square.
- * @param squares - The number of squares in the grid. The first element is the number of horizontal squares, and the second element is the number of vertical squares.
- * @param className - The class name of the grid.
- * @param squaresClassName - The class name of the squares.
- */
 interface InteractiveGridPatternProps extends React.SVGProps<SVGSVGElement> {
-  width?: number
-  height?: number
-  squares?: [number, number] // [horizontal, vertical]
-  className?: string
-  squaresClassName?: string
+  width?: number;
+  height?: number;
+  squares?: [number, number]; // [horizontal, vertical]
+  className?: string;
+  squaresClassName?: string;
 }
 
 /**
- * The InteractiveGridPattern component.
- *
- * @see InteractiveGridPatternProps for the props interface.
- * @returns A React component.
+ * InteractiveGridPattern renders a grid pattern with hardware-accelerated CSS hover.
+ * Uses pure CSS :hover to eliminate React state updates and main-thread re-renders on mousemove.
  */
-export function InteractiveGridPattern({
+export const InteractiveGridPattern = memo(function InteractiveGridPattern({
   width = 40,
   height = 40,
   squares = [24, 24],
@@ -35,22 +23,18 @@ export function InteractiveGridPattern({
   squaresClassName,
   ...props
 }: InteractiveGridPatternProps) {
-  const [horizontal, vertical] = squares
-  const [hoveredSquare, setHoveredSquare] = useState<number | null>(null)
+  const [horizontal, vertical] = squares;
 
   return (
     <svg
       viewBox={`0 0 ${width * horizontal} ${height * vertical}`}
       preserveAspectRatio="xMidYMid slice"
-      className={cn(
-        "absolute inset-0 h-full w-full",
-        className
-      )}
+      className={cn("absolute inset-0 h-full w-full", className)}
       {...props}
     >
       {Array.from({ length: horizontal * vertical }).map((_, index) => {
-        const x = (index % horizontal) * width
-        const y = Math.floor(index / horizontal) * height
+        const x = (index % horizontal) * width;
+        const y = Math.floor(index / horizontal) * height;
         return (
           <rect
             key={index}
@@ -59,15 +43,12 @@ export function InteractiveGridPattern({
             width={width}
             height={height}
             className={cn(
-              "stroke-neutral-400/20 transition-all duration-150 ease-in-out not-[&:hover]:duration-700",
-              hoveredSquare === index ? "fill-[#d32628]/15 stroke-[#d32628]/40" : "fill-transparent",
+              "stroke-neutral-400/20 fill-transparent transition-colors duration-500 ease-out hover:fill-[#d32628]/15 hover:stroke-[#d32628]/40 hover:duration-75",
               squaresClassName
             )}
-            onMouseEnter={() => setHoveredSquare(index)}
-            onMouseLeave={() => setHoveredSquare(null)}
           />
-        )
+        );
       })}
     </svg>
-  )
-}
+  );
+});

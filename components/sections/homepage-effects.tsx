@@ -36,7 +36,7 @@ export function HomepageEffects() {
       if (query.matches) return;
       scroll = new Lenis({
         autoRaf: true,
-        lerp: 0.1,
+        lerp: 0.15,
         anchors: true,
         allowNestedScroll: true,
         stopInertiaOnNavigate: true,

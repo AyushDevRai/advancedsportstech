@@ -106,11 +106,12 @@ function GridVideoCard({
   video: GridVideoItem;
   containerHeightClass: string;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const timeTextRef = useRef<HTMLSpanElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   const formatTime = (secs: number) => {
     if (isNaN(secs) || secs === 0) return "0:00";
@@ -119,7 +120,8 @@ function GridVideoCard({
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
-  const togglePlay = () => {
+  const togglePlay = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     const el = videoRef.current;
     if (!el) return;
     if (el.paused) {
@@ -155,11 +157,30 @@ function GridVideoCard({
     }
   };
 
+  // Pause video if card scrolls out of view while playing
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.muted = true;
-    void el.play().then(() => setIsPlaying(true)).catch(() => {});
+    const card = cardRef.current;
+    const video = videoRef.current;
+    if (!card || !video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && !video.paused) {
+          video.pause();
+          setIsPlaying(false);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(card);
+
+    return () => {
+      observer.disconnect();
+      if (!video.paused) {
+        video.pause();
+      }
+    };
   }, []);
 
   const handleMouseEnter = () => {
@@ -172,39 +193,48 @@ function GridVideoCard({
   };
 
   const handleMouseLeave = () => {
-    // Keep playing video smoothly in motion without pausing
+    // Immediately pause any video on mouse leave to release GPU decoders
+    const el = videoRef.current;
+    if (el && !el.paused) {
+      el.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    const cur = el.currentTime;
+    const dur = el.duration || 0;
+    if (progressBarRef.current && dur > 0) {
+      progressBarRef.current.style.width = `${(cur / dur) * 100}%`;
+    }
+    if (timeTextRef.current) {
+      timeTextRef.current.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+    }
   };
 
   return (
     <div
-      className={`relative w-full ${containerHeightClass} rounded-2xl overflow-hidden bg-[#0d1612] border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group select-none`}
+      ref={cardRef}
+      className={`relative w-full ${containerHeightClass} rounded-2xl overflow-hidden bg-[#0d1612] border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group select-none cursor-pointer transform-gpu`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={togglePlay}
+      onClick={() => togglePlay()}
     >
-      {/* Background Horizontal Video */}
+      {/* Background Video */}
       <video
         ref={videoRef}
         src={video.src}
         poster={video.poster}
         muted={isMuted}
-        autoPlay
         loop
         playsInline
-        preload="auto"
+        preload="none"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        onTimeUpdate={() => {
-          if (videoRef.current) {
-            setCurrentTime(videoRef.current.currentTime);
-          }
-        }}
-        onLoadedMetadata={() => {
-          if (videoRef.current) {
-            setDuration(videoRef.current.duration);
-          }
-        }}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        onTimeUpdate={handleTimeUpdate}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 will-change-transform"
       />
 
       {/* Top Gradient + Badges (Shown only on hover) */}
@@ -220,16 +250,16 @@ function GridVideoCard({
         </span>
       </div>
 
-      {/* Center Subtle Play Button (Visible on hover when paused) */}
+      {/* Center Subtle Play Button (Visible on hover when paused, or hint on non-featured cards) */}
       {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/25 flex items-center justify-center text-white opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-opacity duration-300">
+          <div className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/25 flex items-center justify-center text-white opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">
             <Play size={18} className="translate-x-0.5 fill-white/80" />
           </div>
         </div>
       )}
 
-      {/* Bottom Gradient + Details + Controls Bar (Shown only on hover) */}
+      {/* Bottom Gradient + Details + Controls Bar (Shown on hover) */}
       <div className="absolute inset-x-0 bottom-0 p-3 md:p-3.5 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end pointer-events-none group-hover:pointer-events-auto z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {/* Title & Location */}
         <div className="mb-2">
@@ -241,7 +271,7 @@ function GridVideoCard({
           </p>
         </div>
 
-        {/* Video Control Bar like screenshot */}
+        {/* Video Control Bar */}
         <div
           className="flex items-center justify-between gap-2 text-white/85 text-[11px] pt-1.5 border-t border-white/10"
           onClick={(e) => e.stopPropagation()}
@@ -255,8 +285,8 @@ function GridVideoCard({
             >
               {isPlaying ? <Pause size={13} /> : <Play size={13} className="fill-current" />}
             </button>
-            <span className="font-mono text-[10px] text-white/75">
-              {formatTime(currentTime)} / {formatTime(duration)}
+            <span ref={timeTextRef} className="font-mono text-[10px] text-white/75">
+              0:00 / 0:00
             </span>
           </div>
 
@@ -280,13 +310,11 @@ function GridVideoCard({
           </div>
         </div>
 
-        {/* Minimal Progress Line at Bottom */}
+        {/* Minimal Progress Line at Bottom (Driven directly via DOM ref for 60fps) */}
         <div className="w-full h-1 bg-white/20 rounded-full mt-2 overflow-hidden">
           <div
-            className="h-full bg-[#d32628] transition-all duration-150"
-            style={{
-              width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
-            }}
+            ref={progressBarRef}
+            className="h-full bg-[#d32628] w-0 transition-all duration-150"
           />
         </div>
       </div>
@@ -322,24 +350,13 @@ export function MinimalVideoCarousel() {
           </p>
         </div>
 
-        {/* Mobile View: Exactly 4 Videos */}
-        <div className="grid grid-cols-1 gap-4 sm:hidden">
-          {footageVideos.slice(0, 4).map((video) => (
-            <GridVideoCard
-              key={video.id}
-              video={video}
-              containerHeightClass="h-[210px]"
-            />
-          ))}
-        </div>
-
-        {/* Desktop / Tablet View: Full 8-Video Asymmetric Bento Grid */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        {/* Unified Responsive 8-Video Bento Grid - Zero DOM duplicates */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {/* Column 1: Tall Feature (1 video card) */}
           <div className="flex flex-col justify-between">
             <GridVideoCard
               video={footageVideos[0]}
-              containerHeightClass="h-[480px] lg:h-[540px]"
+              containerHeightClass="h-[260px] sm:h-[480px] lg:h-[540px]"
             />
           </div>
 
@@ -347,28 +364,30 @@ export function MinimalVideoCarousel() {
           <div className="flex flex-col gap-4 justify-between">
             <GridVideoCard
               video={footageVideos[1]}
-              containerHeightClass="h-[232px] lg:h-[262px]"
+              containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
             />
             <GridVideoCard
               video={footageVideos[2]}
-              containerHeightClass="h-[232px] lg:h-[262px]"
+              containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
             />
           </div>
 
-          {/* Column 3: 2 Stacked Cards */}
+          {/* Column 3: 2 Stacked Cards (Card 4 shown on tablet/desktop) */}
           <div className="flex flex-col gap-4 justify-between">
             <GridVideoCard
               video={footageVideos[3]}
-              containerHeightClass="h-[232px] lg:h-[262px]"
+              containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
             />
-            <GridVideoCard
-              video={footageVideos[4]}
-              containerHeightClass="h-[232px] lg:h-[262px]"
-            />
+            <div className="hidden sm:block">
+              <GridVideoCard
+                video={footageVideos[4]}
+                containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
+              />
+            </div>
           </div>
 
-          {/* Column 4: 3 Stacked Cards */}
-          <div className="flex flex-col gap-3 justify-between">
+          {/* Column 4: 3 Stacked Cards (Desktop/Tablet showcase) */}
+          <div className="hidden lg:flex flex-col gap-3 justify-between">
             <GridVideoCard
               video={footageVideos[5]}
               containerHeightClass="h-[150px] lg:h-[170px]"

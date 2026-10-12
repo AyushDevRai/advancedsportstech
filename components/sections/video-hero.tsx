@@ -126,7 +126,7 @@ export function VideoHero() {
           </div>
         </div>
         <div className="hero-bottom-content">
-          <div className="hero-actions"><a href="#contact" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
+          <div className="hero-actions"><a href="#contact" data-mascot-cta="excited" className="ast-button ast-button-red">Build your vision <ArrowUpRight size={18} /></a><a href="#projects" className="ast-button ast-button-glass">Explore our projects <ArrowUpRight size={18} /></a></div>
         </div>
       </div>
       <div className="hero-foot">

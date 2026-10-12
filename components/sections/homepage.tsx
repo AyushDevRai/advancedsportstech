@@ -78,9 +78,9 @@ export function Homepage() {
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_15%,transparent_75%)]" aria-hidden="true">
             <InteractiveGridPattern
-              width={38}
-              height={38}
-              squares={[52, 28]}
+              width={54}
+              height={54}
+              squares={[34, 18]}
               className="pointer-events-auto opacity-50"
             />
           </div>
@@ -130,9 +130,9 @@ export function Homepage() {
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top_right,white_20%,transparent_75%)]" aria-hidden="true">
             <InteractiveGridPattern
-              width={38}
-              height={38}
-              squares={[32, 22]}
+              width={54}
+              height={54}
+              squares={[22, 14]}
               className="pointer-events-auto opacity-50"
             />
           </div>
@@ -400,9 +400,9 @@ export function Homepage() {
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:radial-gradient(ellipse_at_top,white_20%,transparent_75%)]" aria-hidden="true">
             <InteractiveGridPattern
-              width={38}
-              height={38}
-              squares={[32, 20]}
+              width={54}
+              height={54}
+              squares={[22, 14]}
               className="pointer-events-auto opacity-50"
             />
           </div>

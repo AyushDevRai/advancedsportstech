@@ -96,10 +96,10 @@ export function Basketball() {
             <div className="bb-overview-visual">
               <div className="bb-visual-image">
                 <Image
-                  src="/courts/basketball-overview-cad.jpg"
-                  alt="Precision technical engineering and subfloor architecture for basketball courts"
+                  src="/courts/basketball-overview-court.jpg"
+                  alt="FIBA championship indoor hardwood basketball court floor with arena lighting"
                   fill
-                  sizes="(max-width: 900px) 100vw, 40vw"
+                  sizes="(max-width: 900px) 100vw, 45vw"
                 />
               </div>
               <p>FIBA Certified Precision Surfaces For Competitive Basketball</p>

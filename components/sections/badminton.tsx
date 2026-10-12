@@ -100,10 +100,10 @@ export function Badminton() {
             <div className="bm-overview-visual">
               <div className="bm-visual-image">
                 <Image
-                  src="/Product Images/Badminton/indoor-badminton-court-flooring-604.jpg"
-                  alt="Badminton court technical diagram and CAD engineering specifications"
+                  src="/courts/badminton-overview-court.jpg"
+                  alt="BWF championship standard indoor synthetic badminton court facility"
                   fill
-                  sizes="(max-width: 900px) 100vw, 40vw"
+                  sizes="(max-width: 900px) 100vw, 45vw"
                 />
               </div>
               <p>Certified Precision Surfaces For Badminton Academies &amp; Arenas</p>

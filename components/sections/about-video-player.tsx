@@ -19,6 +19,7 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
   const playerRef = useRef<any>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isLoopingRef = useRef<boolean>(false);
+  const isVisibleRef = useRef<boolean>(true);
   const [origin, setOrigin] = useState<string>("");
 
   useEffect(() => {
@@ -164,9 +165,9 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
       }
     }
 
-    // Active polling interval: strictly monitor 4:55 to 6:23 loop
+    // Active polling interval: only when about section is visible on screen
     timerRef.current = setInterval(() => {
-      if (!isMounted) return;
+      if (!isMounted || !isVisibleRef.current) return;
 
       // Ping iframe to request current status info
       sendPostMessageCommand("listening", []);
@@ -191,7 +192,29 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
           }
         } catch (_) {}
       }
-    }, 250);
+    }, 400);
+
+    // Pause / resume YouTube when about section enters / exits viewport
+    const container = containerRef.current;
+    let observer: IntersectionObserver | undefined;
+    if (container) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisibleRef.current = entry.isIntersecting;
+          if (playerRef.current) {
+            try {
+              if (entry.isIntersecting) {
+                if (typeof playerRef.current.playVideo === "function") playerRef.current.playVideo();
+              } else {
+                if (typeof playerRef.current.pauseVideo === "function") playerRef.current.pauseVideo();
+              }
+            } catch (_) {}
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(container);
+    }
 
     // Load YouTube IFrame API script if not present
     if (window.YT && window.YT.Player) {
@@ -215,6 +238,7 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
 
     return () => {
       isMounted = false;
+      observer?.disconnect();
       window.removeEventListener("message", handleWindowMessage);
       if (timerRef.current) clearInterval(timerRef.current);
       if (playerRef.current) {

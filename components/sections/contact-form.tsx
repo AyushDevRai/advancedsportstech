@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, CheckCircle2, AlertCircle, LoaderCircle } from "lucide-react";
 import { enquirySchema, type EnquiryValues, type EnquiryResult } from "@/lib/enquiry";
 import { prepareEnquiry } from "@/app/actions/enquiry";
+import { triggerMascotReaction } from "@/lib/mascot-events";
 
 interface ContactFormProps {
   idPrefix?: string;
@@ -47,19 +48,26 @@ export function ContactForm({ idPrefix = "contact", onSuccess, inModal = false }
       const res = await prepareEnquiry(data);
       setResult(res);
       if (res.status === "sent") {
+        triggerMascotReaction("celebrate", "Enquiry sent! We'll get back to you shortly! 🎉");
         reset();
         if (onSuccess) {
           onSuccess();
         }
+      } else {
+        triggerMascotReaction("confused", "Submission error. Please check your details and try again! ⚠️");
       }
     });
+  };
+
+  const onInvalid = () => {
+    triggerMascotReaction("confused", "Please fill in the required fields correctly! 🤔");
   };
 
   return (
     <form
       className={`contact-form ${inModal ? "contact-form-modal" : ""}`}
       noValidate
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
     >
       <div className="form-grid">
         {fields.map((field) => (
@@ -122,6 +130,7 @@ export function ContactForm({ idPrefix = "contact", onSuccess, inModal = false }
         <div className="modal-submit-row">
           <button
             className="ast-button ast-button-red modal-submit-btn"
+            data-mascot-cta="excited"
             type="submit"
             disabled={pending}
             aria-busy={pending}
@@ -150,6 +159,7 @@ export function ContactForm({ idPrefix = "contact", onSuccess, inModal = false }
           </p>
           <button
             className="ast-button ast-button-red"
+            data-mascot-cta="excited"
             type="submit"
             disabled={pending}
             aria-busy={pending}

@@ -3,39 +3,9 @@
 import Image from "next/image";
 import { ArrowUpRight, Download, Share2, X } from "lucide-react";
 import { useState } from "react";
-import { motion, type Variants } from "motion/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { downloadGroups, productCategories, type NavigationCard, type NavigationGroup } from "@/content/navigation";
 import { aboutParagraphs, brochureUrl, homepageServices } from "@/content/homepage";
-import { company } from "@/content/ast";
-
-const megaContainerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.04,
-      delayChildren: 0.02,
-    },
-  },
-};
-
-const megaCardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 12,
-    scale: 0.98,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.28,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
-  },
-};
 
 function NavLink({
   href,
@@ -53,9 +23,8 @@ function NavLink({
 
 function FeatureCard({ card, description, ctaLabel }: { card: NavigationCard; description?: string; ctaLabel?: string }) {
   return (
-    <motion.a
+    <a
       href={card.href}
-      variants={megaCardVariants}
       className="mega-feature"
       aria-label={card.name}
       data-menu-entry
@@ -70,15 +39,14 @@ function FeatureCard({ card, description, ctaLabel }: { card: NavigationCard; de
         {description && <p>{description}</p>}
         {ctaLabel && <span className="mega-feature-cta">{ctaLabel} <ArrowUpRight size={13} /></span>}
       </div>
-    </motion.a>
+    </a>
   );
 }
 
 function MenuEntry({ card, thumbnail = false, number }: { card: NavigationCard; thumbnail?: boolean; number?: number }) {
   return (
-    <motion.a
+    <a
       href={card.href}
-      variants={megaCardVariants}
       className={`mega-entry ${thumbnail ? "has-thumbnail" : ""}`}
       aria-label={card.name}
       data-menu-entry
@@ -90,7 +58,7 @@ function MenuEntry({ card, thumbnail = false, number }: { card: NavigationCard; 
         <strong>{card.name}</strong>
       </span>
       <ArrowUpRight size={17} />
-    </motion.a>
+    </a>
   );
 }
 
@@ -107,35 +75,30 @@ function ProductsPanel() {
       </TabsList>
       {productCategories.map(category => (
         <TabsContent value={category.id} key={category.id} className="mega-tab-content">
-          <motion.div
-            key={category.id}
-            variants={megaContainerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div>
             {category.id === "all" ? (
               <div className="mega-product-overview">
                 <FeatureCard card={category.cards[0]} description={productCategories[1].description} ctaLabel="Explore Rekortan Systems" />
-                <motion.div variants={megaContainerVariants} className="mega-directory">
+                <div className="mega-directory">
                   <span className="mega-kicker">Synthetic Turf &amp; SmarTracks</span>
                   {category.cards.filter(c => ["Hockey Turf", "Football Turf", "Inbuilt", "Wireless/Mobile Timing Gate"].includes(c.name)).map(card => (
                     <MenuEntry card={card} key={card.name} />
                   ))}
-                </motion.div>
-                <motion.div variants={megaContainerVariants} className="mega-product-support">
+                </div>
+                <div className="mega-product-support">
                   <span className="mega-kicker">Courts &amp; Flooring Systems</span>
                   {category.cards.filter(c => ["Basketball", "Tennis", "Badminton", "Wooden Flooring", "Sports Lighting", "Cleaning & Maintenance"].includes(c.name)).map(card => (
                     <MenuEntry card={card} thumbnail key={card.name} />
                   ))}
-                </motion.div>
+                </div>
               </div>
             ) : (
               <div className={`mega-category-layout ${category.description ? "has-description" : ""}`}>
-                <motion.div variants={megaContainerVariants} className="mega-category-features">
+                <div className="mega-category-features">
                   {category.cards.map(card => <FeatureCard card={card} key={card.name} />)}
-                </motion.div>
+                </div>
                 {category.description && (
-                  <motion.aside variants={megaCardVariants} className="mega-category-detail">
+                  <aside className="mega-category-detail">
                     <span className="mega-kicker">{category.name}</span>
                     <p>{category.description}</p>
                     {category.links && (
@@ -147,11 +110,11 @@ function ProductsPanel() {
                         ))}
                       </div>
                     )}
-                  </motion.aside>
+                  </aside>
                 )}
               </div>
             )}
-          </motion.div>
+          </div>
         </TabsContent>
       ))}
     </Tabs>
@@ -160,47 +123,37 @@ function ProductsPanel() {
 
 function SportsPanel({ cards }: { cards: NavigationCard[] }) {
   return (
-    <motion.div
-      variants={megaContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mega-sports-layout"
-    >
+    <div className="mega-sports-layout">
       <div className="mega-sports-directory">
         <span className="mega-kicker">Sports &amp; Surfaces</span>
-        <motion.div variants={megaContainerVariants} className="mega-sport-links">
+        <div className="mega-sport-links">
           {cards.filter((_, index) => index !== 2).map((card, index) => (
             <MenuEntry card={card} thumbnail={index > 3} key={card.name} />
           ))}
-        </motion.div>
+        </div>
       </div>
       <FeatureCard card={cards[2]} />
-    </motion.div>
+    </div>
   );
 }
 
 function ServicesPanel({ cards }: { cards: NavigationCard[] }) {
   return (
-    <motion.div
-      variants={megaContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mega-services-layout"
-    >
+    <div className="mega-services-layout">
       <FeatureCard card={cards[0]} description={homepageServices[0].tagline} />
       <div className="mega-service-directory">
         <span className="mega-kicker">{homepageServices[0].description.split(". ")[0]}.</span>
-        <motion.div variants={megaContainerVariants} className="mega-service-links">
+        <div className="mega-service-links">
           {cards.slice(1).map((card, index) => (
             <MenuEntry card={card} number={index + 2} key={card.name} />
           ))}
-        </motion.div>
-        <motion.div variants={megaCardVariants} className="mega-service-note">
+        </div>
+        <div className="mega-service-note">
           <span className="mega-note-rule" />
           <p>{homepageServices[7].tagline}</p>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -209,20 +162,15 @@ function ProjectsPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: 
   const listItems = cards.slice(1, 5);
 
   return (
-    <motion.div
-      variants={megaContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mega-project-layout"
-    >
+    <div className="mega-project-layout">
       {featured && <FeatureCard card={featured} />}
       <div className="mega-project-directory">
-        <motion.div variants={megaContainerVariants} className="mega-project-items">
+        <div className="mega-project-items">
           {listItems.map((card) => (
             <MenuEntry card={card} thumbnail key={card.name} />
           ))}
-        </motion.div>
-        <motion.div variants={megaCardVariants} className="mega-project-cta-row">
+        </div>
+        <div className="mega-project-cta-row">
           <NavLink
             href="/our-projects"
             onClick={onClose}
@@ -231,25 +179,19 @@ function ProjectsPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: 
             <span>View More Projects ({cards.length}+)</span>
             <ArrowUpRight size={15} />
           </NavLink>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function CompanyPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: () => void }) {
   const aboutCard = cards.find(c => c.name === "About Us") || cards[0];
   const listItems = cards.filter(c => c.name !== "Contact Us" && c.name !== "About Us");
-  const contactCard = cards.find(c => c.name === "Contact Us");
 
   return (
-    <motion.div
-      variants={megaContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mega-company-layout"
-    >
-      <motion.div variants={megaCardVariants} className="mega-company-about">
+    <div className="mega-company-layout">
+      <div className="mega-company-about">
         <span className="mega-kicker">Advanced Sports Technologies</span>
         <p>{aboutParagraphs[0]}</p>
         <div className="mega-company-links">
@@ -262,7 +204,7 @@ function CompanyPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: (
             <ArrowUpRight size={15} />
           </NavLink>
         </div>
-      </motion.div>
+      </div>
       {aboutCard && (
         <FeatureCard
           card={{ ...aboutCard, href: "/about" }}
@@ -277,20 +219,15 @@ function CompanyPanel({ cards, onClose }: { cards: NavigationCard[]; onClose?: (
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function DownloadsPanel() {
   return (
-    <motion.div
-      variants={megaContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mega-download-grid"
-    >
+    <div className="mega-download-grid">
       {downloadGroups.map(group => (
-        <motion.article variants={megaCardVariants} className="mega-download-group" key={group.name}>
+        <article className="mega-download-group" key={group.name}>
           <div className="mega-download-cover">
             <Image src={group.image} alt="" fill sizes="30vw" />
             <h3>{group.name}</h3>
@@ -310,9 +247,9 @@ function DownloadsPanel() {
               </div>
             ))}
           </div>
-        </motion.article>
+        </article>
       ))}
-    </motion.div>
+    </div>
   );
 }
 

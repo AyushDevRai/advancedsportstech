@@ -28,21 +28,51 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
   const previousY = useRef(0);
   const { resolvedTheme, setTheme } = useTheme();
 
+  // Surface theme observer - uses asynchronous IntersectionObserver with zero layout thrashing
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>("main [data-nav-theme]");
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const theme = (entry.target as HTMLElement).dataset.navTheme;
+            if (theme) setSurface(theme);
+          }
+        }
+      },
+      {
+        rootMargin: "-80px 0px -75% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  // Lightweight scroll position tracker for compact & hidden header (zero DOM queries)
   useEffect(() => {
     let frame = 0;
     const update = () => {
       const y = window.scrollY;
       setCompact(y > 80);
-      if (Math.abs(y - previousY.current) > 6) setHidden(y > previousY.current && y > 450);
+      if (Math.abs(y - previousY.current) > 6) {
+        setHidden(y > previousY.current && y > 450);
+      }
       previousY.current = y;
-      const section = [...document.querySelectorAll<HTMLElement>("main [data-nav-theme]")].find((element) => { const rect = element.getBoundingClientRect(); return rect.top <= 96 && rect.bottom > 96; });
-      setSurface(section?.dataset.navTheme ?? "light");
       frame = 0;
     };
     update();
-    const scroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const scroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
     window.addEventListener("scroll", scroll, { passive: true });
-    return () => { window.removeEventListener("scroll", scroll); cancelAnimationFrame(frame); };
+    return () => {
+      window.removeEventListener("scroll", scroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Close on Escape key
@@ -151,7 +181,7 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
             <Sun size={17} className="theme-sun" />
             <Moon size={17} className="theme-moon" />
           </button>
-          <a href={`${homeHref || "/"}#contact`} className="ast-button ast-button-red nav-quote">
+          <a href={`${homeHref || "/"}#contact`} data-mascot-cta="excited" className="ast-button ast-button-red nav-quote">
             Get a quote <ArrowUpRight size={16} />
           </a>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -191,7 +221,7 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
                   </AccordionItem>
                 ))}
               </Accordion>
-              <a href="#contact" onClick={() => setMobileOpen(false)} className="ast-button ast-button-red">
+              <a href="#contact" data-mascot-cta="excited" onClick={() => setMobileOpen(false)} className="ast-button ast-button-red">
                 Get a quote <ArrowUpRight size={18} />
               </a>
               <a href={company.contact.phoneHref} className="mobile-nav-phone">
@@ -208,17 +238,17 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
         {activeMenu && activeGroup && (
           <motion.div
             className="mega-dropdown-wrapper"
-            initial={{ opacity: 0, y: -6, scale: 0.985 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.985 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onMouseEnter={() => {
               if (closeTimeout.current) clearTimeout(closeTimeout.current);
             }}
             onMouseLeave={handleMouseLeaveNav}
           >
             <div className="mega-dropdown-shell">
-              <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <AnimatePresence mode="popLayout" custom={direction} initial={false}>
                 <motion.div
                   key={activeMenu}
                   custom={direction}
@@ -232,7 +262,7 @@ export function SiteHeader({ homeHref = "" }: { homeHref?: string }) {
                       x: 0,
                       opacity: 1,
                       transition: {
-                        duration: 0.22,
+                        duration: 0.18,
                         ease: [0.16, 1, 0.3, 1] as const,
                       },
                     },
