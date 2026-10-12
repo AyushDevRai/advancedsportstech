@@ -788,6 +788,11 @@
   z-index: 2;
 }
 
+.india-svg-viewport.pointer-events-none,
+.india-svg-viewport.pointer-events-none * {
+  pointer-events: none !important;
+}
+
 .india-svg-map {
   width: 100%;
   height: 100%;

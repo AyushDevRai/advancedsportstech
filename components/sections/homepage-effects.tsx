@@ -36,11 +36,17 @@ export function HomepageEffects() {
       if (query.matches) return;
       scroll = new Lenis({
         autoRaf: true,
-        lerp: 0.15,
+        duration: 0.75,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        syncTouch: false,
+        wheelMultiplier: 1.15,
+        touchMultiplier: 1.0,
         anchors: true,
         allowNestedScroll: true,
         stopInertiaOnNavigate: true,
       });
+      (window as unknown as { lenis?: Lenis }).lenis = scroll;
       syncScrollLock();
     };
     setup();
@@ -54,6 +60,9 @@ export function HomepageEffects() {
     window.addEventListener("keydown", cancelAnchor);
     return () => {
       window.clearTimeout(anchorTimer);
+      if ((window as unknown as { lenis?: Lenis }).lenis === scroll) {
+        delete (window as unknown as { lenis?: Lenis }).lenis;
+      }
       scroll?.destroy();
       lockObserver.disconnect();
       query.removeEventListener("change", setup);

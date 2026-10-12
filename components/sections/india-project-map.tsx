@@ -33,7 +33,55 @@ export function IndiaProjectMap() {
   const [selectedProject, setSelectedProject] = useState<MapProject>(mapProjects[0]);
   const [hoveredProject, setHoveredProject] = useState<MapProject | null>(null);
   const [selectedState, setSelectedState] = useState<string>("all");
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const isScrollingRef = useRef<boolean>(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Disable pin hit-testing and freeze card changes during active page scrolling
+  useEffect(() => {
+    let scrollEndTimer: NodeJS.Timeout;
+    const handleScroll = () => {
+      isScrollingRef.current = true;
+      setIsScrolling(true);
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+        hoverTimeoutRef.current = null;
+      }
+      clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(() => {
+        isScrollingRef.current = false;
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollEndTimer);
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
+  const handlePinMouseEnter = (proj: MapProject) => {
+    if (isScrollingRef.current) return;
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      if (!isScrollingRef.current) {
+        setHoveredProject(proj);
+      }
+    }, 120);
+  };
+
+  const handlePinMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    // Prevent clearing or flipping project card while actively scrolling
+    if (isScrollingRef.current) return;
+    setHoveredProject(null);
+  };
 
   // Filter projects based on active category, search query, and state
   const filteredProjects = useMemo(() => {
@@ -215,7 +263,10 @@ export function IndiaProjectMap() {
         </div>
 
         {/* SVG Map of India with pins */}
-        <div className="india-svg-viewport">
+        <div
+          className={`india-svg-viewport ${isScrolling ? "pointer-events-none" : ""}`}
+          style={isScrolling ? { pointerEvents: "none" } : undefined}
+        >
           <svg
             viewBox="0 0 1000 1000"
             className="india-svg-map"
@@ -286,12 +337,12 @@ export function IndiaProjectMap() {
                       setSelectedProject(proj);
                       setSelectedState(proj.state);
                     }}
-                    onMouseEnter={() => setHoveredProject(proj)}
-                    onMouseLeave={() => setHoveredProject(null)}
-                    style={{ cursor: "pointer" }}
+                    onMouseEnter={() => handlePinMouseEnter(proj)}
+                    onMouseLeave={handlePinMouseLeave}
+                    style={{ cursor: "pointer", pointerEvents: isScrolling ? "none" : "auto" }}
                   >
                     {/* Generous touch/proximity target for effortless selection */}
-                    <circle r="30" fill="transparent" style={{ pointerEvents: "all" }} />
+                    <circle r="30" fill="transparent" style={{ pointerEvents: isScrolling ? "none" : "all" }} />
 
                     {/* Animated Ripple Radar Wave */}
                     <circle

@@ -199,12 +199,12 @@
 /* A single backdrop layer, translucent tint, and edge highlights give the glass depth. */
 .site-header {
   position: fixed;
-  top: 16px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%) translateZ(0);
   width: min(1860px, calc(100% - 64px));
   z-index: 40;
-  transition: top .3s, transform .3s;
+  transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
@@ -213,28 +213,28 @@
 }
 
 .site-header.is-compact {
-  top: 12px;
+  top: 14px;
 }
 
 .nav-glass {
   position: relative;
   isolation: isolate;
-  height: 76px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 22px;
-  padding: 10px 14px;
+  padding: 8px 16px;
   border-radius: 18px;
   background: linear-gradient(115deg, #ffffff24, #ffffff06 48%, #ffffff16), #101f1866;
   border: 1px solid #ffffff4d;
   border-top-color: #ffffff8c;
   border-bottom-color: #ffffff26;
   box-shadow: 0 12px 36px #00000024, inset 0 1px 0 #ffffff52, inset 0 -1px 0 #ffffff0f, inset 1px 0 0 #ffffff1a;
-  backdrop-filter: blur(26px) saturate(180%) brightness(1.08);
-  -webkit-backdrop-filter: blur(26px) saturate(180%) brightness(1.08);
+  backdrop-filter: blur(16px) saturate(150%) brightness(1.06);
+  -webkit-backdrop-filter: blur(16px) saturate(150%) brightness(1.06);
   color: white;
-  transition: height .25s, background .25s;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
 }
 
 .nav-glass::before {
@@ -263,7 +263,7 @@
 }
 
 .is-compact .nav-glass {
-  height: 65px;
+  height: 70px;
 }
 
 .ast-brand-logo {
@@ -306,7 +306,7 @@
 }
 
 .is-compact .nav-logo {
-  height: 43px;
+  height: 52px;
 }
 
 .nav-trigger-list {
@@ -448,7 +448,20 @@
   z-index: 35;
   background: rgba(4, 10, 8, 0.52);
   contain: strict;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity;
+}
+
+.nav-hover-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Pause animated gradient text on homepage when mega menu is open to save CPU/GPU cycles */
+[data-mega-open="true"] .animate-aurora {
+  animation-play-state: paused !important;
 }
 
 /* Floating Mega Dropdown Wrapper: Centered Directly Below Navbar, Never Stretched */
@@ -475,9 +488,9 @@
   height: 14px;
 }
 
-/* Glassmorphism Shell with Smooth Height Adaptation */
+/* Shell with Solid Premium Background (zero expensive blur passes over video) */
 .mega-dropdown-shell {
-  --mega-paper: rgba(255, 255, 255, 0.96);
+  --mega-paper: rgba(255, 255, 255, 0.98);
   --mega-ink: #16221a;
   --mega-muted: #5e6d62;
   --mega-line: rgba(113, 128, 116, 0.16);
@@ -489,8 +502,6 @@
     0 24px 60px -10px rgba(10, 22, 17, 0.18),
     0 8px 24px -4px rgba(10, 22, 17, 0.08),
     inset 0 1px 1px 0 rgba(255, 255, 255, 1);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -504,7 +515,7 @@
 }
 
 .dark .mega-dropdown-shell {
-  --mega-paper: rgba(18, 26, 22, 0.95);
+  --mega-paper: rgba(18, 26, 22, 0.98);
   --mega-ink: #f0f4ed;
   --mega-muted: #9aa89d;
   --mega-line: rgba(255, 255, 255, 0.12);
@@ -1567,6 +1578,8 @@
   object-fit: cover;
   object-position: center;
   z-index: -3;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .hero-video {
@@ -2265,6 +2278,19 @@
 .homepage-map-section .india-svg-viewport {
   height: 740px;
   max-width: 980px;
+}
+
+/* Scroll performance: completely suppress hit-testing & hover transitions during scroll */
+.homepage-map-section .india-svg-viewport.pointer-events-none,
+.homepage-map-section .india-svg-viewport.pointer-events-none *,
+.india-svg-viewport.pointer-events-none,
+.india-svg-viewport.pointer-events-none * {
+  pointer-events: none !important;
+}
+
+.minimal-video-carousel-section .pointer-events-none,
+.minimal-video-carousel-section .pointer-events-none * {
+  pointer-events: none !important;
 }
 
 @media (max-width: 1024px) {

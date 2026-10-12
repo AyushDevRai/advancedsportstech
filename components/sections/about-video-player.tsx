@@ -19,7 +19,7 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
   const playerRef = useRef<any>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isLoopingRef = useRef<boolean>(false);
-  const isVisibleRef = useRef<boolean>(true);
+  const isVisibleRef = useRef<boolean>(false);
   const [origin, setOrigin] = useState<string>("");
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
   }, []);
 
   const triggerLoop = useCallback(() => {
-    if (isLoopingRef.current) return;
+    if (isLoopingRef.current || !isVisibleRef.current) return;
     isLoopingRef.current = true;
 
     try {
@@ -85,8 +85,18 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
         }
         if (!data) return;
 
-        // Check player state: 0 = ENDED, 2 = PAUSED
+        // Check player state: 0 = ENDED, 1 = PLAYING, 2 = PAUSED
         const state = data.info?.playerState ?? (data.event === "onStateChange" ? data.info : null);
+
+        // If not in viewport, ensure the player remains paused
+        if (!isVisibleRef.current) {
+          if (state === 1) {
+            sendPostMessageCommand("pauseVideo", []);
+            try { playerRef.current?.pauseVideo?.(); } catch (_) {}
+          }
+          return;
+        }
+
         if (state === 0) {
           triggerLoop();
         }
@@ -124,7 +134,12 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
                   event.target.setOption("captions", "track", {});
                   event.target.setOption("cc", "track", {});
                 }
-                event.target.playVideo();
+                // Only start playing if about section is currently in viewport
+                if (isVisibleRef.current) {
+                  event.target.playVideo();
+                } else {
+                  event.target.pauseVideo();
+                }
               } catch (_) {}
             },
             onStateChange: (event: any) => {
@@ -140,6 +155,14 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
                 }
               } catch (_) {}
 
+              // If about section is not visible, keep paused
+              if (!isVisibleRef.current) {
+                try {
+                  event.target.pauseVideo();
+                } catch (_) {}
+                return;
+              }
+
               // 0 = ENDED -> loop immediately
               if (event.data === 0 || event.data === window.YT.PlayerState?.ENDED) {
                 triggerLoop();
@@ -150,8 +173,6 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
                   const current = typeof event.target.getCurrentTime === "function" ? event.target.getCurrentTime() : 0;
                   if (current >= END_TIME - 1 || current < START_TIME) {
                     triggerLoop();
-                  } else {
-                    event.target.playVideo();
                   }
                 } catch (_) {
                   triggerLoop();
@@ -194,27 +215,48 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
       }
     }, 400);
 
-    // Pause / resume YouTube when about section enters / exits viewport
+    // Pause when about section exits viewport, and resume from current timestamp when entering viewport
     const container = containerRef.current;
     let observer: IntersectionObserver | undefined;
-    if (container) {
+    const aboutSection = (container ? container.closest("#about") : null) || document.getElementById("about") || container;
+    if (aboutSection) {
       observer = new IntersectionObserver(
         ([entry]) => {
-          isVisibleRef.current = entry.isIntersecting;
-          if (playerRef.current) {
-            try {
-              if (entry.isIntersecting) {
-                if (typeof playerRef.current.playVideo === "function") playerRef.current.playVideo();
-              } else {
-                if (typeof playerRef.current.pauseVideo === "function") playerRef.current.pauseVideo();
-              }
-            } catch (_) {}
+          const inView = entry.isIntersecting;
+          isVisibleRef.current = inView;
+          if (inView) {
+            // Entered viewport: resume from where it was paused
+            if (playerRef.current && typeof playerRef.current.playVideo === "function") {
+              try { playerRef.current.playVideo(); } catch (_) {}
+            }
+            sendPostMessageCommand("playVideo", []);
+          } else {
+            // Scrolled past/away from about section: pause immediately
+            if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
+              try { playerRef.current.pauseVideo(); } catch (_) {}
+            }
+            sendPostMessageCommand("pauseVideo", []);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.05 }
       );
-      observer.observe(container);
+      observer.observe(aboutSection);
     }
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
+          try { playerRef.current.pauseVideo(); } catch (_) {}
+        }
+        sendPostMessageCommand("pauseVideo", []);
+      } else if (isVisibleRef.current) {
+        if (playerRef.current && typeof playerRef.current.playVideo === "function") {
+          try { playerRef.current.playVideo(); } catch (_) {}
+        }
+        sendPostMessageCommand("playVideo", []);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     // Load YouTube IFrame API script if not present
     if (window.YT && window.YT.Player) {
@@ -239,6 +281,7 @@ export function AboutVideoPlayer({ className = "about-bg-video-iframe" }: { clas
     return () => {
       isMounted = false;
       observer?.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("message", handleWindowMessage);
       if (timerRef.current) clearInterval(timerRef.current);
       if (playerRef.current) {

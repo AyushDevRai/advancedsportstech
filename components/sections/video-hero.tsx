@@ -35,7 +35,7 @@ export function VideoHero() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!manuallyPaused.current && !document.hidden) {
+        if (!manuallyPaused.current && !document.hidden && !document.documentElement.hasAttribute("data-mega-open")) {
           if (entry.isIntersecting) {
             void video.play().catch(() => {});
           } else {
@@ -48,7 +48,7 @@ export function VideoHero() {
     observer.observe(hero);
 
     const handleVisibility = () => {
-      if (document.hidden) {
+      if (document.hidden || document.documentElement.hasAttribute("data-mega-open")) {
         video.pause();
       } else if (!manuallyPaused.current) {
         void video.play().catch(() => {});
@@ -56,9 +56,24 @@ export function VideoHero() {
     };
     document.addEventListener("visibilitychange", handleVisibility);
 
+    const handleMegaNavToggle = (e: Event) => {
+      const custom = e as CustomEvent<{ open: boolean }>;
+      const isMegaOpen = custom.detail?.open ?? false;
+      if (isMegaOpen) {
+        video.pause();
+      } else if (!manuallyPaused.current && !document.hidden) {
+        const rect = hero.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          void video.play().catch(() => {});
+        }
+      }
+    };
+    window.addEventListener("ast:mega-nav-toggle", handleMegaNavToggle);
+
     return () => {
       observer.disconnect();
       document.removeEventListener("visibilitychange", handleVisibility);
+      window.removeEventListener("ast:mega-nav-toggle", handleMegaNavToggle);
     };
   }, []);
 
@@ -78,7 +93,7 @@ export function VideoHero() {
         poster="/video/hero-poster.webp"
         aria-hidden="true"
         tabIndex={-1}
-        className="hero-media hero-video is-ready"
+        className="hero-media hero-video is-ready transform-gpu will-change-transform"
         onPlaying={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />

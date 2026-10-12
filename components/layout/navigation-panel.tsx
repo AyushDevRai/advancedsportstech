@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUpRight, Download, Share2, X } from "lucide-react";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { downloadGroups, productCategories, type NavigationCard, type NavigationGroup } from "@/content/navigation";
 import { aboutParagraphs, brochureUrl, homepageServices } from "@/content/homepage";
@@ -253,7 +253,7 @@ function DownloadsPanel() {
   );
 }
 
-export function NavigationPanel({ group, onClose, homeHref = "" }: { group: NavigationGroup; onClose: () => void; homeHref?: string }) {
+export const NavigationPanel = memo(function NavigationPanel({ group, onClose, homeHref = "" }: { group: NavigationGroup; onClose: () => void; homeHref?: string }) {
   return (
     <div className="mega-panel-scroll">
       <div className="mega-panel-heading">
@@ -283,4 +283,4 @@ export function NavigationPanel({ group, onClose, homeHref = "" }: { group: Navi
       </div>
     </div>
   );
-}
+});

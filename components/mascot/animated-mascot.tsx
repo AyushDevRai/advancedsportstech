@@ -236,7 +236,11 @@ export function AnimatedMascot() {
     let mouseFrame = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (currentAnimationRef.current !== "idle" || mouseFrame) return;
+      if (
+        document.documentElement.hasAttribute("data-mega-open") ||
+        currentAnimationRef.current !== "idle" ||
+        mouseFrame
+      ) return;
 
       mouseFrame = requestAnimationFrame(() => {
         mouseFrame = 0;

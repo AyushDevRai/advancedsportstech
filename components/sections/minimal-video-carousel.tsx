@@ -102,9 +102,11 @@ const footageVideos: GridVideoItem[] = [
 function GridVideoCard({
   video,
   containerHeightClass,
+  isScrolling,
 }: {
   video: GridVideoItem;
   containerHeightClass: string;
+  isScrolling: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -112,6 +114,8 @@ function GridVideoCard({
   const timeTextRef = useRef<HTMLSpanElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isHoveredRef = useRef(false);
 
   const formatTime = (secs: number) => {
     if (isNaN(secs) || secs === 0) return "0:00";
@@ -183,17 +187,45 @@ function GridVideoCard({
     };
   }, []);
 
-  const handleMouseEnter = () => {
-    const el = videoRef.current;
-    if (!el) return;
-    if (el.paused) {
-      el.muted = isMuted;
-      void el.play().then(() => setIsPlaying(true)).catch(() => {});
+  // Whenever scrolling occurs, immediately pause video to release GPU decoders and keep scroll 100% fluid
+  useEffect(() => {
+    if (isScrolling) {
+      if (hoverTimerRef.current) {
+        clearTimeout(hoverTimerRef.current);
+        hoverTimerRef.current = null;
+      }
+      const el = videoRef.current;
+      if (el && !el.paused) {
+        el.pause();
+        setIsPlaying(false);
+      }
     }
+  }, [isScrolling]);
+
+  // Hover intent: do NOT play instantly on first millisecond of mouseenter (which fires when scrolling past)
+  // Only play if cursor remains on card for 150ms and user is NOT scrolling
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true;
+    if (isScrolling) return;
+    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+
+    hoverTimerRef.current = setTimeout(() => {
+      if (!isHoveredRef.current || isScrolling) return;
+      const el = videoRef.current;
+      if (!el) return;
+      if (el.paused) {
+        el.muted = isMuted;
+        void el.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    }, 150);
   };
 
   const handleMouseLeave = () => {
-    // Immediately pause any video on mouse leave to release GPU decoders
+    isHoveredRef.current = false;
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
     const el = videoRef.current;
     if (el && !el.paused) {
       el.pause();
@@ -217,7 +249,7 @@ function GridVideoCard({
   return (
     <div
       ref={cardRef}
-      className={`relative w-full ${containerHeightClass} rounded-2xl overflow-hidden bg-[#0d1612] border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group select-none cursor-pointer transform-gpu`}
+      className={`relative w-full ${containerHeightClass} rounded-2xl overflow-hidden bg-[#0d1612] border border-white/10 transition-[border-color,box-shadow] duration-300 hover:border-red-500/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group select-none cursor-pointer transform-gpu`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => togglePlay()}
@@ -234,7 +266,7 @@ function GridVideoCard({
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onTimeUpdate={handleTimeUpdate}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 will-change-transform"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105 will-change-transform"
       />
 
       {/* Top Gradient + Badges (Shown only on hover) */}
@@ -323,6 +355,25 @@ function GridVideoCard({
 }
 
 export function MinimalVideoCarousel() {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    let scrollEndTimer: NodeJS.Timeout;
+    const handleScroll = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollEndTimer);
+    };
+  }, []);
+
   return (
     <section
       id="project-video-stream"
@@ -351,12 +402,18 @@ export function MinimalVideoCarousel() {
         </div>
 
         {/* Unified Responsive 8-Video Bento Grid - Zero DOM duplicates */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch ${
+            isScrolling ? "pointer-events-none" : ""
+          }`}
+          style={isScrolling ? { pointerEvents: "none" } : undefined}
+        >
           {/* Column 1: Tall Feature (1 video card) */}
           <div className="flex flex-col justify-between">
             <GridVideoCard
               video={footageVideos[0]}
               containerHeightClass="h-[260px] sm:h-[480px] lg:h-[540px]"
+              isScrolling={isScrolling}
             />
           </div>
 
@@ -365,10 +422,12 @@ export function MinimalVideoCarousel() {
             <GridVideoCard
               video={footageVideos[1]}
               containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
+              isScrolling={isScrolling}
             />
             <GridVideoCard
               video={footageVideos[2]}
               containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
+              isScrolling={isScrolling}
             />
           </div>
 
@@ -377,11 +436,13 @@ export function MinimalVideoCarousel() {
             <GridVideoCard
               video={footageVideos[3]}
               containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
+              isScrolling={isScrolling}
             />
             <div className="hidden sm:block">
               <GridVideoCard
                 video={footageVideos[4]}
                 containerHeightClass="h-[220px] sm:h-[232px] lg:h-[262px]"
+                isScrolling={isScrolling}
               />
             </div>
           </div>
@@ -391,14 +452,17 @@ export function MinimalVideoCarousel() {
             <GridVideoCard
               video={footageVideos[5]}
               containerHeightClass="h-[150px] lg:h-[170px]"
+              isScrolling={isScrolling}
             />
             <GridVideoCard
               video={footageVideos[6]}
               containerHeightClass="h-[150px] lg:h-[170px]"
+              isScrolling={isScrolling}
             />
             <GridVideoCard
               video={footageVideos[7]}
               containerHeightClass="h-[150px] lg:h-[170px]"
+              isScrolling={isScrolling}
             />
           </div>
         </div>
