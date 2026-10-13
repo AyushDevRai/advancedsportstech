@@ -73,12 +73,12 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/sport/basketball" className="hover:text-red-400 transition-colors">
+                <Link href="/basketball" className="hover:text-red-400 transition-colors">
                   Basketball Courts
                 </Link>
               </li>
               <li>
-                <Link href="/sport/wooden-flooring" className="hover:text-red-400 transition-colors">
+                <Link href="/wooden-flooring" className="hover:text-red-400 transition-colors">
                   Wooden Flooring
                 </Link>
               </li>
@@ -88,12 +88,12 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/sport/tennis" className="hover:text-red-400 transition-colors">
+                <Link href="/tennis" className="hover:text-red-400 transition-colors">
                   Tennis Courts
                 </Link>
               </li>
               <li>
-                <Link href="/sport/badminton" className="hover:text-red-400 transition-colors">
+                <Link href="/badminton" className="hover:text-red-400 transition-colors">
                   Badminton Courts
                 </Link>
               </li>
@@ -112,7 +112,7 @@ export function ModernFooter() {
             </h3>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <Link href="/products/athletics-track" className="hover:text-red-400 transition-colors">
+                <Link href="/athletic-tracks" className="hover:text-red-400 transition-colors">
                   Rekortan Running Tracks
                 </Link>
               </li>
@@ -122,12 +122,12 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/products/synthetic-turf/hockey" className="hover:text-red-400 transition-colors">
+                <Link href="/hockey" className="hover:text-red-400 transition-colors">
                   Poligras Hockey Turf
                 </Link>
               </li>
               <li>
-                <Link href="/products/synthetic-turf/football" className="hover:text-red-400 transition-colors">
+                <Link href="/football" className="hover:text-red-400 transition-colors">
                   LigaTurf Football Systems
                 </Link>
               </li>
@@ -152,7 +152,7 @@ export function ModernFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/products/cleaning-and-maintenance" className="hover:text-red-400 transition-colors">
+                <Link href="/maintenance" className="hover:text-red-400 transition-colors">
                   Cleaning & Maintenance (AMC)
                 </Link>
               </li>
@@ -216,13 +216,13 @@ export function ModernFooter() {
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-slate-300 transition-colors">
+            <Link href="/terms-and-policy" className="hover:text-slate-300 transition-colors">
               Terms & Conditions
             </Link>
-            <Link href="/sitemap" className="hover:text-slate-300 transition-colors">
-              Sitemap
+            <Link href="/certificates" className="hover:text-slate-300 transition-colors">
+              Testing & Certifications
             </Link>
-            <Link href="/contact-us" className="hover:text-slate-300 transition-colors">
+            <Link href="/#contact" className="hover:text-slate-300 transition-colors">
               Contact
             </Link>
           </div>

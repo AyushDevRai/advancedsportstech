@@ -30,14 +30,14 @@ export function VideoHero() {
     video.muted = true;
     const p = video.play();
     if (p !== undefined) {
-      p.catch(() => {});
+      p.catch(() => { });
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!manuallyPaused.current && !document.hidden && !document.documentElement.hasAttribute("data-mega-open")) {
           if (entry.isIntersecting) {
-            void video.play().catch(() => {});
+            void video.play().catch(() => { });
           } else {
             video.pause();
           }
@@ -51,7 +51,7 @@ export function VideoHero() {
       if (document.hidden || document.documentElement.hasAttribute("data-mega-open")) {
         video.pause();
       } else if (!manuallyPaused.current) {
-        void video.play().catch(() => {});
+        void video.play().catch(() => { });
       }
     };
     document.addEventListener("visibilitychange", handleVisibility);
@@ -64,7 +64,7 @@ export function VideoHero() {
       } else if (!manuallyPaused.current && !document.hidden) {
         const rect = hero.getBoundingClientRect();
         if (rect.bottom > 0 && rect.top < window.innerHeight) {
-          void video.play().catch(() => {});
+          void video.play().catch(() => { });
         }
       }
     };

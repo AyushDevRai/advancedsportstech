@@ -29,11 +29,11 @@ export const sports: Sport[] = [
   { slug: "athletics", name: "Athletics", source: "/athletic-tracks" },
   { slug: "hockey", name: "Hockey", source: "/hockey" },
   { slug: "football", name: "Football", source: "/football" },
-  { slug: "tennis", name: "Tennis", source: "https://ast-sports.com/tennis/" },
-  { slug: "badminton", name: "Badminton", source: "https://ast-sports.com/badminton/" },
-  { slug: "basketball", name: "Basketball", source: "https://ast-sports.com/basketball/" },
-  { slug: "indoor-flooring", name: "Indoor flooring", source: "https://ast-sports.com/indoor-flooring/" },
-  { slug: "wooden-flooring", name: "Wooden flooring", source: "https://ast-sports.com/wooden-flooring/" },
+  { slug: "tennis", name: "Tennis", source: "/tennis" },
+  { slug: "badminton", name: "Badminton", source: "/badminton" },
+  { slug: "basketball", name: "Basketball", source: "/basketball" },
+  { slug: "indoor-flooring", name: "Indoor flooring", source: "/indoor-flooring" },
+  { slug: "wooden-flooring", name: "Wooden flooring", source: "/wooden-flooring" },
 ];
 export const brands: Brand[] = [
   { slug: "poligras", name: "POLIGRAS", application: "Hockey turf", sportSlugs: ["hockey"] },

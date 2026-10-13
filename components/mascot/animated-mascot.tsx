@@ -514,7 +514,7 @@ export function AnimatedMascot() {
           title="Click to dismiss"
         >
           <div className="ast-mascot-bubble-header">
-            <span className="ast-mascot-bubble-badge">AST Guide</span>
+            <span className="ast-mascot-bubble-badge">Sportyy bot</span>
             <button
               type="button"
               className="ast-mascot-bubble-close"

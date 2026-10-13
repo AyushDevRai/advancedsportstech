@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
@@ -19,11 +21,37 @@ const exploreLinks = [
 ];
 
 export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
+  const isDetailPage = Boolean(homeHref);
+
   const groups = [
-    { title: "Products", links: productCategories[0].cards },
-    { title: "Sports", links: sports.map(sport => ({ name: sport.name, href: sport.source })) },
-    { title: "Services", links: homepageServices.map(service => ({ name: service.name, href: `${homeHref}#service-${service.slug}` })) },
-    { title: "Company", links: exploreLinks.map(link => ({ ...link, href: `${homeHref}${link.href}` })) },
+    {
+      title: "Products",
+      links: productCategories[0].cards.map((card) => ({
+        name: card.name === "Inbuilt" ? "SmarTracks" : card.name,
+        href: card.href,
+      })),
+    },
+    {
+      title: "Sports",
+      links: sports.map((sport) => ({
+        name: sport.name,
+        href: sport.source,
+      })),
+    },
+    {
+      title: "Services",
+      links: homepageServices.map((service) => ({
+        name: service.name,
+        href: isDetailPage ? `/#service-${service.slug}` : `#service-${service.slug}`,
+      })),
+    },
+    {
+      title: "Company",
+      links: exploreLinks.map((link) => ({
+        name: link.name,
+        href: link.href,
+      })),
+    },
   ];
 
   return (
@@ -43,11 +71,30 @@ export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
             </address>
           </div>
           <div className="footer-links">
-            {groups.map(group => (
+            {groups.map((group) => (
               <nav aria-label={`Footer ${group.title.toLowerCase()}`} key={group.title}>
                 <h3>{group.title}</h3>
                 <ul>
-                  {group.links.map(link => <li key={link.href}><a href={link.href}>{link.name}</a></li>)}
+                  {group.links.map((link) => {
+                    const isExternal =
+                      link.href.startsWith("http://") ||
+                      link.href.startsWith("https://") ||
+                      link.href.startsWith("mailto:") ||
+                      link.href.startsWith("tel:");
+                    return (
+                      <li key={`${group.title}-${link.name}-${link.href}`}>
+                        {isExternal ? (
+                          <a href={link.href} target="_blank" rel="noopener noreferrer">
+                            {link.name}
+                          </a>
+                        ) : (
+                          <Link href={link.href}>
+                            {link.name}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             ))}
@@ -64,7 +111,19 @@ export function HomepageFooter({ homeHref = "" }: { homeHref?: string }) {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Advanced Sports Technologies LLP. All Rights Reserved.</span>
-          <a href="#home" className="footer-back-top">Back to top <ArrowUp size={18} aria-hidden="true" /></a>
+          <a
+            href="#home"
+            className="footer-back-top"
+            onClick={(e) => {
+              const target = document.getElementById("home");
+              if (!target) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            Back to top <ArrowUp size={18} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>
